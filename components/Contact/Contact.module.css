@@ -1,0 +1,27 @@
+.header {
+    text-align: center;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.form {
+    margin: 0 300px;
+}
+
+.submitBtn {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.githubLogo {
+    max-width: 3%;
+    max-height: 3%;
+    margin-left: 5%;
+    cursor: pointer;
+}
+
+.logos {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 5% 30%;
+}
