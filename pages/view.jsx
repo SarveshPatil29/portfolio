@@ -5,6 +5,7 @@ import Projects from "../components/Projects/Projects";
 import Experience from "../components/Experience/Experience";
 import Achievements from "../components/Achievements/Achievements";
 import Contact from "../components/Contact/Contact";
+import Footer from "../components/Footer/Footer";
 
 function View() {
     return (
@@ -16,6 +17,7 @@ function View() {
             <Experience />
             <Achievements />
             <Contact />
+            <Footer />
         </section>
     );
 }
