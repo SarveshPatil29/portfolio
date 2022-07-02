@@ -89,6 +89,34 @@ function Skills() {
                     />
                     <h2>REACT</h2>
                 </div>
+                <div className={classes.skill}>
+                    <img
+                        src="https://miro.medium.com/max/1000/1*cPh7ujRIfcHAy4kW2ADGOw.png"
+                        alt="react logo"
+                    />
+                    <h2>REACT</h2>
+                </div>
+                <div className={classes.skill}>
+                    <img
+                        src="https://miro.medium.com/max/1000/1*cPh7ujRIfcHAy4kW2ADGOw.png"
+                        alt="react logo"
+                    />
+                    <h2>REACT</h2>
+                </div>
+                <div className={classes.skill}>
+                    <img
+                        src="https://miro.medium.com/max/1000/1*cPh7ujRIfcHAy4kW2ADGOw.png"
+                        alt="react logo"
+                    />
+                    <h2>REACT</h2>
+                </div>
+                <div className={classes.skill}>
+                    <img
+                        src="https://miro.medium.com/max/1000/1*cPh7ujRIfcHAy4kW2ADGOw.png"
+                        alt="react logo"
+                    />
+                    <h2>REACT</h2>
+                </div>
             </div>
         </section>
     );

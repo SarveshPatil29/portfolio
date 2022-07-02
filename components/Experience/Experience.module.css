@@ -1,0 +1,33 @@
+.header {
+    text-align: center;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.titleLoc {
+    display: flex;
+    justify-content: space-between;
+}
+
+.loc {
+    font-size: small;
+}
+
+.company {
+    font-weight: 550;
+    margin-bottom: 0;
+}
+
+.timePeriod {
+    font-size: small;
+}
+
+.allExp {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.exp {
+    margin-bottom: 2%;
+}
