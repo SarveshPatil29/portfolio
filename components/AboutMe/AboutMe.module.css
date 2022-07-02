@@ -6,17 +6,21 @@
 
 .intro > * {
     flex: 1;
+    flex-wrap: wrap;
 }
 
 .intro img {
-    padding: 100px;
-    max-width: 50%;
+    padding: 70px;
+    width: 50%;
+    height: 50%;
+    padding-bottom: 0px;
 }
 
 .intro div {
-    padding: 100px;
+    padding: 70px;
     align-self: center;
     min-width: 50%;
+    padding-bottom: 0px;
 }
 
 .aboutMe {
@@ -30,12 +34,15 @@
 }
 
 .aboutMe img {
-    padding: 100px;
-    max-width: 50%;
+    padding: 70px;
+    width: 50%;
+    height: 50%;
+    padding-bottom: 0px;
 }
 
 .aboutMe div {
-    padding: 100px;
+    padding: 70px;
     align-self: center;
     min-width: 50%;
+    padding-bottom: 0px;
 }

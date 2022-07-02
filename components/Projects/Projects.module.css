@@ -1,0 +1,38 @@
+.header {
+    text-align: center;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.githubLogo {
+    max-width: 30%;
+    max-height: 30%;
+    margin-left: 5%;
+    cursor: pointer;
+}
+
+.titleType {
+    display: flex;
+    font-size: xx-small;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.titleType > * {
+    margin-bottom: 0px;
+}
+
+.type {
+    align-self: center;
+}
+
+.allProjects {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.project {
+    margin-bottom: 20px;
+}
