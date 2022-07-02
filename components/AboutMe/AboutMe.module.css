@@ -1,0 +1,41 @@
+.intro {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 0px 100px;
+}
+
+.intro > * {
+    flex: 1;
+}
+
+.intro img {
+    padding: 100px;
+    max-width: 50%;
+}
+
+.intro div {
+    padding: 100px;
+    align-self: center;
+    min-width: 50%;
+}
+
+.aboutMe {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 0px 100px;
+}
+
+.aboutMe > * {
+    flex: 1;
+}
+
+.aboutMe img {
+    padding: 100px;
+    max-width: 50%;
+}
+
+.aboutMe div {
+    padding: 100px;
+    align-self: center;
+    min-width: 50%;
+}

@@ -1,22 +1,28 @@
+import classes from "./AboutMe.module.css";
+
 function AboutMe() {
     return (
         <div>
-            <section>
-                <p>THIS IS ME</p>
-                <p>NAME</p>
-                <p>DESCRIPTION</p>
+            <section className={classes.intro}>
+                <div>
+                    <p>THIS IS ME</p>
+                    <p>NAME</p>
+                    <p>DESCRIPTION</p>
+                </div>
                 <img
                     src="https://avatars.githubusercontent.com/u/92196450?v=4"
                     alt="Profile Image"
                 />
             </section>
-            <section>
+            <section className={classes.aboutMe}>
                 <img
                     src="https://avatars.githubusercontent.com/u/92196450?v=4"
                     alt="Profile Image"
                 />
-                <p>ABOUT ME</p>
-                <p>DESCRIPTION</p>
+                <div>
+                    <p>ABOUT ME</p>
+                    <p>DESCRIPTION</p>
+                </div>
             </section>
         </div>
     );

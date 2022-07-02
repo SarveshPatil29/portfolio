@@ -1,9 +1,8 @@
 import Header from "../components/Header/Header";
-import AboutMe from "../components/AboutMe";
+import AboutMe from "../components/AboutMe/AboutMe";
 function View() {
     return (
         <section>
-            <div>View Demo</div>
             <Header />
             <AboutMe />
         </section>
