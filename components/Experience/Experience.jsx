@@ -1,6 +1,5 @@
 import classes from "./Experience.module.css";
-import { Button, Card } from "react-bootstrap";
-import Link from "next/link";
+import { Card } from "react-bootstrap";
 
 function Experience() {
     return (
@@ -82,12 +81,7 @@ function Experience() {
                             elit. Fugiat similique officia explicabo accusamus
                             in natus ad id, fugit, consequuntur harum
                             voluptatibus maiores nisi deserunt nemo accusantium
-                            temporibus soluta corrupti non. Lorem, ipsum dolor
-                            sit amet consectetur adipisicing elit. Distinctio
-                            rerum maiores nesciunt ipsum iusto cupiditate quos
-                            omnis quidem numquam corrupti blanditiis laborum
-                            dolores officiis, magni repellendus nam in
-                            architecto voluptates!
+                            temporibus so
                         </Card.Text>
                     </Card.Body>
                 </Card>
@@ -108,14 +102,7 @@ function Experience() {
                         <Card.Text className={classes.desc}>
                             Lorem, ipsum dolor sit amet consectetur adipisicing
                             elit. Fugiat similique officia explicabo accusamus
-                            in natus ad id, fugit, consequuntur harum
-                            voluptatibus maiores nisi deserunt nemo accusantium
-                            temporibus soluta corrupti non. Lorem, ipsum dolor
-                            sit amet consectetur adipisicing elit. Distinctio
-                            rerum maiores nesciunt ipsum iusto cupiditate quos
-                            omnis quidem numquam corrupti blanditiis laborum
-                            dolores officiis, magni repellendus nam in
-                            architecto voluptates!
+                            in natus a
                         </Card.Text>
                     </Card.Body>
                 </Card>

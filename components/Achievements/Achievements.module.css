@@ -1,0 +1,15 @@
+.header {
+    text-align: center;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.allAch {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.ach {
+    margin-bottom: 2%;
+}
