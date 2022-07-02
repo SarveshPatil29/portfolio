@@ -9,6 +9,7 @@ export default function Achievements() {
     const handleShow = () => setShow(true);
     return (
         <section>
+            <br id="achievements" />
             <h1 className={classes.header}>ACHIEVEMENTS</h1>
             <div className={classes.allAch}>
                 <Card style={{ width: "36rem" }} className={classes.ach}>

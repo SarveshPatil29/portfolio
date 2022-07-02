@@ -11,7 +11,10 @@ import facebookLogo from "../../public/images/facebookLogo.png";
 export default function Contact() {
     return (
         <section>
-            <h1 className={classes.header}>CONTACT</h1>
+            <br id="contact" />
+            <h1 id="contact" className={classes.header}>
+                CONTACT
+            </h1>
             <Form className={classes.form}>
                 <Form.Group className="mb-3">
                     <Form.Control type="text" placeholder="ENTER YOUR NAME" />

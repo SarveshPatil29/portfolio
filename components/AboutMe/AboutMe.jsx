@@ -3,7 +3,7 @@ import classes from "./AboutMe.module.css";
 function AboutMe() {
     return (
         <div>
-            <section className={classes.intro}>
+            <section style={{ paddingTop: "2%" }} className={classes.intro}>
                 <div>
                     <p>THIS IS ME</p>
                     <p>SARVESH PATIL</p>

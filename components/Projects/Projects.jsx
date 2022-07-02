@@ -5,6 +5,7 @@ import { Button, Card } from "react-bootstrap";
 function Projects() {
     return (
         <section>
+            <br id="projects" />
             <h1 className={classes.header}>PROJECTS</h1>
             <div className={classes.allProjects}>
                 <Card style={{ width: "18rem" }} className={classes.project}>

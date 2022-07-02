@@ -1,22 +1,31 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Navbar, Container, Nav } from "react-bootstrap";
+import classes from "./Header.module.css";
 
 function Header() {
     return (
-        <div>
-            <Navbar bg="light" expand="lg" variant="light">
+        <div id="home">
+            <Navbar fixed="top" bg="light" expand="lg" variant="light">
                 <Container>
-                    <Navbar.Brand href="/view">SARVESH PATIL</Navbar.Brand>
+                    <Navbar.Brand style={{ fontWeight: "bold" }} href="/view">
+                        SARVESH PATIL
+                    </Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto"></Nav>
                         <Nav className="">
-                            <Nav.Link href="/view">HOME</Nav.Link>
-                            <Nav.Link href="/view">SKILLS</Nav.Link>
-                            <Nav.Link href="/view">PROJECTS</Nav.Link>
-                            <Nav.Link href="/view">EXPERIENCE</Nav.Link>
-                            <Nav.Link href="/view">ACHIEVEMENTS</Nav.Link>
-                            <Nav.Link href="/view">CONTACT</Nav.Link>
+                            {[
+                                "home",
+                                "skills",
+                                "projects",
+                                "experience",
+                                "achievements",
+                                "contact",
+                            ].map((item) => (
+                                <Nav.Link href={`#${item}`}>
+                                    {item.toUpperCase()}
+                                </Nav.Link>
+                            ))}
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

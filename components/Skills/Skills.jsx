@@ -3,6 +3,7 @@ import classes from "./Skills.module.css";
 function Skills() {
     return (
         <section>
+            <br id="skills" />
             <h1 className={classes.header}>SKILLS</h1>
             <div className={classes.allSkills}>
                 <div className={classes.skill}>
