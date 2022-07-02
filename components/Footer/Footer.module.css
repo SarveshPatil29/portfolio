@@ -1,0 +1,49 @@
+.nav {
+    display: flex;
+    flex-direction: column;
+}
+
+.link {
+    margin-left: 16px;
+    text-decoration: none;
+    color: white;
+    font-weight: 100;
+}
+
+.link:hover {
+    color: white;
+    font-weight: 200;
+    transition: color 1s ease;
+}
+
+.subFooter {
+    min-width: 40%;
+    display: flex;
+    /* gap: 5%; */
+    justify-content: space-between;
+    padding: 2%;
+}
+
+.links {
+    background-color: black;
+    color: white;
+}
+
+.title {
+    margin-left: 16px;
+}
+
+.copyright {
+    color: white;
+}
+
+.footer {
+    display: flex;
+    background-color: black;
+    justify-content: space-between;
+}
+
+.copyright {
+    align-self: center;
+    padding-right: 10%;
+}
