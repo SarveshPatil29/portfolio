@@ -11,9 +11,8 @@
 }
 
 .link:hover {
-    color: white;
-    font-weight: 200;
-    transition: color 1s ease;
+    color: rgb(154, 154, 154);
+    transition: color 0.25s ease;
 }
 
 .subFooter {

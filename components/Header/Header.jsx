@@ -3,8 +3,14 @@ import { Navbar, Container, Nav } from "react-bootstrap";
 import classes from "./Header.module.css";
 import { useState } from "react";
 import EditBtn from "../EditBtn/EditBtn";
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
 
 function Header(props) {
+    const [showDialog, setShowDialog] = useState(false);
+    const handleClose = () => setShowDialog(false);
+    const handleShow = () => setShowDialog(true);
+
     const [isShown, setIsShown] = useState(false);
     return (
         <div id="home">
@@ -19,7 +25,37 @@ function Header(props) {
                         <section className={props.isEdit && classes.title}>
                             <div>SARVESH PATIL</div>
                             {props.isEdit && isShown && (
-                                <EditBtn width={23} height={23} />
+                                <div>
+                                    <EditBtn width={22} height={22} />
+                                    <Modal
+                                        show={showDialog}
+                                        onHide={handleClose}
+                                    >
+                                        <Modal.Header closeButton>
+                                            <Modal.Title>
+                                                Modal heading
+                                            </Modal.Title>
+                                        </Modal.Header>
+                                        <Modal.Body>
+                                            Woohoo, you're reading this text in
+                                            a modal!
+                                        </Modal.Body>
+                                        <Modal.Footer>
+                                            <Button
+                                                variant="secondary"
+                                                onClick={handleClose}
+                                            >
+                                                Close
+                                            </Button>
+                                            <Button
+                                                variant="primary"
+                                                onClick={handleClose}
+                                            >
+                                                Save Changes
+                                            </Button>
+                                        </Modal.Footer>
+                                    </Modal>
+                                </div>
                             )}
                         </section>
                     </Navbar.Brand>
