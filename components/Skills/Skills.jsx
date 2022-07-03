@@ -3,6 +3,8 @@ import EditBtn from "../EditBtn/EditBtn";
 import DelBtn from "../DelBtn/DelBtn";
 import AddBtn from "../AddBtn/AddBtn";
 import { useState } from "react";
+import profile from "../../public/images/profile.jpg";
+import Image from "next/image";
 
 function Skills(props) {
     const [isShownEdit, setIsShownEdit] = useState(false);
@@ -42,117 +44,11 @@ function Skills(props) {
                             <DelBtn width={25} height={25} />
                         )}
                     </div>
-                    <img
+                    <Image
                         className={classes.skillImg}
-                        src="https://miro.medium.com/max/1000/1*cPh7ujRIfcHAy4kW2ADGOw.png"
-                        alt="react logo"
-                    />
-                    <h2>REACT</h2>
-                </div>
-                <div className={classes.skill}>
-                    <div className={classes.editBtn}>
-                        {props.isEdit && isShownEdit && (
-                            <EditBtn width={30} height={30} />
-                        )}
-                    </div>
-                    <div className={classes.delBtn}>
-                        {props.isEdit && isShownDel && (
-                            <DelBtn width={25} height={25} />
-                        )}
-                    </div>
-                    <img
-                        className={classes.skillImg}
-                        src="https://miro.medium.com/max/1000/1*cPh7ujRIfcHAy4kW2ADGOw.png"
-                        alt="react logo"
-                    />
-                    <h2>REACT</h2>
-                </div>
-                <div className={classes.skill}>
-                    <div className={classes.editBtn}>
-                        {props.isEdit && isShownEdit && (
-                            <EditBtn width={30} height={30} />
-                        )}
-                    </div>
-                    <div className={classes.delBtn}>
-                        {props.isEdit && isShownDel && (
-                            <DelBtn width={25} height={25} />
-                        )}
-                    </div>
-                    <img
-                        className={classes.skillImg}
-                        src="https://miro.medium.com/max/1000/1*cPh7ujRIfcHAy4kW2ADGOw.png"
-                        alt="react logo"
-                    />
-                    <h2>REACT</h2>
-                </div>
-                <div className={classes.skill}>
-                    <div className={classes.editBtn}>
-                        {props.isEdit && isShownEdit && (
-                            <EditBtn width={30} height={30} />
-                        )}
-                    </div>
-                    <div className={classes.delBtn}>
-                        {props.isEdit && isShownDel && (
-                            <DelBtn width={25} height={25} />
-                        )}
-                    </div>
-                    <img
-                        className={classes.skillImg}
-                        src="https://miro.medium.com/max/1000/1*cPh7ujRIfcHAy4kW2ADGOw.png"
-                        alt="react logo"
-                    />
-                    <h2>REACT</h2>
-                </div>
-                <div className={classes.skill}>
-                    <div className={classes.editBtn}>
-                        {props.isEdit && isShownEdit && (
-                            <EditBtn width={30} height={30} />
-                        )}
-                    </div>
-                    <div className={classes.delBtn}>
-                        {props.isEdit && isShownDel && (
-                            <DelBtn width={25} height={25} />
-                        )}
-                    </div>
-                    <img
-                        className={classes.skillImg}
-                        src="https://miro.medium.com/max/1000/1*cPh7ujRIfcHAy4kW2ADGOw.png"
-                        alt="react logo"
-                    />
-                    <h2>REACT</h2>
-                </div>
-                <div className={classes.skill}>
-                    <div className={classes.editBtn}>
-                        {props.isEdit && isShownEdit && (
-                            <EditBtn width={30} height={30} />
-                        )}
-                    </div>
-                    <div className={classes.delBtn}>
-                        {props.isEdit && isShownDel && (
-                            <DelBtn width={25} height={25} />
-                        )}
-                    </div>
-                    <img
-                        className={classes.skillImg}
-                        src="https://miro.medium.com/max/1000/1*cPh7ujRIfcHAy4kW2ADGOw.png"
-                        alt="react logo"
-                    />
-                    <h2>REACT</h2>
-                </div>
-                <div className={classes.skill}>
-                    <div className={classes.editBtn}>
-                        {props.isEdit && isShownEdit && (
-                            <EditBtn width={30} height={30} />
-                        )}
-                    </div>
-                    <div className={classes.delBtn}>
-                        {props.isEdit && isShownDel && (
-                            <DelBtn width={25} height={25} />
-                        )}
-                    </div>
-                    <img
-                        className={classes.skillImg}
-                        src="https://miro.medium.com/max/1000/1*cPh7ujRIfcHAy4kW2ADGOw.png"
+                        width={75}
+                        height={75}
+                        src={profile}
                         alt="react logo"
                     />
                     <h2>REACT</h2>

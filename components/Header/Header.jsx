@@ -35,7 +35,7 @@ function Header(props) {
                                 "achievements",
                                 "contact",
                             ].map((item) => (
-                                <Nav.Link href={`#${item}`}>
+                                <Nav.Link key={`key-${item}`} href={`#${item}`}>
                                     {item.toUpperCase()}
                                 </Nav.Link>
                             ))}

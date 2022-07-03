@@ -1,6 +1,8 @@
 import classes from "./AboutMe.module.css";
 import { useState } from "react";
 import EditBtn from "../EditBtn/EditBtn";
+import Image from "next/image";
+import profile from "../../public/images/profile.jpg";
 
 function AboutMe(props) {
     const [isShownIntro, setIsShownIntro] = useState(false);
@@ -28,9 +30,9 @@ function AboutMe(props) {
                         maiores qui?
                     </p>
                 </div>
-                <img
+                <Image
                     className={classes.introImg}
-                    src="https://avatars.githubusercontent.com/u/92196450?v=4"
+                    src={profile}
                     alt="Profile Image"
                 />
                 <div className={classes.editBtnIntro}>
@@ -44,9 +46,9 @@ function AboutMe(props) {
                 onMouseLeave={() => setIsShownAbout(false)}
                 className={classes.aboutMe}
             >
-                <img
+                <Image
                     className={classes.aboutMeImg}
-                    src="https://avatars.githubusercontent.com/u/92196450?v=4"
+                    src={profile}
                     alt="Profile Image"
                 />
                 <div className={classes.aboutMeText}>

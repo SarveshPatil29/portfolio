@@ -6,7 +6,12 @@ export default function AddBtn(props) {
     return (
         <div>
             <Link href="https://github.com/SarveshPatil46">
-                <Image width={props.width} height={props.height} src={add} />
+                <Image
+                    width={props.width}
+                    height={props.height}
+                    src={add}
+                    alt="add-btn"
+                />
             </Link>
             <Link href="https://github.com/SarveshPatil46">
                 <h5 style={{ marginTop: 10 }}>
