@@ -7,19 +7,19 @@ import Achievements from "../components/Achievements/Achievements";
 import Contact from "../components/Contact/Contact";
 import Footer from "../components/Footer/Footer";
 
-function View() {
+function Edit() {
     return (
         <section>
-            <Header isEdit={false} />
-            <AboutMe isEdit={false} />
-            <Skills isEdit={false} />
-            <Projects isEdit={false} />
-            <Experience isEdit={false} />
-            <Achievements isEdit={false} />
-            <Contact isEdit={false} />
-            <Footer isEdit={false} />
+            <Header isEdit={true} />
+            <AboutMe isEdit={true} />
+            <Skills isEdit={true} />
+            <Projects isEdit={true} />
+            <Experience isEdit={true} />
+            <Achievements isEdit={true} />
+            <Contact isEdit={true} />
+            <Footer isEdit={true} />
         </section>
     );
 }
 
-export default View;
+export default Edit;
