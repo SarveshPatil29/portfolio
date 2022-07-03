@@ -1,4 +1,17 @@
-.header {
-    position: sticky;
-    top: 0%;
+.title {
+    display: flex;
+    width: 11.5rem;
+    justify-content: space-between;
+    align-items: flex-end;
 }
+/* 
+.title div {
+    align-self: center;
+}
+
+.editBtn {
+    align-self: center;
+    vertical-align: middle;
+    position: absolute;
+    top: 50%;
+} */

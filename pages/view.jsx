@@ -10,14 +10,14 @@ import Footer from "../components/Footer/Footer";
 function View() {
     return (
         <section>
-            <Header />
-            <AboutMe />
-            <Skills />
-            <Projects />
-            <Experience />
-            <Achievements />
-            <Contact />
-            <Footer />
+            <Header isEdit={false} />
+            <AboutMe isEdit={false} />
+            <Skills isEdit={false} />
+            <Projects isEdit={false} />
+            <Experience isEdit={false} />
+            <Achievements isEdit={false} />
+            <Contact isEdit={false} />
+            <Footer isEdit={false} />
         </section>
     );
 }
