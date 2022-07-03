@@ -1,0 +1,38 @@
+.demo {
+    margin-top: 10px;
+    margin-right: 10px;
+}
+.image {
+    margin-top: 10px;
+    height: 20px;
+    width: 20px;
+    margin-right: 10px;
+}
+
+.btn {
+    margin-top: 10px;
+    display: flexbox;
+}
+
+.card {
+    align-items: center;
+    width: 400px;
+    align-self: center;
+    margin-left: 200px;
+    border:none;
+    font-size: large;
+}
+
+.getimg {
+    height: 300px;
+    width: auto;
+    margin-left: 20px;
+    margin-left: 20px;
+}
+
+.cont {
+    display: inline-flex;
+    height: 300px;
+    margin-top: 120px;
+    align-items: center;
+}
