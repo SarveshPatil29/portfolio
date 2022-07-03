@@ -1,6 +1,9 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Button } from "react-bootstrap";
 import classes from "./HomeBody.module.css";
+import pic from "../../public/images/pic.jpeg"
+import Image from "next/image"
+
 
 export default function HomeBody() {
   return (
@@ -16,7 +19,7 @@ export default function HomeBody() {
        </div>
 
       <div className={classes.column2}>
-        <img src="https://avatars.githubusercontent.com/u/92196450?v=4" />
+        <Image src={pic} />
       </div>
     </div>
   );

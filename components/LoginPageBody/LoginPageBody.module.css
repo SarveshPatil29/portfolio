@@ -1,0 +1,23 @@
+.wholecontent {
+  display: flex;
+  flex-direction: rows;
+  justify-content: center;
+}
+
+.column1 {
+  /* flex-wrap: wrap; */
+
+  margin: 0;
+  padding: 0;
+  /* height: 100vh; */
+  margin-left: 100px;
+  margin-right: 0px;
+}
+
+.column2 {
+  margin: 0;
+  padding: 0;
+  /* height: 100vh; */
+  margin-right: 100px;
+  margin-left: 50px;
+}

@@ -11,7 +11,7 @@ export default function HomeNavbar() {
     <Navbar.Collapse id="basic-navbar-nav">
       <Nav className="me-auto"></Nav>
       <Nav >
-        <Nav.Link href="#home">LOGIN</Nav.Link>
+        <Nav.Link href="/login">LOGIN</Nav.Link>
         <Nav.Link href="#link">GET STARTED</Nav.Link>
       </Nav>
     </Navbar.Collapse>
