@@ -1,5 +1,5 @@
 import classes from "./Footer.module.css";
-import { Card, ListGroup } from "react-bootstrap";
+import Card from "react-bootstrap/Card";
 import Link from "next/link";
 
 export default function Footer() {
@@ -59,6 +59,19 @@ export default function Footer() {
                 </Card>
             </div>
             <div className={classes.copyright}>
+                <p>
+                    <Link href="/">
+                        <a
+                            className={classes.homeLink}
+                            // style={{
+                            //     textDecoration: "inherit",
+                            //     color: "inherit",
+                            // }}
+                        >
+                            PORTFOLIO PRO
+                        </a>
+                    </Link>
+                </p>
                 <p>@2022 SAD CREATIONS ALL RIGHTS RESERVED</p>
                 <p>BUILT USING NEXTJS</p>
             </div>

@@ -1,6 +1,7 @@
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/Container";
+import Button from "react-bootstrap/Button";
 
 export default function HomeNav() {
     return (
@@ -14,7 +15,9 @@ export default function HomeNav() {
                     <Nav className="me-auto"></Nav>
                     <Nav className="">
                         <Nav.Link href="/login">LOG IN</Nav.Link>
-                        <Nav.Link href="/getstarted">GET STARTED</Nav.Link>
+                        <Button variant="dark" href="/getstarted">
+                            GET STARTED
+                        </Button>
                     </Nav>
                 </Navbar.Collapse>
             </Container>
