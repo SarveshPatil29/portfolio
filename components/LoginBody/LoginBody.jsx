@@ -55,7 +55,12 @@ export default function LoginBody() {
                         className={classes.continueBtn}
                         variant="light"
                     >
-                        <Image width={25} height={25} src={googleLogo} />
+                        <Image
+                            width={25}
+                            height={25}
+                            src={googleLogo}
+                            alt="Google Logo"
+                        />
                         <div className={classes.btnText}>
                             CONTINUE WITH GOOGLE
                         </div>
@@ -65,7 +70,12 @@ export default function LoginBody() {
                         className={classes.continueBtn}
                         variant="light"
                     >
-                        <Image width={25} height={25} src={githubLogo} />
+                        <Image
+                            width={25}
+                            height={25}
+                            src={githubLogo}
+                            alt="Gihub Logo"
+                        />
                         <div className={classes.btnText}>
                             CONTINUE WITH GITHUB
                         </div>
@@ -75,7 +85,12 @@ export default function LoginBody() {
                         className={classes.continueBtn}
                         variant="light"
                     >
-                        <Image width={25} height={25} src={facebookLogo} />
+                        <Image
+                            width={25}
+                            height={25}
+                            src={facebookLogo}
+                            alt="Facebook Logo"
+                        />
                         <div className={classes.btnText}>
                             CONTINUE wITH FACEBOOK
                         </div>
@@ -84,7 +99,7 @@ export default function LoginBody() {
             </div>
             <div className={classes.cantLogin}>
                 <Button href="/forgotpassword" variant="dark">
-                    CAN'T LOG IN?
+                    CANT LOG IN?
                 </Button>
             </div>
         </section>
