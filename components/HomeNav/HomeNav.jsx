@@ -2,8 +2,10 @@ import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
+import { signIn, signOut, useSession } from "next-auth/react";
 
 export default function HomeNav() {
+    const { data: session, status } = useSession();
     return (
         <Navbar fixed="top" bg="light" expand="lg" variant="light">
             <Container>
@@ -14,7 +16,30 @@ export default function HomeNav() {
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto"></Nav>
                     <Nav className="">
-                        <Nav.Link href="/login">LOG IN</Nav.Link>
+                        {status === "unauthenticated" && (
+                            <Nav.Link
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    signIn();
+                                }}
+                                href="/login"
+                            >
+                                LOG IN
+                            </Nav.Link>
+                        )}
+
+                        {status === "authenticated" && (
+                            <Nav.Link
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    signOut();
+                                }}
+                                href="/api/auth/signout"
+                            >
+                                LOG OUT
+                            </Nav.Link>
+                        )}
+
                         <Button variant="dark" href="/getstarted">
                             GET STARTED
                         </Button>

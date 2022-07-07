@@ -42,7 +42,12 @@ function AboutMe(props) {
                     </p>
                 </div>
                 <div className={classes.introImg}>
-                    <Image src={profile} alt="Profile Image" />
+                    <Image
+                        src="https://res.cloudinary.com/sarveshp46/image/upload/c_scale,w_1000/v1657119881/1656832322291_o0ek9p.jpg"
+                        alt="Profile Image"
+                        width={1000}
+                        height={1000}
+                    />
                 </div>
                 <div className={classes.editBtnIntro}>
                     {props.isEdit && isShownIntro && (

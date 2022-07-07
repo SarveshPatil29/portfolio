@@ -3,10 +3,11 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import googleLogo from "../../public/images/googleLogo.png";
 import githubLogo from "../../public/images/githubLogo.png";
-import facebookLogo from "../../public/images/facebookLogo.png";
+import twitterLogo from "../../public/images/twitterLogo.png";
 import Image from "next/image";
+import { signIn } from "next-auth/react";
 
-export default function LoginBody() {
+export default function LoginBody(props) {
     return (
         <section className={classes.content}>
             <h1 className={classes.header}>LOG IN TO PORTFOLIO PRO</h1>
@@ -51,7 +52,12 @@ export default function LoginBody() {
 
                 <div className={classes.loginLinks}>
                     <Button
-                        href="/getstarted"
+                        onClick={() =>
+                            signIn(props.providers.google.id, {
+                                callbackUrl: `${window.location.origin}/getstarted`,
+                            })
+                        }
+                        // href="/getstarted"
                         className={classes.continueBtn}
                         variant="light"
                     >
@@ -62,11 +68,17 @@ export default function LoginBody() {
                             alt="Google Logo"
                         />
                         <div className={classes.btnText}>
-                            CONTINUE WITH GOOGLE
+                            CONTINUE WITH{" "}
+                            {props.providers.google.name.toUpperCase()}
                         </div>
                     </Button>
                     <Button
-                        href="/getstarted"
+                        onClick={() =>
+                            signIn(props.providers.github.id, {
+                                callbackUrl: `${window.location.origin}/getstarted`,
+                            })
+                        }
+                        // href="/getstarted"
                         className={classes.continueBtn}
                         variant="light"
                     >
@@ -74,25 +86,32 @@ export default function LoginBody() {
                             width={25}
                             height={25}
                             src={githubLogo}
-                            alt="Gihub Logo"
+                            alt="Github Logo"
                         />
                         <div className={classes.btnText}>
-                            CONTINUE WITH GITHUB
+                            CONTINUE WITH{" "}
+                            {props.providers.github.name.toUpperCase()}
                         </div>
                     </Button>
                     <Button
-                        href="/getstarted"
+                        onClick={() =>
+                            signIn(props.providers.twitter.id, {
+                                callbackUrl: `${window.location.origin}/getstarted`,
+                            })
+                        }
+                        // href="/getstarted"
                         className={classes.continueBtn}
                         variant="light"
                     >
                         <Image
                             width={25}
                             height={25}
-                            src={facebookLogo}
-                            alt="Facebook Logo"
+                            src={twitterLogo}
+                            alt="Twitter Logo"
                         />
                         <div className={classes.btnText}>
-                            CONTINUE wITH FACEBOOK
+                            CONTINUE WITH{" "}
+                            {props.providers.twitter.name.toUpperCase()}
                         </div>
                     </Button>
                 </div>
