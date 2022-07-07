@@ -1,16 +1,21 @@
 import classes from "./Achievements.module.css";
-import { Card, Button, Modal } from "react-bootstrap";
 import { useState } from "react";
 import EditBtn from "../EditBtn/EditBtn";
 import DelBtn from "../DelBtn/DelBtn";
 import AddBtn from "../AddBtn/AddBtn";
-import profile from "../../public/images/profile.jpg";
-import Image from "next/image";
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import Card from "react-bootstrap/Card";
 
 export default function Achievements(props) {
-    const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    const [showDialogEdit, setShowDialogEdit] = useState(false);
+    const handleCloseEdit = () => setShowDialogEdit(false);
+    const handleShowEdit = () => setShowDialogEdit(true);
+
+    const [showDialogAdd, setShowDialogAdd] = useState(false);
+    const handleCloseAdd = () => setShowDialogAdd(false);
+    const handleShowAdd = () => setShowDialogAdd(true);
 
     const [isShownEdit, setIsShownEdit] = useState(false);
     const [isShownDel, setIsShownDel] = useState(false);
@@ -41,7 +46,54 @@ export default function Achievements(props) {
                 <Card style={{ width: "36rem" }} className={classes.ach}>
                     <div className={classes.editBtn}>
                         {props.isEdit && isShownEdit && (
-                            <EditBtn width={30} height={30} />
+                            <div>
+                                <EditBtn
+                                    width={30}
+                                    height={30}
+                                    handleShow={handleShowEdit}
+                                />
+                                <Modal
+                                    show={showDialogEdit}
+                                    onHide={handleCloseEdit}
+                                >
+                                    <Modal.Header closeButton>
+                                        <Modal.Title>
+                                            EDIT ACHIEVEMENT
+                                        </Modal.Title>
+                                    </Modal.Header>
+                                    <Modal.Body>
+                                        <Form>
+                                            <Form.Group className="mb-3">
+                                                <Form.Control
+                                                    type="text"
+                                                    placeholder="COMPETITION NAME"
+                                                />
+                                            </Form.Group>
+                                            <Form.Group className="mb-3">
+                                                <Form.Control
+                                                    type="text"
+                                                    placeholder="YOUR POSITION IN THE COMPETITION"
+                                                />
+                                            </Form.Group>
+                                        </Form>
+                                    </Modal.Body>
+                                    <Modal.Footer>
+                                        <Button
+                                            variant="secondary"
+                                            onClick={handleCloseEdit}
+                                        >
+                                            Close
+                                        </Button>
+                                        <Button
+                                            type="submit"
+                                            variant="primary"
+                                            onClick={handleCloseEdit}
+                                        >
+                                            Save Changes
+                                        </Button>
+                                    </Modal.Footer>
+                                </Modal>
+                            </div>
                         )}
                     </div>
                     <div className={classes.delBtn}>
@@ -54,51 +106,53 @@ export default function Achievements(props) {
                         <Card.Text className={classes.position}>
                             YOUR POSITION IN THE COMPETITION
                         </Card.Text>
-                        <Card.Text className={classes.desc}>
-                            Lorem, ipsum dolor sit amet consectetur adipisicing
-                            elit. Fugiat similique officia explicabo accusamus
-                            in natus ad id, fugit, consequuntur harum
-                            voluptatibus maiores nisi deserunt nemo accusantium
-                            temporibus soluta corrupti non. Lorem, ipsum dolor
-                            sit amet consectetur adipisicing elit. Distinctio
-                            rerum maiores nesciunt ipsum iusto cupiditate quos
-                            omnis quidem numquam corrupti blanditiis laborum
-                            dolores officiis, magni repellendus nam in
-                            architecto voluptates!
-                        </Card.Text>
-                        <div>
-                            <Button variant="dark" onClick={handleShow}>
-                                VIEW CERTIFICATE
-                            </Button>
-
-                            <Modal centered show={show} onHide={handleClose}>
-                                <Modal.Header closeButton>
-                                    <Modal.Title>
-                                        COMPETITION(POSITION)
-                                    </Modal.Title>
-                                </Modal.Header>
-                                <Modal.Body>
-                                    <Image
-                                        src={profile}
-                                        alt="certificate image"
-                                    />
-                                </Modal.Body>
-                                <Modal.Footer>
-                                    <Button
-                                        variant="secondary"
-                                        onClick={handleClose}
-                                    >
-                                        Close
-                                    </Button>
-                                </Modal.Footer>
-                            </Modal>
-                        </div>
                     </Card.Body>
                 </Card>
             </div>
             {props.isEdit && (
                 <div className={classes.addBtn}>
-                    <AddBtn width={40} height={40} item={"achievement"} />
+                    <AddBtn
+                        width={40}
+                        height={40}
+                        item={"achievement"}
+                        handleShow={handleShowAdd}
+                    />
+                    <Modal show={showDialogAdd} onHide={handleCloseAdd}>
+                        <Modal.Header closeButton>
+                            <Modal.Title>ADD ACHIEVEMENT</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>
+                            <Form>
+                                <Form.Group className="mb-3">
+                                    <Form.Control
+                                        type="text"
+                                        placeholder="COMPETITION NAME"
+                                    />
+                                </Form.Group>
+                                <Form.Group className="mb-3">
+                                    <Form.Control
+                                        type="text"
+                                        placeholder="YOUR POSITION IN THE COMPETITION"
+                                    />
+                                </Form.Group>
+                            </Form>
+                        </Modal.Body>
+                        <Modal.Footer>
+                            <Button
+                                variant="secondary"
+                                onClick={handleCloseAdd}
+                            >
+                                Close
+                            </Button>
+                            <Button
+                                type="submit"
+                                variant="primary"
+                                onClick={handleCloseAdd}
+                            >
+                                Save Changes
+                            </Button>
+                        </Modal.Footer>
+                    </Modal>
                 </div>
             )}
         </section>

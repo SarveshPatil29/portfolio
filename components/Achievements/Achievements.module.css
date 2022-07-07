@@ -11,21 +11,21 @@
 }
 
 .ach {
-    margin-bottom: 2%;
+    margin: 1% 2%;
     position: relative;
 }
 
 .editBtn {
     cursor: pointer;
     position: absolute;
-    top: -4.7%;
+    top: -17%;
     left: -2.3%;
 }
 
 .delBtn {
     cursor: pointer;
     position: absolute;
-    top: -4%;
+    top: -15%;
     right: -2%;
 }
 

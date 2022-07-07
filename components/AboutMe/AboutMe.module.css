@@ -55,13 +55,13 @@
 .editBtnIntro {
     cursor: pointer;
     position: absolute;
-    left: 90%;
+    right: 90%;
     top: 11%;
 }
 
 .editBtnAbout {
     cursor: pointer;
     position: absolute;
-    left: 90%;
+    right: 90%;
     top: 90%;
 }

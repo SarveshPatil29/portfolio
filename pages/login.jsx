@@ -1,11 +1,19 @@
-import LoginPageBody from "../components/LoginPageBody/LoginPageBody"
-import LoginPageNavbar from "../components/LoginPageNavbar/LoginPageNavbar"
+import LoginBody from "../components/LoginBody/LoginBody";
+import LoginNav from "../components/LoginNav/LoginNav";
+import { getProviders, signIn } from "next-auth/react";
 
-export default function LoginPage(){
+export default function LoginPage({ providers }) {
     return (
         <div>
-            <LoginPageNavbar/>
-            <LoginPageBody/>
+            <LoginNav />
+            <LoginBody providers={providers} />
         </div>
-    )
+    );
+}
+
+export async function getServerSideProps(context) {
+    const providers = await getProviders();
+    return {
+        props: { providers },
+    };
 }

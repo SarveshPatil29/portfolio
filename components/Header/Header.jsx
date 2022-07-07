@@ -1,10 +1,19 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Navbar, Container, Nav } from "react-bootstrap";
+// import { Navbar, Container, Nav } from "react-bootstrap";
 import classes from "./Header.module.css";
 import { useState } from "react";
 import EditBtn from "../EditBtn/EditBtn";
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
+import Navbar from "react-bootstrap/Navbar";
+import Nav from "react-bootstrap/Nav";
+import Container from "react-bootstrap/Container";
 
 function Header(props) {
+    const [showDialog, setShowDialog] = useState(false);
+    const handleClose = () => setShowDialog(false);
+    const handleShow = () => setShowDialog(true);
+
     const [isShown, setIsShown] = useState(false);
     return (
         <div id="home">
@@ -14,14 +23,9 @@ function Header(props) {
                         onMouseEnter={() => setIsShown(true)}
                         onMouseLeave={() => setIsShown(false)}
                         style={{ fontWeight: "bold" }}
-                        href="/view"
+                        href={props.isEdit ? "edit" : "view"}
                     >
-                        <section className={props.isEdit && classes.title}>
-                            <div>SARVESH PATIL</div>
-                            {props.isEdit && isShown && (
-                                <EditBtn width={23} height={23} />
-                            )}
-                        </section>
+                        SARVESH PATIL
                     </Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
