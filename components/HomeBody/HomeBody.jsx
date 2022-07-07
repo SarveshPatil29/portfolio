@@ -9,7 +9,7 @@ export default function HomeBody() {
   return (
     <div className={classes.TextBody}>
       <div className={classes.column1}>
-        <h1> CREATE A WEBSITE </h1>
+        <h1> CREATE A PORTFOLIO WEBSITE </h1>
         <h3>
           SHOWCASE YOUR WORK ONLINE WITH A PORTFOLIO WEBSITE AND STAND OUT FROM
           YOUR COMPETITORS
