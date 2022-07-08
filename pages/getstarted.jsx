@@ -20,7 +20,7 @@ function GetStarted() {
     if (loading) {
         return (
             <h2 style={{ marginTop: 100, textAlign: "center" }}>
-                LOADING.....
+                LOADING.......
             </h2>
         );
     }
