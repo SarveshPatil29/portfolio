@@ -38,7 +38,7 @@ export default function LoginBody(props) {
                             </Form.Group>
                             <div className={classes.loginBtnDiv}>
                                 <Button
-                                    href="/getstarted"
+                                    href="/dashboard"
                                     className={classes.loginBtn}
                                     variant="dark"
                                     type="submit"
@@ -54,10 +54,9 @@ export default function LoginBody(props) {
                     <Button
                         onClick={() =>
                             signIn(props.providers.google.id, {
-                                callbackUrl: `${window.location.origin}/getstarted`,
+                                callbackUrl: `${window.location.origin}/dashboard`,
                             })
                         }
-                        // href="/getstarted"
                         className={classes.continueBtn}
                         variant="light"
                     >
@@ -75,10 +74,9 @@ export default function LoginBody(props) {
                     <Button
                         onClick={() =>
                             signIn(props.providers.github.id, {
-                                callbackUrl: `${window.location.origin}/getstarted`,
+                                callbackUrl: `${window.location.origin}/dashboard`,
                             })
                         }
-                        // href="/getstarted"
                         className={classes.continueBtn}
                         variant="light"
                     >
@@ -96,10 +94,9 @@ export default function LoginBody(props) {
                     <Button
                         onClick={() =>
                             signIn(props.providers.twitter.id, {
-                                callbackUrl: `${window.location.origin}/getstarted`,
+                                callbackUrl: `${window.location.origin}/dashboard`,
                             })
                         }
-                        // href="/getstarted"
                         className={classes.continueBtn}
                         variant="light"
                     >

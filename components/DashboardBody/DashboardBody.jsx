@@ -1,4 +1,4 @@
-import classes from "./GetStartedBody.module.css";
+import classes from "./DashboardBody.module.css";
 import Button from "react-bootstrap/Button";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
@@ -7,7 +7,7 @@ import homeimg from "../../public/images/homeimg.jpg";
 import Image from "next/image";
 import { signOut, useSession } from "next-auth/react";
 
-export default function GetStartedBody() {
+export default function DashboardBody(props) {
     const { data: session, status } = useSession();
     return (
         <section>
@@ -31,7 +31,9 @@ export default function GetStartedBody() {
                                     LOG OUT
                                 </Nav.Link>
                             )}
-                            <Nav.Link href="/view">VIEW DEMO SITE</Nav.Link>
+                            <Nav.Link href={props.viewUrl}>
+                                VIEW DEMO SITE
+                            </Nav.Link>
                             <Button variant="dark" href="/edit">
                                 START WITH THIS DESIGN
                             </Button>

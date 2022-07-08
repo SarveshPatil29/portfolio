@@ -1,8 +1,9 @@
-import GetStartedBody from "../components/GetStartedBody/GetStartedBody";
+import DashboardBody from "../components/DashboardBody/DashboardBody";
 import { signIn, useSession, getSession } from "next-auth/react";
 import { useEffect, useState } from "react";
+import axios from "axios";
 
-function GetStarted() {
+export default function Dashboard(props) {
     const { data: session, status } = useSession();
     const [loading, setLoading] = useState(true);
 
@@ -32,19 +33,30 @@ function GetStarted() {
                     : ""}
                 !
             </h1>
-            <GetStartedBody />
+            <DashboardBody viewUrl={props.userId} />
         </section>
     );
 }
 
-export default GetStarted;
-
 export async function getServerSideProps(context) {
     const session = await getSession(context);
-    // console.log(session);
+    let userId = null;
+    if (session) {
+        await axios
+            .get(
+                `http://localhost:3000/api/user-email?email=${session.user.email}`
+            )
+            .then((res) => {
+                userId = res.data._id;
+            })
+            .catch((err) => {
+                console.log("err", err);
+            });
+    }
     return {
         props: {
             session,
+            userId,
         },
     };
 }

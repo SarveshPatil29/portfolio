@@ -13,7 +13,7 @@ export default function HomeBody() {
                     OUT FROM YOUR COMPETITORS
                 </h3>
                 <Button
-                    href="/getstarted"
+                    href="/dashboard"
                     variant="dark"
                     className={classes.button}
                 >

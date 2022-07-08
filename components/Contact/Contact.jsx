@@ -2,10 +2,6 @@ import classes from "./Contact.module.css";
 import Link from "next/link";
 import Image from "next/image";
 import githubLogo from "../../public/images/githubLogo.png";
-import linkedinLogo from "../../public/images/linkedinLogo.png";
-import twitterLogo from "../../public/images/twitterLogo.png";
-import instagramLogo from "../../public/images/instagramLogo.png";
-import facebookLogo from "../../public/images/facebookLogo.png";
 import EditBtn from "../EditBtn/EditBtn";
 import DelBtn from "../DelBtn/DelBtn";
 import AddBtn from "../AddBtn/AddBtn";
@@ -23,22 +19,82 @@ export default function Contact(props) {
     const handleCloseAdd = () => setShowDialogAdd(false);
     const handleShowAdd = () => setShowDialogAdd(true);
 
-    const [isShownEdit, setIsShownEdit] = useState(false);
-    const [isShownDel, setIsShownDel] = useState(false);
+    const allHandles = props.data.handles;
+    const handlesList = allHandles.map((item) => (
+        <div className={classes.logo}>
+            <div className={classes.editBtn}>
+                {props.isEdit && (
+                    <div>
+                        <EditBtn
+                            width={30}
+                            height={30}
+                            handleShow={handleShowEdit}
+                        />
+                        <Modal show={showDialogEdit} onHide={handleCloseEdit}>
+                            <Modal.Header closeButton>
+                                <Modal.Title>EDIT HANDLE</Modal.Title>
+                            </Modal.Header>
+                            <Modal.Body>
+                                <Form>
+                                    <Form.Select
+                                        className="mb-3"
+                                        aria-label="Default select example"
+                                    >
+                                        <option>SELECT HANDLE</option>
+                                        <option value="github">GITHUB</option>
+                                        <option value="linkedin">
+                                            LINKEDIN
+                                        </option>
+                                        <option value="twitter">TWITTER</option>
+                                        <option value="instagram">
+                                            INSTAGRAM
+                                        </option>
+                                        <option value="facebook">
+                                            FACEBOOK
+                                        </option>
+                                    </Form.Select>
+                                    <Form.Group className="mb-3">
+                                        <Form.Control
+                                            type="text"
+                                            placeholder="PROFILE LINK"
+                                        />
+                                    </Form.Group>
+                                </Form>
+                            </Modal.Body>
+                            <Modal.Footer>
+                                <Button
+                                    variant="secondary"
+                                    onClick={handleCloseEdit}
+                                >
+                                    Close
+                                </Button>
+                                <Button
+                                    type="submit"
+                                    variant="primary"
+                                    onClick={handleCloseEdit}
+                                >
+                                    Save Changes
+                                </Button>
+                            </Modal.Footer>
+                        </Modal>
+                    </div>
+                )}
+            </div>
+            <div className={classes.delBtn}>
+                {props.isEdit && <DelBtn width={25} height={25} />}
+            </div>
+            <Link href={item.link}>
+                <Image
+                    width={50}
+                    height={50}
+                    className={classes.githubLogo}
+                    src={githubLogo}
+                    alt={item.name}
+                />
+            </Link>
+        </div>
+    ));
 
-    function handleMouseEnter() {
-        if (props.isEdit) {
-            setIsShownEdit(true);
-            setIsShownDel(true);
-        }
-    }
-
-    function handleMouseLeave() {
-        if (props.isEdit) {
-            setIsShownEdit(false);
-            setIsShownDel(false);
-        }
-    }
     return (
         <section>
             <br id="contact" />
@@ -72,97 +128,7 @@ export default function Contact(props) {
                 </div>
             </Form>
             <div className={classes.logoDiv}>
-                <section
-                    onMouseEnter={handleMouseEnter}
-                    onMouseLeave={handleMouseLeave}
-                    className={classes.logos}
-                >
-                    <div className={classes.logo}>
-                        <div className={classes.editBtn}>
-                            {props.isEdit && isShownEdit && (
-                                <div>
-                                    <EditBtn
-                                        width={30}
-                                        height={30}
-                                        handleShow={handleShowEdit}
-                                    />
-                                    <Modal
-                                        show={showDialogEdit}
-                                        onHide={handleCloseEdit}
-                                    >
-                                        <Modal.Header closeButton>
-                                            <Modal.Title>
-                                                EDIT HANDLE
-                                            </Modal.Title>
-                                        </Modal.Header>
-                                        <Modal.Body>
-                                            <Form>
-                                                <Form.Select
-                                                    className="mb-3"
-                                                    aria-label="Default select example"
-                                                >
-                                                    <option>
-                                                        SELECT HANDLE
-                                                    </option>
-                                                    <option value="github">
-                                                        GITHUB
-                                                    </option>
-                                                    <option value="linkedin">
-                                                        LINKEDIN
-                                                    </option>
-                                                    <option value="twitter">
-                                                        TWITTER
-                                                    </option>
-                                                    <option value="instagram">
-                                                        INSTAGRAM
-                                                    </option>
-                                                    <option value="facebook">
-                                                        FACEBOOK
-                                                    </option>
-                                                </Form.Select>
-                                                <Form.Group className="mb-3">
-                                                    <Form.Control
-                                                        type="text"
-                                                        placeholder="PROFILE LINK"
-                                                    />
-                                                </Form.Group>
-                                            </Form>
-                                        </Modal.Body>
-                                        <Modal.Footer>
-                                            <Button
-                                                variant="secondary"
-                                                onClick={handleCloseEdit}
-                                            >
-                                                Close
-                                            </Button>
-                                            <Button
-                                                type="submit"
-                                                variant="primary"
-                                                onClick={handleCloseEdit}
-                                            >
-                                                Save Changes
-                                            </Button>
-                                        </Modal.Footer>
-                                    </Modal>
-                                </div>
-                            )}
-                        </div>
-                        <div className={classes.delBtn}>
-                            {props.isEdit && isShownDel && (
-                                <DelBtn width={25} height={25} />
-                            )}
-                        </div>
-                        <Link href="https://github.com/SarveshPatil46">
-                            <Image
-                                width={50}
-                                height={50}
-                                className={classes.githubLogo}
-                                src={githubLogo}
-                                alt="github logo"
-                            />
-                        </Link>
-                    </div>
-                </section>
+                <section className={classes.logos}>{handlesList}</section>
             </div>
             {props.isEdit && (
                 <div className={classes.addBtn}>

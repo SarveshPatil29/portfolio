@@ -2,7 +2,13 @@ import classes from "./Footer.module.css";
 import Card from "react-bootstrap/Card";
 import Link from "next/link";
 
-export default function Footer() {
+export default function Footer(props) {
+    const allHandles = props.data.handles;
+    const handlesList = allHandles.map((item) => (
+        <Card.Link className={classes.link} href="/view">
+            {item.name.toUpperCase()}
+        </Card.Link>
+    ));
     return (
         <section className={classes.footer}>
             <div className={classes.subFooter}>
@@ -38,38 +44,14 @@ export default function Footer() {
                         <Card.Title className={classes.title}>
                             SOCIAL
                         </Card.Title>
-                        <nav className={classes.nav}>
-                            <Card.Link className={classes.link} href="/view">
-                                LINKEDIN
-                            </Card.Link>
-                            <Card.Link className={classes.link} href="/view">
-                                GITHUB
-                            </Card.Link>
-                            <Card.Link className={classes.link} href="/view">
-                                TWITTER
-                            </Card.Link>
-                            <Card.Link className={classes.link} href="/view">
-                                INSTAGRAM
-                            </Card.Link>
-                            <Card.Link className={classes.link} href="/view">
-                                FACEBOOK
-                            </Card.Link>
-                        </nav>
+                        <nav className={classes.nav}>{handlesList}</nav>
                     </Card.Body>
                 </Card>
             </div>
             <div className={classes.copyright}>
                 <p>
-                    <Link href="/">
-                        <a
-                            className={classes.homeLink}
-                            // style={{
-                            //     textDecoration: "inherit",
-                            //     color: "inherit",
-                            // }}
-                        >
-                            PORTFOLIO PRO
-                        </a>
+                    <Link href="/dashboard">
+                        <a className={classes.homeLink}>PORTFOLIO PRO</a>
                     </Link>
                 </p>
                 <p>@2022 SAD CREATIONS ALL RIGHTS RESERVED</p>

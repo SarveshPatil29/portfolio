@@ -40,7 +40,7 @@ export default function HomeNav() {
                             </Nav.Link>
                         )}
 
-                        <Button variant="dark" href="/getstarted">
+                        <Button variant="dark" href="/dashboard">
                             GET STARTED
                         </Button>
                     </Nav>
