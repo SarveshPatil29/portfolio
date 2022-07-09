@@ -33,7 +33,7 @@ export default function Dashboard(props) {
                     : ""}
                 !
             </h1>
-            <DashboardBody viewUrl={props.userId} />
+            <DashboardBody url={props.userId} />
         </section>
     );
 }

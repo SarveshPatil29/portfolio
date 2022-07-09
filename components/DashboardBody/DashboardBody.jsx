@@ -31,9 +31,7 @@ export default function DashboardBody(props) {
                                     LOG OUT
                                 </Nav.Link>
                             )}
-                            <Nav.Link href={props.viewUrl}>
-                                VIEW DEMO SITE
-                            </Nav.Link>
+                            <Nav.Link href={props.url}>VIEW DEMO SITE</Nav.Link>
                             <Button variant="dark" href="/edit">
                                 START WITH THIS DESIGN
                             </Button>

@@ -19,7 +19,7 @@ function Experience(props) {
 
     const allExp = props.data.exp;
     const expList = allExp.map((item) => (
-        <Card style={{ width: "36rem" }} className={classes.exp}>
+        <Card key={item._id} style={{ width: "36rem" }} className={classes.exp}>
             <div className={classes.editBtn}>
                 {props.isEdit && (
                     <div>

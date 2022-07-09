@@ -22,9 +22,9 @@ export default function HomeNav() {
                                     e.preventDefault();
                                     signIn();
                                 }}
-                                href="/login"
+                                href="/signin"
                             >
-                                LOG IN
+                                SIGN IN
                             </Nav.Link>
                         )}
 
@@ -36,7 +36,7 @@ export default function HomeNav() {
                                 }}
                                 href="/api/auth/signout"
                             >
-                                LOG OUT
+                                SIGN OUT
                             </Nav.Link>
                         )}
 

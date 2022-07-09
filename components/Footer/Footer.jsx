@@ -5,7 +5,7 @@ import Link from "next/link";
 export default function Footer(props) {
     const allHandles = props.data.handles;
     const handlesList = allHandles.map((item) => (
-        <Card.Link className={classes.link} href="/view">
+        <Card.Link key={item._id} className={classes.link} href="/view">
             {item.name.toUpperCase()}
         </Card.Link>
     ));

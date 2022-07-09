@@ -4,12 +4,10 @@ const Schema = mongoose.Schema;
 const userProfileSchema = new Schema({
     name: {
         type: String,
-        default: "Sarvesh",
-        // required: true,
+        default: "Sarvesh Patil",
     },
     email: {
         type: String,
-        // required: true,
     },
     intro: {
         type: String,
@@ -17,6 +15,8 @@ const userProfileSchema = new Schema({
     },
     introImg: {
         type: String,
+        default:
+            "https://res.cloudinary.com/sarveshp46/image/upload/c_scale,w_1000/v1657258037/1656832322291_sp2pez.jpg",
     },
     aboutMe: {
         type: String,
@@ -24,14 +24,19 @@ const userProfileSchema = new Schema({
     },
     aboutMeImg: {
         type: String,
+        default:
+            "https://res.cloudinary.com/sarveshp46/image/upload/c_scale,w_1000/v1657258037/1656832322291_sp2pez.jpg",
     },
     skills: [
         {
             name: {
                 type: String,
+                default: "REACTJS",
             },
             img: {
                 type: String,
+                default:
+                    "https://res.cloudinary.com/sarveshp46/image/upload/v1657287794/react_kemmts.png",
             },
         },
     ],
@@ -39,21 +44,28 @@ const userProfileSchema = new Schema({
         {
             title: {
                 type: String,
+                default: "PORTFOLIO PRO",
             },
             type: {
                 type: String,
+                default: "WEBSITE",
             },
             desc: {
                 type: String,
+                default: "THIS APP ALLOWS TO CREATE YOUR OWN PORTFOLIO WEBSITE",
             },
             appLink: {
                 type: String,
+                default: "https://portfolio-sarveshpatil46.vercel.app/",
             },
             github: {
                 type: String,
+                default: "https://github.com/SarveshPatil46/portfolio",
             },
             img: {
                 type: String,
+                default:
+                    "https://res.cloudinary.com/sarveshp46/image/upload/c_scale,w_1000/v1657287953/Screenshot_2022-07-08_at_7.15.33_PM_qgrfcr.png",
             },
         },
     ],
@@ -61,18 +73,23 @@ const userProfileSchema = new Schema({
         {
             jobTitle: {
                 type: String,
+                default: "ANDROID DEVELEPER INTERN",
             },
             company: {
                 type: String,
+                default: "EXPOSYS DATA LABS",
             },
             timePeriod: {
                 type: String,
+                default: "DEC 2021 - JAN 2022",
             },
             location: {
                 type: String,
+                default: "ONLINE",
             },
             desc: {
                 type: String,
+                default: "CREATED A CHAT APPLICATION",
             },
         },
     ],
@@ -80,9 +97,11 @@ const userProfileSchema = new Schema({
         {
             name: {
                 type: String,
+                default: "CODE-O-FIESTA",
             },
             position: {
                 type: String,
+                default: "2ND",
             },
         },
     ],
@@ -90,9 +109,11 @@ const userProfileSchema = new Schema({
         {
             name: {
                 type: String,
+                default: "GITHUB",
             },
             link: {
                 type: String,
+                default: "https://github.com/SarveshPatil46",
             },
         },
     ],

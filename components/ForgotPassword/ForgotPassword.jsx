@@ -16,7 +16,7 @@ export default function ForgotPassword() {
                     aria-label="EMAIL"
                     aria-describedby="basic-addon1"
                 />
-                <Button href="/login" className={classes.btn} variant="dark">
+                <Button href="/signin" className={classes.btn} variant="dark">
                     SEND EMAIL
                 </Button>
             </div>

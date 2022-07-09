@@ -22,7 +22,11 @@ function Projects(props) {
 
     const allProjects = props.data.projects;
     const projectList = allProjects.map((item) => (
-        <Card style={{ width: "18rem" }} className={classes.project}>
+        <Card
+            key={item._id}
+            style={{ width: "18rem" }}
+            className={classes.project}
+        >
             <div className={classes.editBtn}>
                 {props.isEdit && (
                     <div>

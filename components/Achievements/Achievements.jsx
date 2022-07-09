@@ -19,7 +19,7 @@ export default function Achievements(props) {
 
     const allAch = props.data.ach;
     const achList = allAch.map((item) => (
-        <Card style={{ width: "36rem" }} className={classes.ach}>
+        <Card key={item._id} style={{ width: "36rem" }} className={classes.ach}>
             <div className={classes.editBtn}>
                 {props.isEdit && (
                     <div>

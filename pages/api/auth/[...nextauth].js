@@ -21,7 +21,7 @@ export default NextAuth({
         }),
     ],
     pages: {
-        signIn: "/login",
+        signIn: "/signin",
     },
     database: process.env.DB_URL,
     session: {

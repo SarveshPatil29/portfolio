@@ -11,7 +11,14 @@ import Form from "react-bootstrap/Form";
 
 function Skills(props) {
     const [showDialogEdit, setShowDialogEdit] = useState(false);
-    const handleCloseEdit = () => setShowDialogEdit(false);
+    const handleCloseEdit = () => {
+        setUpdatedSkills(skills);
+        setShowDialogEdit(false);
+    };
+    const handleSaveEdit = () => {
+        setSkills(updatedSkills);
+        setShowDialogEdit(false);
+    };
     const handleShowEdit = () => setShowDialogEdit(true);
 
     const [showDialogAdd, setShowDialogAdd] = useState(false);
@@ -19,8 +26,22 @@ function Skills(props) {
     const handleShowAdd = () => setShowDialogAdd(true);
 
     const allSkills = props.data.skills;
-    const skillsList = allSkills.map((item) => (
-        <div key={item.name} className={classes.skill}>
+
+    const [skills, setSkills] = useState(allSkills);
+
+    const [updatedSkills, setUpdatedSkills] = useState(skills);
+
+    const handleChange = (e) => {
+        setUpdatedSkills((prevSkills) => {
+            return {
+                ...prevSkills,
+                [e.target.name]: e.target.value.toUpperCase(),
+            };
+        });
+    };
+
+    const skillsList = skills.map((item) => (
+        <div key={item._id} className={classes.skill}>
             <div className={classes.editBtn}>
                 {props.isEdit && (
                     <div>
@@ -29,7 +50,11 @@ function Skills(props) {
                             height={30}
                             handleShow={handleShowEdit}
                         />
-                        <Modal show={showDialogEdit} onHide={handleCloseEdit}>
+                        <Modal
+                            backdrop="static"
+                            show={showDialogEdit}
+                            onHide={handleCloseEdit}
+                        >
                             <Modal.Header closeButton>
                                 <Modal.Title>EDIT SKILL</Modal.Title>
                             </Modal.Header>
@@ -39,6 +64,9 @@ function Skills(props) {
                                         <Form.Control
                                             type="text"
                                             placeholder="SKILL NAME"
+                                            name={updatedSkills[0].name}
+                                            value={updatedSkills[1].name}
+                                            onChange={handleChange}
                                         />
                                     </Form.Group>
                                     <Form.Group className="mb-3">
@@ -80,6 +108,7 @@ function Skills(props) {
         <section>
             <br id="skills" />
             <h1 className={classes.header}>SKILLS</h1>
+
             <div className={classes.allSkills}>{skillsList}</div>
             {props.isEdit && (
                 <div className={classes.addBtn}>

@@ -13,7 +13,7 @@ export default function ForgotPasswordNav() {
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto"></Nav>
                     <Nav className="">
-                        <Nav.Link href="/login">LOG IN</Nav.Link>
+                        <Nav.Link href="/signin">SIGN IN</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>

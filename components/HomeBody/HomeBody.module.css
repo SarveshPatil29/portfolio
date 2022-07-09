@@ -1,26 +1,17 @@
-.content {
+.body {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 12% 10%;
-    /* margin-top: 10%; */
+    margin: 10rem 5rem;
+    flex-wrap: wrap;
+}
+
+.img {
+    flex: 1;
+    min-width: 350px;
 }
 
 .text {
     flex: 1;
-    padding-right: 5%;
-}
-
-.image {
-    flex: 1;
-}
-
-.text h3 {
-    margin: 5% 0;
-    font-size: medium;
-}
-
-.button {
-    font-size: large;
-    padding: 3%;
+    min-width: 350px;
 }

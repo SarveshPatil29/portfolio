@@ -21,7 +21,7 @@ export default function Contact(props) {
 
     const allHandles = props.data.handles;
     const handlesList = allHandles.map((item) => (
-        <div className={classes.logo}>
+        <div key={item._id} className={classes.logo}>
             <div className={classes.editBtn}>
                 {props.isEdit && (
                     <div>
