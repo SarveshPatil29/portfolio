@@ -83,7 +83,6 @@ export default function Achievements(props) {
         <section>
             <br id="achievements" />
             <h1 className={classes.header}>ACHIEVEMENTS</h1>
-            <div className={classes.allAch}>{achList}</div>
             {props.isEdit && (
                 <div className={classes.addBtn}>
                     <AddBtn
