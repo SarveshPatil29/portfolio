@@ -8,12 +8,12 @@
     text-decoration: none;
     color: white;
     font-weight: 100;
+    transition: color 0.25s ease;
 }
 
 .link:hover {
-    color: white;
-    font-weight: 200;
-    transition: color 1s ease;
+    color: rgb(154, 154, 154);
+    transition: color 0.25s ease;
 }
 
 .subFooter {
@@ -35,6 +35,10 @@
 
 .copyright {
     color: white;
+    text-decoration: none;
+    align-self: center;
+    padding-right: 10%;
+    font-weight: 300;
 }
 
 .footer {
@@ -43,7 +47,15 @@
     justify-content: space-between;
 }
 
-.copyright {
-    align-self: center;
-    padding-right: 10%;
+.homeLink {
+    text-decoration: none;
+    color: white;
+    font-size: xx-large;
+    font-weight: 700;
+    transition: color 0.25s ease;
+}
+
+.homeLink:hover {
+    color: rgb(154, 154, 154);
+    transition: color 0.25s ease;
 }

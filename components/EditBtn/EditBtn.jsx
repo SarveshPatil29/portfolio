@@ -1,18 +1,19 @@
-import Link from "next/link";
 import Image from "next/image";
 import edit from "../../public/images/edit2.png";
+import Button from "react-bootstrap/Button";
+import classes from "./EditBtn.module.css";
 
 export default function EditBtn(props) {
     return (
         <div>
-            <Link href="https://github.com/SarveshPatil46">
+            <button className={classes.button} onClick={props.handleShow}>
                 <Image
                     width={props.width}
                     height={props.height}
                     src={edit}
                     alt="edit-btn"
                 />
-            </Link>
+            </button>
         </div>
     );
 }
