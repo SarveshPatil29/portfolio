@@ -3,44 +3,59 @@ import EditBtn from "../EditBtn/EditBtn";
 import DelBtn from "../DelBtn/DelBtn";
 import AddBtn from "../AddBtn/AddBtn";
 import { useState } from "react";
-import reactLogo from "../../public/images/react.svg";
 import Image from "next/image";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
 function Skills(props) {
-    const [showDialogEdit, setShowDialogEdit] = useState(false);
+    const [showDialogEdit, setShowDialogEdit] = useState({
+        showModal: false,
+        activeModal: null,
+    });
+
     const handleCloseEdit = () => {
         setUpdatedSkills(skills);
-        setShowDialogEdit(false);
+        setShowDialogEdit({
+            showModal: false,
+            activeModal: null,
+        });
     };
     const handleSaveEdit = () => {
         setSkills(updatedSkills);
-        setShowDialogEdit(false);
+        setShowDialogEdit({
+            showModal: false,
+            activeModal: null,
+        });
     };
-    const handleShowEdit = () => setShowDialogEdit(true);
+    const handleShowEdit = (e, index) => {
+        setShowDialogEdit({
+            showModal: true,
+            activeModal: index,
+        });
+    };
 
     const [showDialogAdd, setShowDialogAdd] = useState(false);
     const handleCloseAdd = () => setShowDialogAdd(false);
     const handleShowAdd = () => setShowDialogAdd(true);
 
-    const allSkills = props.data.skills;
+    const allSkillsList = props.data.skills;
+    const [skills, setSkills] = useState({ allSkills: props.data.skills });
 
-    const [skills, setSkills] = useState(allSkills);
+    const [updatedSkills, setUpdatedSkills] = useState({
+        allSkills: props.data.skills,
+    });
 
-    const [updatedSkills, setUpdatedSkills] = useState(skills);
+    const [allSkillsNew, setAllSkillsNew] = useState(updatedSkills);
 
-    const handleChange = (e) => {
-        setUpdatedSkills((prevSkills) => {
-            return {
-                ...prevSkills,
-                [e.target.name]: e.target.value.toUpperCase(),
-            };
-        });
+    const handleChange = (e, index) => {
+        console.log(updatedSkills.allSkills);
+        allSkillsNew.allSkills[index].name = e.target.value;
+        console.log(updatedSkills.allSkills);
+        // setUpdatedSkills({ allSkills: allSkillsNew.allSkills });
     };
 
-    const skillsList = skills.map((item) => (
+    const skillsList = skills.allSkills.map((item, index) => (
         <div key={item._id} className={classes.skill}>
             <div className={classes.editBtn}>
                 {props.isEdit && (
@@ -48,11 +63,11 @@ function Skills(props) {
                         <EditBtn
                             width={30}
                             height={30}
-                            handleShow={handleShowEdit}
+                            handleShow={(e) => handleShowEdit(e, index)}
                         />
                         <Modal
                             backdrop="static"
-                            show={showDialogEdit}
+                            show={showDialogEdit.activeModal === index}
                             onHide={handleCloseEdit}
                         >
                             <Modal.Header closeButton>
@@ -64,9 +79,10 @@ function Skills(props) {
                                         <Form.Control
                                             type="text"
                                             placeholder="SKILL NAME"
-                                            name={updatedSkills[0].name}
-                                            value={updatedSkills[1].name}
-                                            onChange={handleChange}
+                                            value={item.name.toUpperCase()}
+                                            onChange={(e) => {
+                                                handleChange(e, index);
+                                            }}
                                         />
                                     </Form.Group>
                                     <Form.Group className="mb-3">
@@ -85,7 +101,7 @@ function Skills(props) {
                                 <Button
                                     type="submit"
                                     variant="primary"
-                                    onClick={handleCloseEdit}
+                                    onClick={handleSaveEdit}
                                 >
                                     Save Changes
                                 </Button>
