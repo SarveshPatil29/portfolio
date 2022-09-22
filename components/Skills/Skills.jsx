@@ -15,19 +15,19 @@ function Skills(props) {
     });
 
     const handleCloseEdit = () => {
-        setUpdatedSkills(skills);
+        // setUpdatedSkills(skills);
         setShowDialogEdit({
             showModal: false,
             activeModal: null,
         });
     };
-    const handleSaveEdit = () => {
-        setSkills(updatedSkills);
-        setShowDialogEdit({
-            showModal: false,
-            activeModal: null,
-        });
-    };
+    // const handleSaveEdit = () => {
+    //     setSkills(updatedSkills);
+    //     setShowDialogEdit({
+    //         showModal: false,
+    //         activeModal: null,
+    //     });
+    // };
     const handleShowEdit = (e, index) => {
         setShowDialogEdit({
             showModal: true,
@@ -39,20 +39,25 @@ function Skills(props) {
     const handleCloseAdd = () => setShowDialogAdd(false);
     const handleShowAdd = () => setShowDialogAdd(true);
 
-    const allSkillsList = props.data.skills;
-    const [skills, setSkills] = useState({ allSkills: props.data.skills });
-
-    const [updatedSkills, setUpdatedSkills] = useState({
+    const [skills, setSkills] = useState({
         allSkills: props.data.skills,
     });
 
-    const [allSkillsNew, setAllSkillsNew] = useState(updatedSkills);
+    const changedSkill = skills;
 
     const handleChange = (e, index) => {
-        console.log(updatedSkills.allSkills);
-        allSkillsNew.allSkills[index].name = e.target.value;
-        console.log(updatedSkills.allSkills);
-        // setUpdatedSkills({ allSkills: allSkillsNew.allSkills });
+        // console.log(updatedSkills.allSkills);
+        changedSkill.allSkills[index].name = e.target.value;
+        // console.log(updatedSkills.allSkills);
+        setSkills({ allSkills: changedSkill.allSkills });
+    };
+
+    const handleDelete = (e, index) => {
+        const afterDelete = skills.allSkills.filter(function (el) {
+            return el._id !== skills.allSkills[index]._id;
+        });
+        setSkills({ allSkills: afterDelete });
+        console.log(skills.allSkills);
     };
 
     const skillsList = skills.allSkills.map((item, index) => (
@@ -98,20 +103,28 @@ function Skills(props) {
                                 >
                                     Close
                                 </Button>
-                                <Button
+                                {/* <Button
                                     type="submit"
                                     variant="primary"
                                     onClick={handleSaveEdit}
                                 >
                                     Save Changes
-                                </Button>
+                                </Button> */}
                             </Modal.Footer>
                         </Modal>
                     </div>
                 )}
             </div>
             <div className={classes.delBtn}>
-                {props.isEdit && <DelBtn width={25} height={25} />}
+                {props.isEdit && (
+                    <DelBtn
+                        onDel={(e) => {
+                            handleDelete(e, index);
+                        }}
+                        width={25}
+                        height={25}
+                    />
+                )}
             </div>
             <div className={classes.skillImg}>
                 <Image width={75} height={75} src={item.img} alt="react logo" />
@@ -119,6 +132,21 @@ function Skills(props) {
             <h2>{item.name.toUpperCase()}</h2>
         </div>
     ));
+    const [newSkill, setNewSkill] = useState({
+        id: "",
+        img: "https://res.cloudinary.com/atharva7/image/upload/v1663751031/Portfolio%20website/5651980_kfkusu.jpg",
+        name: "",
+    });
+
+    const changedNewSkill = newSkill;
+
+    const handleChangeAdd = (e) => {
+        changedNewSkill.name = e.target.value;
+        setNewSkill(changedNewSkill);
+        console.log(newSkill);
+    };
+
+    // skills.allSkills.push(newSkill);
 
     return (
         <section>
@@ -144,6 +172,10 @@ function Skills(props) {
                                     <Form.Control
                                         type="text"
                                         placeholder="SKILL NAME"
+                                        value={newSkill.name}
+                                        onChange={(e) => {
+                                            handleChangeAdd(e);
+                                        }}
                                     />
                                 </Form.Group>
                                 <Form.Group className="mb-3">
