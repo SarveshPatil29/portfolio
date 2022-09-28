@@ -7,6 +7,7 @@ import Image from "next/image";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import { v4 as uuidv4 } from "uuid";
 
 function Skills(props) {
     const [showDialogEdit, setShowDialogEdit] = useState({
@@ -46,9 +47,7 @@ function Skills(props) {
     const changedSkill = skills;
 
     const handleChange = (e, index) => {
-        // console.log(updatedSkills.allSkills);
         changedSkill.allSkills[index].name = e.target.value;
-        // console.log(updatedSkills.allSkills);
         setSkills({ allSkills: changedSkill.allSkills });
     };
 
@@ -58,6 +57,19 @@ function Skills(props) {
         });
         setSkills({ allSkills: afterDelete });
         console.log(skills.allSkills);
+    };
+
+    const newSkill = {
+        id: "",
+        img: "https://res.cloudinary.com/atharva7/image/upload/v1663751031/Portfolio%20website/5651980_kfkusu.jpg",
+        name: "REACT",
+    };
+
+    const handleClickAdd = () => {
+        const addedSkillArray = skills.allSkills;
+        newSkill.id = uuidv4();
+        addedSkillArray.push(newSkill);
+        setSkills({ allSkills: addedSkillArray });
     };
 
     const skillsList = skills.allSkills.map((item, index) => (
@@ -132,17 +144,12 @@ function Skills(props) {
             <h2>{item.name.toUpperCase()}</h2>
         </div>
     ));
-    const [newSkill, setNewSkill] = useState({
-        id: "",
-        img: "https://res.cloudinary.com/atharva7/image/upload/v1663751031/Portfolio%20website/5651980_kfkusu.jpg",
-        name: "",
-    });
 
     const changedNewSkill = newSkill;
 
     const handleChangeAdd = (e) => {
-        changedNewSkill.name = e.target.value;
-        setNewSkill(changedNewSkill);
+        newSkill.name = e.target.value;
+        // setNewSkill(changedNewSkill);
         console.log(newSkill);
     };
 
@@ -160,9 +167,10 @@ function Skills(props) {
                         width={40}
                         height={40}
                         item={"skill"}
-                        handleShow={handleShowAdd}
+                        handleClick={handleClickAdd}
+                        // handleShow={handleShowAdd}
                     />
-                    <Modal show={showDialogAdd} onHide={handleCloseAdd}>
+                    {/* <Modal show={showDialogAdd} onHide={handleCloseAdd}>
                         <Modal.Header closeButton>
                             <Modal.Title>ADD SKILL</Modal.Title>
                         </Modal.Header>
@@ -199,7 +207,7 @@ function Skills(props) {
                                 Save Changes
                             </Button>
                         </Modal.Footer>
-                    </Modal>
+                    </Modal> */}
                 </div>
             )}
         </section>
