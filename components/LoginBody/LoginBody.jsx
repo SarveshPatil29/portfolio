@@ -10,7 +10,7 @@ import { signIn } from "next-auth/react";
 export default function LoginBody(props) {
     return (
         <section className={classes.content}>
-            <h1 className={classes.header}>LOG IN TO PORTFOLIO PRO</h1>
+            <h1 className={classes.header}>SIGN IN TO PORTFOLIO PRO</h1>
             <div className={classes.login}>
                 <div className={classes.loginForm}>
                     <div className={classes.loginFormDiv}>
@@ -38,12 +38,12 @@ export default function LoginBody(props) {
                             </Form.Group>
                             <div className={classes.loginBtnDiv}>
                                 <Button
-                                    href="/getstarted"
+                                    href="/dashboard"
                                     className={classes.loginBtn}
                                     variant="dark"
                                     type="submit"
                                 >
-                                    LOG IN
+                                    SIGN IN
                                 </Button>
                             </div>
                         </Form>
@@ -54,10 +54,9 @@ export default function LoginBody(props) {
                     <Button
                         onClick={() =>
                             signIn(props.providers.google.id, {
-                                callbackUrl: `${window.location.origin}/getstarted`,
+                                callbackUrl: `${window.location.origin}/dashboard`,
                             })
                         }
-                        // href="/getstarted"
                         className={classes.continueBtn}
                         variant="light"
                     >
@@ -75,10 +74,9 @@ export default function LoginBody(props) {
                     <Button
                         onClick={() =>
                             signIn(props.providers.github.id, {
-                                callbackUrl: `${window.location.origin}/getstarted`,
+                                callbackUrl: `${window.location.origin}/dashboard`,
                             })
                         }
-                        // href="/getstarted"
                         className={classes.continueBtn}
                         variant="light"
                     >
@@ -96,10 +94,9 @@ export default function LoginBody(props) {
                     <Button
                         onClick={() =>
                             signIn(props.providers.twitter.id, {
-                                callbackUrl: `${window.location.origin}/getstarted`,
+                                callbackUrl: `${window.location.origin}/dashboard`,
                             })
                         }
-                        // href="/getstarted"
                         className={classes.continueBtn}
                         variant="light"
                     >
@@ -118,7 +115,7 @@ export default function LoginBody(props) {
             </div>
             <div className={classes.cantLogin}>
                 <Button href="/forgotpassword" variant="dark">
-                    CANT LOG IN?
+                    CANT SIGN IN?
                 </Button>
             </div>
         </section>

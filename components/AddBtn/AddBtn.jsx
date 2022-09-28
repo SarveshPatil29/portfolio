@@ -6,7 +6,7 @@ import classes from "./AddBtn.module.css";
 export default function AddBtn(props) {
     return (
         <div>
-            <button className={classes.button} onClick={props.handleShow}>
+            <button className={classes.button} onClick={props.handleClick}>
                 <Image
                     width={props.width}
                     height={props.height}

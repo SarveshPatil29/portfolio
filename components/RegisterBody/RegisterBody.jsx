@@ -47,7 +47,7 @@ export default function RegisterBody() {
                             </Form.Group>
                             <div className={classes.registerBtnDiv}>
                                 <Button
-                                    href="/getstarted"
+                                    href="/dashboard"
                                     className={classes.registerBtn}
                                     variant="dark"
                                     type="submit"
@@ -61,7 +61,7 @@ export default function RegisterBody() {
 
                 <div className={classes.registerLinks}>
                     <Button
-                        href="/getstarted"
+                        href="/dashboard"
                         className={classes.continueBtn}
                         variant="light"
                     >
@@ -76,7 +76,7 @@ export default function RegisterBody() {
                         </div>
                     </Button>
                     <Button
-                        href="/getstarted"
+                        href="/dashboard"
                         className={classes.continueBtn}
                         variant="light"
                     >
@@ -91,7 +91,7 @@ export default function RegisterBody() {
                         </div>
                     </Button>
                     <Button
-                        href="/getstarted"
+                        href="/dashboard"
                         className={classes.continueBtn}
                         variant="light"
                     >

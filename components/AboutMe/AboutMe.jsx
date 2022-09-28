@@ -2,55 +2,69 @@ import classes from "./AboutMe.module.css";
 import { useState } from "react";
 import EditBtn from "../EditBtn/EditBtn";
 import Image from "next/image";
-import profile from "../../public/images/profile.jpg";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
 function AboutMe(props) {
     const [showDialogIntro, setShowDialogIntro] = useState(false);
-    const handleCloseIntro = () => setShowDialogIntro(false);
+    const handleCloseIntro = () => {
+        setUpdatedAbout(about);
+        setShowDialogIntro(false);
+    };
+    const handleSaveIntro = () => {
+        setAbout(updatedAbout);
+        setShowDialogIntro(false);
+    };
     const handleShowIntro = () => setShowDialogIntro(true);
 
     const [showDialogAbout, setShowDialogAbout] = useState(false);
-    const handleCloseAbout = () => setShowDialogAbout(false);
+    const handleCloseAbout = () => {
+        setUpdatedAbout(about);
+        setShowDialogAbout(false);
+    };
+    const handleSaveAbout = () => {
+        setAbout(updatedAbout);
+        setShowDialogAbout(false);
+    };
     const handleShowAbout = () => setShowDialogAbout(true);
 
-    const [isShownIntro, setIsShownIntro] = useState(false);
-    const [isShownAbout, setIsShownAbout] = useState(false);
+    const [about, setAbout] = useState({
+        name: props.data.name.toUpperCase(),
+        introText: props.data.intro.toUpperCase(),
+        introImg: props.data.introImg,
+        aboutMeText: props.data.aboutMe.toUpperCase(),
+        aboutMeImg: props.data.aboutMeImg,
+    });
+
+    const [updatedAbout, setUpdatedAbout] = useState(about);
+
+    const handleChange = (e) => {
+        setUpdatedAbout((prevAbout) => {
+            return {
+                ...prevAbout,
+                [e.target.name]: e.target.value.toUpperCase(),
+            };
+        });
+    };
     return (
         <div>
-            <section
-                onMouseEnter={() => setIsShownIntro(true)}
-                onMouseLeave={() => setIsShownIntro(false)}
-                style={{ paddingTop: "2%" }}
-                className={classes.intro}
-            >
+            <section style={{ paddingTop: "2%" }} className={classes.intro}>
                 <div className={classes.introText}>
-                    <p>THIS IS ME</p>
-                    <p>SARVESH PATIL</p>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Fugit quasi possimus saepe a! Numquam libero,
-                        perferendis dolore quisquam, ipsum hic tempore laborum
-                        excepturi magni in, sint possimus placeat nisi
-                        veritatis. Lorem ipsum, dolor sit amet consectetur
-                        adipisicing elit. Architecto, numquam alias esse nulla,
-                        asperiores eaque quas illo libero rerum sunt quidem
-                        deleniti ex exercitationem modi quis hic consectetur
-                        maiores qui?
-                    </p>
+                    <p className="fw-bold">THIS IS ME</p>
+                    <p className="fw-bold fs-2">{about.name}</p>
+                    <p>{about.introText}</p>
                 </div>
                 <div className={classes.introImg}>
                     <Image
-                        src="https://res.cloudinary.com/sarveshp46/image/upload/c_scale,w_1000/v1657119881/1656832322291_o0ek9p.jpg"
+                        src={props.data.introImg}
                         alt="Profile Image"
                         width={1000}
                         height={1000}
                     />
                 </div>
                 <div className={classes.editBtnIntro}>
-                    {props.isEdit && isShownIntro && (
+                    {props.isEdit && (
                         <div>
                             <EditBtn
                                 width={50}
@@ -60,6 +74,7 @@ function AboutMe(props) {
                             <Modal
                                 show={showDialogIntro}
                                 onHide={handleCloseIntro}
+                                backdrop="static"
                             >
                                 <Modal.Header closeButton>
                                     <Modal.Title>EDIT INTRO</Modal.Title>
@@ -70,6 +85,9 @@ function AboutMe(props) {
                                             <Form.Control
                                                 type="text"
                                                 placeholder="NAME"
+                                                name="name"
+                                                value={updatedAbout.name}
+                                                onChange={handleChange}
                                             />
                                         </Form.Group>
 
@@ -78,7 +96,14 @@ function AboutMe(props) {
                                                 as="textarea"
                                                 rows="10"
                                                 placeholder="INTRODUCTION"
+                                                name="introText"
+                                                value={updatedAbout.introText}
+                                                onChange={handleChange}
                                             />
+                                        </Form.Group>
+                                        <Form.Group className="mb-3">
+                                            <Form.Label>IMAGE</Form.Label>
+                                            <Form.Control type="file" />
                                         </Form.Group>
                                     </Form>
                                 </Modal.Body>
@@ -92,7 +117,7 @@ function AboutMe(props) {
                                     <Button
                                         type="submit"
                                         variant="primary"
-                                        onClick={handleCloseIntro}
+                                        onClick={handleSaveIntro}
                                     >
                                         Save Changes
                                     </Button>
@@ -102,30 +127,21 @@ function AboutMe(props) {
                     )}
                 </div>
             </section>
-            <section
-                onMouseEnter={() => setIsShownAbout(true)}
-                onMouseLeave={() => setIsShownAbout(false)}
-                className={classes.aboutMe}
-            >
+            <section className={classes.aboutMe}>
                 <div className={classes.aboutMeImg}>
-                    <Image src={profile} alt="Profile Image" />
+                    <Image
+                        src={props.data.aboutMeImg}
+                        alt="Profile Image"
+                        width={1000}
+                        height={1000}
+                    />
                 </div>
                 <div className={classes.aboutMeText}>
-                    <p>ABOUT ME</p>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Deserunt, quis, exercitationem minima alias nam magni
-                        expedita reprehenderit blanditiis, magnam aliquid
-                        explicabo. Enim, magni! Saepe dolore iste eaque, aliquam
-                        doloremque dolores? Lorem ipsum dolor sit amet
-                        consectetur adipisicing elit. Debitis sapiente incidunt
-                        modi accusantium maxime quo et obcaecati fuga, a dolor
-                        officia! Reiciendis velit architecto nulla impedit
-                        nobis, libero nemo! Dolor.
-                    </p>
+                    <p className="fw-bold">ABOUT ME</p>
+                    <p>{about.aboutMeText}</p>
                 </div>
                 <div className={classes.editBtnAbout}>
-                    {props.isEdit && isShownAbout && (
+                    {props.isEdit && (
                         <div>
                             <EditBtn
                                 width={50}
@@ -146,7 +162,14 @@ function AboutMe(props) {
                                                 as="textarea"
                                                 rows="10"
                                                 placeholder="ABOUT ME"
+                                                name="aboutMeText"
+                                                value={updatedAbout.aboutMeText}
+                                                onChange={handleChange}
                                             />
+                                        </Form.Group>
+                                        <Form.Group className="mb-3">
+                                            <Form.Label>IMAGE</Form.Label>
+                                            <Form.Control type="file" />
                                         </Form.Group>
                                     </Form>
                                 </Modal.Body>
@@ -160,7 +183,7 @@ function AboutMe(props) {
                                     <Button
                                         type="submit"
                                         variant="primary"
-                                        onClick={handleCloseAbout}
+                                        onClick={handleSaveAbout}
                                     >
                                         Save Changes
                                     </Button>
