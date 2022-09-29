@@ -12,16 +12,79 @@ import Form from "react-bootstrap/Form";
 import Card from "react-bootstrap/Card";
 
 function Projects(props) {
-    const [showDialogEdit, setShowDialogEdit] = useState(false);
-    const handleCloseEdit = () => setShowDialogEdit(false);
-    const handleShowEdit = () => setShowDialogEdit(true);
+    // const [showDialogEdit, setShowDialogEdit] = useState(false);
+    // const handleCloseEdit = () => setShowDialogEdit(false);
+    // const handleShowEdit = () => setShowDialogEdit(true);
 
-    const [showDialogAdd, setShowDialogAdd] = useState(false);
-    const handleCloseAdd = () => setShowDialogAdd(false);
-    const handleShowAdd = () => setShowDialogAdd(true);
+    const [showDialogEdit, setShowDialogEdit] = useState({
+        showModal: false,
+        activeModal: null,
+    });
 
-    const allProjects = props.data.projects;
-    const projectList = allProjects.map((item) => (
+    const handleCloseEdit = () => {
+        // setUpdatedSkills(skills);
+        setShowDialogEdit({
+            showModal: false,
+            activeModal: null,
+        });
+    };
+
+    const handleShowEdit = (e, index) => {
+        setShowDialogEdit({
+            showModal: true,
+            activeModal: index,
+        });
+    };
+
+    // const [showDialogAdd, setShowDialogAdd] = useState(false);
+    // const handleCloseAdd = () => setShowDialogAdd(false);
+    // const handleShowAdd = () => setShowDialogAdd(true);
+
+    const [projects, setProjects] = useState({
+        allProjects: props.data.projects,
+    });
+
+    const changedProject = projects;
+
+    const handleChange = (e, index) => {
+        console.log(e.target.id);
+        if (e.target.id === "title") {
+            changedProject.allProjects[index].title = e.target.value;
+        } else if (e.target.id === "desc") {
+            changedProject.allProjects[index].desc = e.target.value;
+        } else if (e.target.id === "appLink") {
+            changedProject.allProjects[index].appLink = e.target.value;
+        } else if (e.target.id === "github") {
+            changedProject.allProjects[index].github = e.target.value;
+        } else if (e.target.id === "type") {
+            changedProject.allProjects[index].type = e.target.value;
+        }
+        setProjects({ allProjects: changedProject.allProjects });
+    };
+
+    const handleDelete = (e, index) => {
+        const afterDelete = projects.allProjects.filter(function (el) {
+            return el._id !== projects.allProjects[index]._id;
+        });
+        setProjects({ allProjects: afterDelete });
+        console.log(projects.allProjects);
+    };
+
+    const newSkill = {
+        _id: "",
+        img: "https://res.cloudinary.com/atharva7/image/upload/v1663751031/Portfolio%20website/5651980_kfkusu.jpg",
+        name: "REACT",
+    };
+
+    const handleClickAdd = () => {
+        const addedSkillArray = skills.allSkills;
+        newSkill._id = uuidv4();
+        addedSkillArray.push(newSkill);
+        setSkills({ allSkills: addedSkillArray });
+        console.log(skills.allSkills);
+    };
+
+    const projectList = projects.allProjects.map((item, index) => (
         <Card
             key={item._id}
             style={{ width: "18rem" }}
@@ -33,9 +96,15 @@ function Projects(props) {
                         <EditBtn
                             width={30}
                             height={30}
-                            handleShow={handleShowEdit}
+                            // handleShow={handleShowEdit}
+                            handleShow={(e) => handleShowEdit(e, index)}
                         />
-                        <Modal show={showDialogEdit} onHide={handleCloseEdit}>
+                        <Modal
+                            backdrop="static"
+                            // show={showDialogEdit}
+                            show={showDialogEdit.activeModal === index}
+                            onHide={handleCloseEdit}
+                        >
                             <Modal.Header closeButton>
                                 <Modal.Title>EDIT PROJECT</Modal.Title>
                             </Modal.Header>
@@ -43,13 +112,22 @@ function Projects(props) {
                                 <Form>
                                     <Form.Group className="mb-3">
                                         <Form.Control
+                                            id="title"
                                             type="text"
                                             placeholder="PROJECT TITLE"
+                                            // value={item.title.toUpperCase()}
+                                            onChange={(e) => {
+                                                handleChange(e, index);
+                                            }}
                                         />
                                     </Form.Group>
                                     <Form.Select
+                                        id="type"
                                         className="mb-3"
                                         aria-label="Default select example"
+                                        onChange={(e) => {
+                                            handleChange(e, index);
+                                        }}
                                     >
                                         <option>SELECT PROJECT TYPE</option>
                                         <option value="android">ANDROID</option>
@@ -59,21 +137,33 @@ function Projects(props) {
                                     </Form.Select>
                                     <Form.Group className="mb-3">
                                         <Form.Control
+                                            id="desc"
                                             as="textarea"
                                             rows="8"
                                             placeholder="PROJECT DESCRIPTION"
+                                            onChange={(e) => {
+                                                handleChange(e, index);
+                                            }}
                                         />
                                     </Form.Group>
                                     <Form.Group className="mb-3">
                                         <Form.Control
+                                            id="appLink"
                                             type="text"
                                             placeholder="APPLICATION LINK"
+                                            onChange={(e) => {
+                                                handleChange(e, index);
+                                            }}
                                         />
                                     </Form.Group>
                                     <Form.Group className="mb-3">
                                         <Form.Control
+                                            id="github"
                                             type="text"
                                             placeholder="GITHUB REPO LINK"
+                                            onChange={(e) => {
+                                                handleChange(e, index);
+                                            }}
                                         />
                                     </Form.Group>
                                     <Form.Group className="mb-3">
@@ -89,20 +179,28 @@ function Projects(props) {
                                 >
                                     Close
                                 </Button>
-                                <Button
+                                {/* <Button
                                     type="submit"
                                     variant="primary"
                                     onClick={handleCloseEdit}
                                 >
                                     Save Changes
-                                </Button>
+                                </Button> */}
                             </Modal.Footer>
                         </Modal>
                     </div>
                 )}
             </div>
             <div className={classes.delBtn}>
-                {props.isEdit && <DelBtn width={25} height={25} />}
+                {props.isEdit && (
+                    <DelBtn
+                        onDel={(e) => {
+                            handleDelete(e, index);
+                        }}
+                        width={25}
+                        height={25}
+                    />
+                )}
             </div>
             <Card.Img variant="top" src={item.img} />
             <Card.Body>
@@ -140,9 +238,9 @@ function Projects(props) {
                         width={40}
                         height={40}
                         item={"project"}
-                        handleShow={handleShowAdd}
+                        // handleShow={handleShowAdd}
                     />
-                    <Modal show={showDialogAdd} onHide={handleCloseAdd}>
+                    {/* <Modal show={showDialogAdd} onHide={handleCloseAdd}>
                         <Modal.Header closeButton>
                             <Modal.Title>ADD PROJECT</Modal.Title>
                         </Modal.Header>
@@ -204,7 +302,7 @@ function Projects(props) {
                                 Save Changes
                             </Button>
                         </Modal.Footer>
-                    </Modal>
+                    </Modal> */}
                 </div>
             )}
         </section>
