@@ -7,18 +7,83 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Card from "react-bootstrap/Card";
+import { v4 as uuidv4 } from "uuid";
 
 function Experience(props) {
-    const [showDialogEdit, setShowDialogEdit] = useState(false);
-    const handleCloseEdit = () => setShowDialogEdit(false);
-    const handleShowEdit = () => setShowDialogEdit(true);
+    // const [showDialogEdit, setShowDialogEdit] = useState(false);
+    // const handleCloseEdit = () => setShowDialogEdit(false);
+    // const handleShowEdit = () => setShowDialogEdit(true);
 
-    const [showDialogAdd, setShowDialogAdd] = useState(false);
-    const handleCloseAdd = () => setShowDialogAdd(false);
-    const handleShowAdd = () => setShowDialogAdd(true);
+    // const [showDialogAdd, setShowDialogAdd] = useState(false);
+    // const handleCloseAdd = () => setShowDialogAdd(false);
+    // const handleShowAdd = () => setShowDialogAdd(true);
 
-    const allExp = props.data.exp;
-    const expList = allExp.map((item) => (
+    const [showDialogEdit, setShowDialogEdit] = useState({
+        showModal: false,
+        activeModal: null,
+    });
+
+    const handleCloseEdit = () => {
+        // setUpdatedSkills(skills);
+        setShowDialogEdit({
+            showModal: false,
+            activeModal: null,
+        });
+    };
+
+    const handleShowEdit = (e, index) => {
+        setShowDialogEdit({
+            showModal: true,
+            activeModal: index,
+        });
+    };
+
+    const [exp, setExp] = useState({
+        allExp: props.data.exp,
+    });
+
+    const changedExp = exp;
+
+    const handleChange = (e, index) => {
+        if (e.target.id === "jobTitle") {
+            changedExp.allExp[index].jobTitle = e.target.value;
+        } else if (e.target.id === "company") {
+            changedExp.allExp[index].company = e.target.value;
+        } else if (e.target.id === "timePeriod") {
+            changedExp.allExp[index].timePeriod = e.target.value;
+        } else if (e.target.id === "location") {
+            changedExp.allExp[index].location = e.target.value;
+        } else if (e.target.id === "desc") {
+            changedExp.allExp[index].desc = e.target.value;
+        }
+        setExp({ allExp: changedExp.allExp });
+    };
+
+    const handleDelete = (e, index) => {
+        const afterDelete = exp.allExp.filter(function (el) {
+            return el._id !== exp.allExp[index]._id;
+        });
+        setExp({ allExp: afterDelete });
+    };
+
+    const newExp = {
+        _id: "",
+        jobTitle: "WEB DEVELOPER INTERN",
+        company: "Google",
+        timePeriod: "Dec 2021 - Jan 2023",
+        location: "Mumbai",
+        desc: "description",
+    };
+
+    const handleClickAdd = () => {
+        const addedExpArray = exp.allExp;
+        newExp._id = uuidv4();
+        addedExpArray.push(newExp);
+        setExp({ allExp: addedExpArray });
+        console.log(exp.allExp);
+    };
+
+    const expList = exp.allExp.map((item, index) => (
         <Card key={item._id} style={{ width: "36rem" }} className={classes.exp}>
             <div className={classes.editBtn}>
                 {props.isEdit && (
@@ -26,9 +91,14 @@ function Experience(props) {
                         <EditBtn
                             width={30}
                             height={30}
-                            handleShow={handleShowEdit}
+                            // handleShow={handleShowEdit}
+                            handleShow={(e) => handleShowEdit(e, index)}
                         />
-                        <Modal show={showDialogEdit} onHide={handleCloseEdit}>
+                        <Modal
+                            backdrop="static"
+                            show={showDialogEdit.activeModal === index}
+                            onHide={handleCloseEdit}
+                        >
                             <Modal.Header closeButton>
                                 <Modal.Title>EDIT EXPERIENCE</Modal.Title>
                             </Modal.Header>
@@ -38,31 +108,56 @@ function Experience(props) {
                                         <Form.Control
                                             type="text"
                                             placeholder="JOB TITLE"
+                                            id="jobTitle"
+                                            value={item.jobTitle.toUpperCase()}
+                                            onChange={(e) => {
+                                                handleChange(e, index);
+                                            }}
                                         />
                                     </Form.Group>
                                     <Form.Group className="mb-3">
                                         <Form.Control
                                             type="text"
                                             placeholder="COMPANY NAME"
+                                            id="company"
+                                            value={item.company.toUpperCase()}
+                                            onChange={(e) => {
+                                                handleChange(e, index);
+                                            }}
                                         />
                                     </Form.Group>
                                     <Form.Group className="mb-3">
                                         <Form.Control
+                                            id="timePeriod"
                                             type="text"
+                                            value={item.timePeriod.toUpperCase()}
                                             placeholder="TIME PERIOD (eg DEC 2021 - MAR 2022)"
+                                            onChange={(e) => {
+                                                handleChange(e, index);
+                                            }}
                                         />
                                     </Form.Group>
                                     <Form.Group className="mb-3">
                                         <Form.Control
+                                            id="location"
                                             type="text"
                                             placeholder="LOCATION"
+                                            value={item.location.toUpperCase()}
+                                            onChange={(e) => {
+                                                handleChange(e, index);
+                                            }}
                                         />
                                     </Form.Group>
                                     <Form.Group className="mb-3">
                                         <Form.Control
+                                            id="desc"
                                             as="textarea"
                                             rows="8"
+                                            value={item.desc.toUpperCase()}
                                             placeholder="JOB DESCRIPTION / TASKS / ACHIEVEMENTS"
+                                            onChange={(e) => {
+                                                handleChange(e, index);
+                                            }}
                                         />
                                     </Form.Group>
                                 </Form>
@@ -74,20 +169,21 @@ function Experience(props) {
                                 >
                                     Close
                                 </Button>
-                                <Button
-                                    type="submit"
-                                    variant="primary"
-                                    onClick={handleCloseEdit}
-                                >
-                                    Save Changes
-                                </Button>
                             </Modal.Footer>
                         </Modal>
                     </div>
                 )}
             </div>
             <div className={classes.delBtn}>
-                {props.isEdit && <DelBtn width={25} height={25} />}
+                {props.isEdit && (
+                    <DelBtn
+                        onDel={(e) => {
+                            handleDelete(e, index);
+                        }}
+                        width={25}
+                        height={25}
+                    />
+                )}
             </div>
             <Card.Body>
                 <div className={classes.titleLoc}>
@@ -120,9 +216,10 @@ function Experience(props) {
                         width={40}
                         height={40}
                         item={"experience"}
-                        handleShow={handleShowAdd}
+                        handleClick={handleClickAdd}
+                        // handleShow={handleShowAdd}
                     />
-                    <Modal show={showDialogAdd} onHide={handleCloseAdd}>
+                    {/* <Modal show={showDialogAdd} onHide={handleCloseAdd}>
                         <Modal.Header closeButton>
                             <Modal.Title>ADD EXPERIENCE</Modal.Title>
                         </Modal.Header>
@@ -176,7 +273,7 @@ function Experience(props) {
                                 Save Changes
                             </Button>
                         </Modal.Footer>
-                    </Modal>
+                    </Modal> */}
                 </div>
             )}
         </section>
