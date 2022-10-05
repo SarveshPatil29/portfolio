@@ -3,11 +3,11 @@ import React from 'react'
 const HomeFooter = () => {
   return (
     <div>
-    <div className="relative bottom-0 left-0 z-20 p-2 w-full bg-cyan-700 border-t border-gray-200 shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-cyan-900 dark:border-gray-600">
+    <div className="relative bottom-0 left-0 z-20 p-2 w-full bg-zinc-900 border-t border-gray-200 shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-zinc-700 dark:border-gray-600">
         <span className="text-l text-white sm:text-center dark:text-white">
             © 2022{" "}
             <a href="#" className="hover:underline">
-                Demeter™
+                Portfoilo-pro™
             </a>
             . All Rights Reserved.
         </span>
