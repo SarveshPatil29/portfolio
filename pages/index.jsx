@@ -2,6 +2,7 @@ import { getSession } from "next-auth/react";
 import HomeBody from "../components/HomeBody/HomeBody";
 import HomeNav from "../components/HomeNav/HomeNav";
 
+
 export default function Home() {
     return (
         <div>

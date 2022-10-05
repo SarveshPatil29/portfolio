@@ -36,9 +36,9 @@ function Skills(props) {
         });
     };
 
-    const [showDialogAdd, setShowDialogAdd] = useState(false);
-    const handleCloseAdd = () => setShowDialogAdd(false);
-    const handleShowAdd = () => setShowDialogAdd(true);
+    // const [showDialogAdd, setShowDialogAdd] = useState(false);
+    // const handleCloseAdd = () => setShowDialogAdd(false);
+    // const handleShowAdd = () => setShowDialogAdd(true);
 
     const [skills, setSkills] = useState({
         allSkills: props.data.skills,
@@ -56,20 +56,20 @@ function Skills(props) {
             return el._id !== skills.allSkills[index]._id;
         });
         setSkills({ allSkills: afterDelete });
-        console.log(skills.allSkills);
     };
 
     const newSkill = {
-        id: "",
+        _id: "",
         img: "https://res.cloudinary.com/atharva7/image/upload/v1663751031/Portfolio%20website/5651980_kfkusu.jpg",
         name: "REACT",
     };
 
     const handleClickAdd = () => {
         const addedSkillArray = skills.allSkills;
-        newSkill.id = uuidv4();
+        newSkill._id = uuidv4();
         addedSkillArray.push(newSkill);
         setSkills({ allSkills: addedSkillArray });
+        console.log(skills.allSkills);
     };
 
     const skillsList = skills.allSkills.map((item, index) => (
