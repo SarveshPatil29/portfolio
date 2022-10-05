@@ -7,7 +7,7 @@ import { signIn, signOut, useSession } from "next-auth/react";
 export default function HomeNav() {
     const { data: session, status } = useSession();
     return (
-        <Navbar fixed="top" bg="light" expand="lg" variant="light">
+        <Navbar fixed="top" bg="light" expand="lg" variant="light" className="nav">
             <Container>
                 <Navbar.Brand style={{ fontWeight: "bold" }} href="/">
                     PORTFOLIO-PRO
