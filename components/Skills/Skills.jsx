@@ -2,7 +2,7 @@ import classes from "./Skills.module.css";
 import EditBtn from "../EditBtn/EditBtn";
 import DelBtn from "../DelBtn/DelBtn";
 import AddBtn from "../AddBtn/AddBtn";
-import { useState } from "react";
+import { useState, useReducer } from "react";
 import Image from "next/image";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
@@ -10,6 +10,7 @@ import Form from "react-bootstrap/Form";
 import { v4 as uuidv4 } from "uuid";
 
 function Skills(props) {
+    const [ignored, forceUpdate] = useReducer((x) => x + 1, 0);
     const [showDialogEdit, setShowDialogEdit] = useState({
         showModal: false,
         activeModal: null,
@@ -72,6 +73,35 @@ function Skills(props) {
         console.log(skills.allSkills);
     };
 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const form = e.currentTarget;
+        const fileInput = Array.from(form.elements).find(
+            ({ name }) => name === "img"
+        );
+
+        const formData = new FormData();
+
+        for (const file of fileInput.files) {
+            formData.append("file", file);
+        }
+
+        formData.append("upload_preset", "portfolio-uploads");
+
+        const data = await fetch(
+            "https://api.cloudinary.com/v1_1/sarveshp46/image/upload",
+            {
+                method: "POST",
+                body: formData,
+            }
+        ).then((r) => r.json());
+
+        let newSkillImg = skills;
+        newAbout.introImg = data.secure_url;
+        setAbout(newAbout);
+        forceUpdate();
+    };
+
     const skillsList = skills.allSkills.map((item, index) => (
         <div key={item._id} className={classes.skill}>
             <div className={classes.editBtn}>
@@ -91,7 +121,7 @@ function Skills(props) {
                                 <Modal.Title>EDIT SKILL</Modal.Title>
                             </Modal.Header>
                             <Modal.Body>
-                                <Form>
+                                <Form onSubmit={handleSubmit}>
                                     <Form.Group className="mb-3">
                                         <Form.Control
                                             type="text"
@@ -106,23 +136,23 @@ function Skills(props) {
                                         <Form.Label>SKILL LOGO</Form.Label>
                                         <Form.Control type="file" />
                                     </Form.Group>
-                                </Form>
-                            </Modal.Body>
-                            <Modal.Footer>
-                                <Button
-                                    variant="secondary"
-                                    onClick={handleCloseEdit}
-                                >
-                                    Close
-                                </Button>
-                                {/* <Button
+                                    <Modal.Footer>
+                                        <Button
+                                            variant="secondary"
+                                            onClick={handleCloseEdit}
+                                        >
+                                            Close
+                                        </Button>
+                                        {/* <Button
                                     type="submit"
                                     variant="primary"
                                     onClick={handleSaveEdit}
                                 >
                                     Save Changes
                                 </Button> */}
-                            </Modal.Footer>
+                                    </Modal.Footer>
+                                </Form>
+                            </Modal.Body>
                         </Modal>
                     </div>
                 )}
