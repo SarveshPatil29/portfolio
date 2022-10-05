@@ -10,6 +10,7 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Card from "react-bootstrap/Card";
+import { v4 as uuidv4 } from "uuid";
 
 function Projects(props) {
     // const [showDialogEdit, setShowDialogEdit] = useState(false);
@@ -47,7 +48,7 @@ function Projects(props) {
     const changedProject = projects;
 
     const handleChange = (e, index) => {
-        console.log(e.target.id);
+        console.log(projects);
         if (e.target.id === "title") {
             changedProject.allProjects[index].title = e.target.value;
         } else if (e.target.id === "desc") {
@@ -67,21 +68,24 @@ function Projects(props) {
             return el._id !== projects.allProjects[index]._id;
         });
         setProjects({ allProjects: afterDelete });
-        console.log(projects.allProjects);
     };
 
-    const newSkill = {
+    const newProject = {
         _id: "",
-        img: "https://res.cloudinary.com/atharva7/image/upload/v1663751031/Portfolio%20website/5651980_kfkusu.jpg",
-        name: "REACT",
+        title: "PORTFOLIO PRO",
+        desc: "description",
+        appLink: "https://portfolio-sarveshpatil29.vercel.app/",
+        github: "https://github.com/SarveshPatil29/portfolio",
+        type: "Website",
+        img: "https://res.cloudinary.com/sarveshp46/image/upload/v1657120039/sample.jpg",
     };
 
     const handleClickAdd = () => {
-        const addedSkillArray = skills.allSkills;
-        newSkill._id = uuidv4();
-        addedSkillArray.push(newSkill);
-        setSkills({ allSkills: addedSkillArray });
-        console.log(skills.allSkills);
+        const addedProjectArray = projects.allProjects;
+        newProject._id = uuidv4();
+        addedProjectArray.push(newProject);
+        setProjects({ allProjects: addedProjectArray });
+        console.log(projects.allProjects);
     };
 
     const projectList = projects.allProjects.map((item, index) => (
@@ -115,7 +119,7 @@ function Projects(props) {
                                             id="title"
                                             type="text"
                                             placeholder="PROJECT TITLE"
-                                            // value={item.title.toUpperCase()}
+                                            value={item.title.toUpperCase()}
                                             onChange={(e) => {
                                                 handleChange(e, index);
                                             }}
@@ -125,6 +129,7 @@ function Projects(props) {
                                         id="type"
                                         className="mb-3"
                                         aria-label="Default select example"
+                                        value={item.type.toUpperCase()}
                                         onChange={(e) => {
                                             handleChange(e, index);
                                         }}
@@ -141,6 +146,7 @@ function Projects(props) {
                                             as="textarea"
                                             rows="8"
                                             placeholder="PROJECT DESCRIPTION"
+                                            value={item.desc.toUpperCase()}
                                             onChange={(e) => {
                                                 handleChange(e, index);
                                             }}
@@ -151,6 +157,7 @@ function Projects(props) {
                                             id="appLink"
                                             type="text"
                                             placeholder="APPLICATION LINK"
+                                            value={item.appLink}
                                             onChange={(e) => {
                                                 handleChange(e, index);
                                             }}
@@ -161,6 +168,7 @@ function Projects(props) {
                                             id="github"
                                             type="text"
                                             placeholder="GITHUB REPO LINK"
+                                            value={item.github}
                                             onChange={(e) => {
                                                 handleChange(e, index);
                                             }}
@@ -238,6 +246,7 @@ function Projects(props) {
                         width={40}
                         height={40}
                         item={"project"}
+                        handleClick={handleClickAdd}
                         // handleShow={handleShowAdd}
                     />
                     {/* <Modal show={showDialogAdd} onHide={handleCloseAdd}>
