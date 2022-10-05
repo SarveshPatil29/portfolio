@@ -2,32 +2,34 @@ import classes from "./Skills.module.css";
 import EditBtn from "../EditBtn/EditBtn";
 import DelBtn from "../DelBtn/DelBtn";
 import AddBtn from "../AddBtn/AddBtn";
-import { useState } from "react";
+import { useState, useReducer } from "react";
 import Image from "next/image";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import { v4 as uuidv4 } from "uuid";
 
 function Skills(props) {
+    const [ignored, forceUpdate] = useReducer((x) => x + 1, 0);
     const [showDialogEdit, setShowDialogEdit] = useState({
         showModal: false,
         activeModal: null,
     });
 
     const handleCloseEdit = () => {
-        setUpdatedSkills(skills);
+        // setUpdatedSkills(skills);
         setShowDialogEdit({
             showModal: false,
             activeModal: null,
         });
     };
-    const handleSaveEdit = () => {
-        setSkills(updatedSkills);
-        setShowDialogEdit({
-            showModal: false,
-            activeModal: null,
-        });
-    };
+    // const handleSaveEdit = () => {
+    //     setSkills(updatedSkills);
+    //     setShowDialogEdit({
+    //         showModal: false,
+    //         activeModal: null,
+    //     });
+    // };
     const handleShowEdit = (e, index) => {
         setShowDialogEdit({
             showModal: true,
@@ -35,24 +37,69 @@ function Skills(props) {
         });
     };
 
-    const [showDialogAdd, setShowDialogAdd] = useState(false);
-    const handleCloseAdd = () => setShowDialogAdd(false);
-    const handleShowAdd = () => setShowDialogAdd(true);
+    // const [showDialogAdd, setShowDialogAdd] = useState(false);
+    // const handleCloseAdd = () => setShowDialogAdd(false);
+    // const handleShowAdd = () => setShowDialogAdd(true);
 
-    const allSkillsList = props.data.skills;
-    const [skills, setSkills] = useState({ allSkills: props.data.skills });
-
-    const [updatedSkills, setUpdatedSkills] = useState({
+    const [skills, setSkills] = useState({
         allSkills: props.data.skills,
     });
 
-    const [allSkillsNew, setAllSkillsNew] = useState(updatedSkills);
+    const changedSkill = skills;
 
     const handleChange = (e, index) => {
-        console.log(updatedSkills.allSkills);
-        allSkillsNew.allSkills[index].name = e.target.value;
-        console.log(updatedSkills.allSkills);
-        // setUpdatedSkills({ allSkills: allSkillsNew.allSkills });
+        changedSkill.allSkills[index].name = e.target.value;
+        setSkills({ allSkills: changedSkill.allSkills });
+    };
+
+    const handleDelete = (e, index) => {
+        const afterDelete = skills.allSkills.filter(function (el) {
+            return el._id !== skills.allSkills[index]._id;
+        });
+        setSkills({ allSkills: afterDelete });
+    };
+
+    const newSkill = {
+        _id: "",
+        img: "https://res.cloudinary.com/atharva7/image/upload/v1663751031/Portfolio%20website/5651980_kfkusu.jpg",
+        name: "REACT",
+    };
+
+    const handleClickAdd = () => {
+        const addedSkillArray = skills.allSkills;
+        newSkill._id = uuidv4();
+        addedSkillArray.push(newSkill);
+        setSkills({ allSkills: addedSkillArray });
+        console.log(skills.allSkills);
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const form = e.currentTarget;
+        const fileInput = Array.from(form.elements).find(
+            ({ name }) => name === "img"
+        );
+
+        const formData = new FormData();
+
+        for (const file of fileInput.files) {
+            formData.append("file", file);
+        }
+
+        formData.append("upload_preset", "portfolio-uploads");
+
+        const data = await fetch(
+            "https://api.cloudinary.com/v1_1/sarveshp46/image/upload",
+            {
+                method: "POST",
+                body: formData,
+            }
+        ).then((r) => r.json());
+
+        let newSkillImg = skills;
+        newAbout.introImg = data.secure_url;
+        setAbout(newAbout);
+        forceUpdate();
     };
 
     const skillsList = skills.allSkills.map((item, index) => (
@@ -74,7 +121,7 @@ function Skills(props) {
                                 <Modal.Title>EDIT SKILL</Modal.Title>
                             </Modal.Header>
                             <Modal.Body>
-                                <Form>
+                                <Form onSubmit={handleSubmit}>
                                     <Form.Group className="mb-3">
                                         <Form.Control
                                             type="text"
@@ -89,29 +136,37 @@ function Skills(props) {
                                         <Form.Label>SKILL LOGO</Form.Label>
                                         <Form.Control type="file" />
                                     </Form.Group>
-                                </Form>
-                            </Modal.Body>
-                            <Modal.Footer>
-                                <Button
-                                    variant="secondary"
-                                    onClick={handleCloseEdit}
-                                >
-                                    Close
-                                </Button>
-                                <Button
+                                    <Modal.Footer>
+                                        <Button
+                                            variant="secondary"
+                                            onClick={handleCloseEdit}
+                                        >
+                                            Close
+                                        </Button>
+                                        {/* <Button
                                     type="submit"
                                     variant="primary"
                                     onClick={handleSaveEdit}
                                 >
                                     Save Changes
-                                </Button>
-                            </Modal.Footer>
+                                </Button> */}
+                                    </Modal.Footer>
+                                </Form>
+                            </Modal.Body>
                         </Modal>
                     </div>
                 )}
             </div>
             <div className={classes.delBtn}>
-                {props.isEdit && <DelBtn width={25} height={25} />}
+                {props.isEdit && (
+                    <DelBtn
+                        onDel={(e) => {
+                            handleDelete(e, index);
+                        }}
+                        width={25}
+                        height={25}
+                    />
+                )}
             </div>
             <div className={classes.skillImg}>
                 <Image width={75} height={75} src={item.img} alt="react logo" />
@@ -119,6 +174,16 @@ function Skills(props) {
             <h2>{item.name.toUpperCase()}</h2>
         </div>
     ));
+
+    const changedNewSkill = newSkill;
+
+    const handleChangeAdd = (e) => {
+        newSkill.name = e.target.value;
+        // setNewSkill(changedNewSkill);
+        console.log(newSkill);
+    };
+
+    // skills.allSkills.push(newSkill);
 
     return (
         <section>
@@ -132,9 +197,10 @@ function Skills(props) {
                         width={40}
                         height={40}
                         item={"skill"}
-                        handleShow={handleShowAdd}
+                        handleClick={handleClickAdd}
+                        // handleShow={handleShowAdd}
                     />
-                    <Modal show={showDialogAdd} onHide={handleCloseAdd}>
+                    {/* <Modal show={showDialogAdd} onHide={handleCloseAdd}>
                         <Modal.Header closeButton>
                             <Modal.Title>ADD SKILL</Modal.Title>
                         </Modal.Header>
@@ -144,6 +210,10 @@ function Skills(props) {
                                     <Form.Control
                                         type="text"
                                         placeholder="SKILL NAME"
+                                        value={newSkill.name}
+                                        onChange={(e) => {
+                                            handleChangeAdd(e);
+                                        }}
                                     />
                                 </Form.Group>
                                 <Form.Group className="mb-3">
@@ -167,7 +237,7 @@ function Skills(props) {
                                 Save Changes
                             </Button>
                         </Modal.Footer>
-                    </Modal>
+                    </Modal> */}
                 </div>
             )}
         </section>
