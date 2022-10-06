@@ -103,10 +103,10 @@ function AboutMe(props) {
         ).then((r) => r.json());
         console.log(data.secure_url);
 
+        let newAbout = about;
         newAbout.aboutMeImg = data.secure_url;
         setAbout(newAbout);
         forceUpdate();
-        console.log(about);
     };
     return (
         <div>

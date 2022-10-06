@@ -48,8 +48,13 @@ function Skills(props) {
     const changedSkill = skills;
 
     const handleChange = (e, index) => {
-        changedSkill.allSkills[index].name = e.target.value;
+        if (e.target.id === "name") {
+            changedSkill.allSkills[index].name = e.target.value;
+        } else if (e.target.id === "img") {
+            changedSkill.allSkills[index].img = e.target.value;
+        }
         setSkills({ allSkills: changedSkill.allSkills });
+        console.log(skills);
     };
 
     const handleDelete = (e, index) => {
@@ -73,35 +78,6 @@ function Skills(props) {
         console.log(skills.allSkills);
     };
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        const form = e.currentTarget;
-        const fileInput = Array.from(form.elements).find(
-            ({ name }) => name === "img"
-        );
-
-        const formData = new FormData();
-
-        for (const file of fileInput.files) {
-            formData.append("file", file);
-        }
-
-        formData.append("upload_preset", "portfolio-uploads");
-
-        const data = await fetch(
-            "https://api.cloudinary.com/v1_1/sarveshp46/image/upload",
-            {
-                method: "POST",
-                body: formData,
-            }
-        ).then((r) => r.json());
-
-        let newSkillImg = skills;
-        newAbout.introImg = data.secure_url;
-        setAbout(newAbout);
-        forceUpdate();
-    };
-
     const skillsList = skills.allSkills.map((item, index) => (
         <div key={item._id} className={classes.skill}>
             <div className={classes.editBtn}>
@@ -121,9 +97,10 @@ function Skills(props) {
                                 <Modal.Title>EDIT SKILL</Modal.Title>
                             </Modal.Header>
                             <Modal.Body>
-                                <Form onSubmit={handleSubmit}>
+                                <Form>
                                     <Form.Group className="mb-3">
                                         <Form.Control
+                                            id="name"
                                             type="text"
                                             placeholder="SKILL NAME"
                                             value={item.name.toUpperCase()}
@@ -132,9 +109,21 @@ function Skills(props) {
                                             }}
                                         />
                                     </Form.Group>
-                                    <Form.Group className="mb-3">
+                                    {/* <Form.Group className="mb-3">
                                         <Form.Label>SKILL LOGO</Form.Label>
                                         <Form.Control type="file" />
+                                    </Form.Group> */}
+                                    <Form.Group className="mb-3">
+                                        <Form.Label>SKILL LOGO</Form.Label>
+                                        <Form.Control
+                                            id="img"
+                                            type="text"
+                                            placeholder="SKILL LOGO URL"
+                                            value={item.img}
+                                            onChange={(e) => {
+                                                handleChange(e, index);
+                                            }}
+                                        />
                                     </Form.Group>
                                     <Modal.Footer>
                                         <Button

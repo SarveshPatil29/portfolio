@@ -48,7 +48,6 @@ function Projects(props) {
     const changedProject = projects;
 
     const handleChange = (e, index) => {
-        console.log(projects);
         if (e.target.id === "title") {
             changedProject.allProjects[index].title = e.target.value;
         } else if (e.target.id === "desc") {
@@ -59,6 +58,8 @@ function Projects(props) {
             changedProject.allProjects[index].github = e.target.value;
         } else if (e.target.id === "type") {
             changedProject.allProjects[index].type = e.target.value;
+        } else if (e.target.id === "img") {
+            changedProject.allProjects[index].img = e.target.value;
         }
         setProjects({ allProjects: changedProject.allProjects });
     };
@@ -174,9 +175,21 @@ function Projects(props) {
                                             }}
                                         />
                                     </Form.Group>
-                                    <Form.Group className="mb-3">
+                                    {/* <Form.Group className="mb-3">
                                         <Form.Label>PROJECT IMAGE</Form.Label>
                                         <Form.Control type="file" />
+                                    </Form.Group> */}
+                                    <Form.Group className="mb-3">
+                                        <Form.Label>PROJECT IMAGE</Form.Label>
+                                        <Form.Control
+                                            id="img"
+                                            type="text"
+                                            placeholder="PROJECT IMAGE URL"
+                                            value={item.img}
+                                            onChange={(e) => {
+                                                handleChange(e, index);
+                                            }}
+                                        />
                                     </Form.Group>
                                 </Form>
                             </Modal.Body>
