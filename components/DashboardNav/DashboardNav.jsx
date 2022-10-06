@@ -3,7 +3,7 @@ import { Transition } from "@headlessui/react";
 import Image from "next/image";
 import Button from "react-bootstrap/Button";
 
-const HomeNavbar = () => {
+const DashboardNav = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div>
@@ -33,52 +33,21 @@ const HomeNavbar = () => {
                   <li>
                     <a
                       href="/"
-                      className="duration-0 block rounded py-2 pr-4 pl-3 text-xl text-gray-100 transition hover:scale-125 hover:bg-gray-100 hover:duration-150 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-white"
+                      className="duration-0 block rounded py-2 pr-4 pl-3 text-xl text-gray-100 transition hover:scale-110 hover:bg-gray-100 hover:duration-150 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-white"
                       aria-current="page"
                     >
                       Home
                     </a>
                   </li>
-                  {/* <li>
-                                            <a
-                                                href="#"
-                                                className="block rounded py-2 pr-4 pl-3 text-2xl text-gray-700 hover:scale-125 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-white"
-                                            >
-                                                About Us
-                                            </a>
-                                        </li> */}
-                  {/* <li>
+                  <li>
                     <a
-                      href="/signin"
-                      className="duration-0 block rounded py-2 pr-4 pl-3 text-xl text-gray-100 transition hover:scale-125 hover:bg-gray-100 hover:duration-150 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-white"
+                      href="/edit"
+                      className="duration-0 block rounded py-2 pr-4 pl-3 text-xl text-gray-100 transition hover:scale-110 hover:bg-gray-100 hover:duration-150 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-white"
+                      aria-current="page"
                     >
-                      SIGN IN
+                      START WITH THIS DESIGN
                     </a>
-                  </li> */}
-                  {/* <li>
-                                            <a
-                                                href="/Crop"
-                                                className="duration-0 block rounded py-2 pr-4 pl-3 text-xl text-gray-100 transition hover:scale-125 hover:bg-gray-100 hover:duration-150 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-white"
-                                            >
-                                                Crop
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a
-                                                href="/Fertilizer"
-                                                className="duration-0 block rounded py-2 pr-4 pl-3 text-xl text-gray-100 transition hover:scale-125 hover:bg-gray-100 hover:duration-150 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-white"
-                                            >
-                                                Fertilizer
-                                            </a>
-                                        </li> */}
-                  {/* <li>
-                                            <a
-                                                href="/Profit"
-                                                className="duration-0 block rounded py-2 pr-4 pl-3 text-xl text-gray-100 transition hover:scale-125 hover:bg-gray-100 hover:duration-150 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-white"
-                                            >
-                                                Profit
-                                            </a>
-                                        </li> */}
+                  </li>
                   <li>
                     {/* <a
                       href="/dashboard"
@@ -86,13 +55,22 @@ const HomeNavbar = () => {
                     >
                       Weather
                     </a> */}
-                    <Button
-                      variant="light"
-                      href="/dashboard"
+                     {/* <Button
+                      variant="dark"
+                      href="/edit"
                       className="mt-1 text-gray-100 bg-gray-500 hover:bg-white active:bg-white focus:outline-none focus:ring focus:ring-cyan-300"
                     >
-                      GET STARTED
+                      START WITH THIS DESIGN
+                    </Button> */}
+                    <Button
+                      variant="light"
+                      href="/api/auth/signout"
+                      className="mt-1 text-gray-100 bg-gray-500 hover:bg-white active:bg-white focus:outline-none focus:ring focus:ring-cyan-300"
+                    >
+                      LOG OUT
                     </Button>
+
+                   
                   </li>
                 </ul>
               </div>
@@ -171,47 +149,28 @@ const HomeNavbar = () => {
                     >
                       Home
                     </a>
-
-                {/* <a
-                                        href="#"
-                                        className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
-                                    >
-                                        About Us
-                                    </a> */}
-
+                    <a
+                      href="/edit"
+                      className="duration-0 block rounded py-2 pr-4 pl-3 text-xl text-gray-100 transition hover:scale-110 hover:bg-gray-100 hover:duration-150 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-white"
+                      aria-current="page"
+                    >
+                      START WITH THIS DESIGN
+                    </a>
+                    <Button
+                      variant="light"
+                      href="/api/auth/signout"
+                      className="mt-1 text-gray-100 bg-gray-500 hover:bg-white active:bg-white focus:outline-none focus:ring focus:ring-cyan-300"
+                    >
+                      LOG OUT
+                    </Button>
+{/* 
                     <Button
                       variant="dark"
-                      href="/dashboard"
-                      className="mt-1 hover:scale-125 hover:bg-gray-100 hover:duration-150 dark:hover:text-white md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-white"
+                      href="/edit"
+                      className="mt-1 text-gray-100 bg-gray-500 hover:bg-white active:bg-white focus:outline-none focus:ring focus:ring-cyan-300"
                     >
-                      GET STARTED
-                    </Button>
-                {/* <a
-                  href="/Crop"
-                  className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
-                >
-                  Crop
-                </a>
-
-                <a
-                  href="/Fertilizer"
-                  className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
-                >
-                  Fertilizer
-                </a> */}
-                {/* <a
-                                        href="/Profit"
-                                        className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
-                                    >
-                                        Profit
-                                    </a> */}
-
-                {/* <a
-                  href="/Weather"
-                  className="duration-0 block rounded py-2 pr-4 pl-3 text-xl text-gray-100 transition hover:scale-125 hover:bg-gray-100 hover:duration-150 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-white"
-                >
-                  Weather
-                </a> */}
+                      START WITH THIS DESIGN
+                    </Button> */}
               </div>
             </div>
           )}
@@ -221,4 +180,4 @@ const HomeNavbar = () => {
   );
 };
 
-export default HomeNavbar;
+export default DashboardNav;

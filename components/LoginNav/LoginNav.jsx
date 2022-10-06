@@ -3,7 +3,7 @@ import { Transition } from "@headlessui/react";
 import Image from "next/image";
 import Button from "react-bootstrap/Button";
 
-const HomeNavbar = () => {
+const LoginNav = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div>
@@ -87,7 +87,7 @@ const HomeNavbar = () => {
                       Weather
                     </a> */}
                     <Button
-                      variant="white"
+                      variant="dark"
                       href="/register"
                       className="mt-1 text-gray-100 bg-violet-500 hover:bg-white active:bg-white focus:outline-none focus:ring focus:ring-violet-300"
                     >
@@ -180,7 +180,7 @@ const HomeNavbar = () => {
                                     </a> */}
 
                 <Button
-                  variant="white"
+                  variant="dark"
                   href="/register"
                   className="mt-1 text-gray-100 bg-violet-500 hover:bg-white active:bg-white focus:outline-none focus:ring focus:ring-violet-300"
                 >
@@ -209,4 +209,4 @@ const HomeNavbar = () => {
     // </Navbar>
   );
 };
-export default HomeNavbar;
+export default LoginNav;

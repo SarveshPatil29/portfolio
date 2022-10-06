@@ -1,4 +1,5 @@
 import DashboardBody from "../components/DashboardBody/DashboardBody";
+import DashboardNav from "../components/DashboardNav/DashboardNav";
 import { signIn, useSession, getSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -26,6 +27,7 @@ export default function Dashboard(props) {
 
     return (
         <section>
+            <DashboardNav />
             <h1 style={{ marginTop: 100, textAlign: "center" }}>
                 WELCOME{" "}
                 {status === "authenticated"
