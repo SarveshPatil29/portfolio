@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Transition } from "@headlessui/react";
 import Image from "next/image";
 import Button from "react-bootstrap/Button";
+import Link from "next/link";
 
 const DashboardNav = (props) => {
     console.log(props.url);
@@ -13,18 +14,20 @@ const DashboardNav = (props) => {
                     <div className=" h-25 flex items-center justify-between">
                         <div className="flex items-center">
                             <div className="flex-shrink-0 ">
-                                <a href="/" className="flex items-center">
-                                    <Image
-                                        src="https://res.cloudinary.com/drr7rbizq/image/upload/v1664977190/logo-removebg-preview_1_jhx4kw.png"
-                                        className="mr-3 h-12 animate-pulse sm:h-24"
-                                        height={95}
-                                        width={95}
-                                        alt="Portfolio Logo"
-                                    />
-                                    <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">
-                                        PORTFOLIO-PRO
-                                    </span>
-                                </a>
+                                <Link href="/">
+                                    <a className="flex items-center">
+                                        <Image
+                                            src="https://res.cloudinary.com/drr7rbizq/image/upload/v1664977190/logo-removebg-preview_1_jhx4kw.png"
+                                            className="mr-3 h-12 animate-pulse sm:h-24"
+                                            height={95}
+                                            width={95}
+                                            alt="Portfolio Logo"
+                                        />
+                                        <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">
+                                            PORTFOLIO-PRO
+                                        </span>
+                                    </a>
+                                </Link>
                             </div>
                             <div
                                 className="hidden w-full md:block md:w-auto"
@@ -32,31 +35,34 @@ const DashboardNav = (props) => {
                             >
                                 <ul className="absolute right-0 top-7 flex flex-col rounded-lg bg-gray-50 mr-7 mb-3 dark:border-gray-700 dark:bg-gray-800 md:mt-0 md:flex-row md:space-x-8 md:border-0 md:bg-white md:text-sm md:font-medium md:dark:bg-zinc-900">
                                     <li>
-                                        <a
-                                            href="/"
-                                            className="duration-0 block rounded py-2 pr-4 pl-3 text-xl text-gray-100 transition hover:scale-110 hover:bg-gray-100 hover:duration-150 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-white"
-                                            aria-current="page"
-                                        >
-                                            Home
-                                        </a>
+                                        <Link href="/">
+                                            <a
+                                                className="duration-0 block rounded py-2 pr-4 pl-3 text-xl text-gray-100 transition hover:scale-110 hover:bg-gray-100 hover:duration-150 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-white"
+                                                aria-current="page"
+                                            >
+                                                Home
+                                            </a>
+                                        </Link>
                                     </li>
                                     <li>
-                                        <a
-                                            href={props.url}
-                                            className="duration-0 block rounded py-2 pr-4 pl-3 text-xl text-gray-100 transition hover:scale-110 hover:bg-gray-100 hover:duration-150 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-white"
-                                            aria-current="page"
-                                        >
-                                            VIEW PORTFOLIO
-                                        </a>
+                                        <Link href={props.url}>
+                                            <a
+                                                className="duration-0 block rounded py-2 pr-4 pl-3 text-xl text-gray-100 transition hover:scale-110 hover:bg-gray-100 hover:duration-150 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-white"
+                                                aria-current="page"
+                                            >
+                                                VIEW PORTFOLIO
+                                            </a>
+                                        </Link>
                                     </li>
                                     <li>
-                                        <a
-                                            href="/edit"
-                                            className="duration-0 block rounded py-2 pr-4 pl-3 text-xl text-gray-100 transition hover:scale-110 hover:bg-gray-100 hover:duration-150 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-white"
-                                            aria-current="page"
-                                        >
-                                            EDIT PORTFOLIO
-                                        </a>
+                                        <Link href="/edit">
+                                            <a
+                                                className="duration-0 block rounded py-2 pr-4 pl-3 text-xl text-gray-100 transition hover:scale-110 hover:bg-gray-100 hover:duration-150 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-white"
+                                                aria-current="page"
+                                            >
+                                                EDIT PORTFOLIO
+                                            </a>
+                                        </Link>
                                     </li>
                                     <li>
                                         {/* <a
@@ -95,7 +101,7 @@ const DashboardNav = (props) => {
                                 data-collapse-toggle="navbar-default"
                                 onClick={() => setIsOpen(!isOpen)}
                                 type="button"
-                                class="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                                className="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
                                 aria-controls="navbar-default"
                                 aria-expanded="false"
                             >
@@ -153,27 +159,30 @@ const DashboardNav = (props) => {
                                 ref={ref}
                                 className="space-y-1 px-2 pt-2 pb-3 sm:px-3"
                             >
-                                <a
-                                    href="/"
-                                    className="duration-0 block rounded py-2 pr-4 pl-3 text-xl text-gray-100 transition hover:scale-125 hover:bg-gray-100 hover:duration-150 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-white"
-                                    aria-current="page"
-                                >
-                                    Home
-                                </a>
-                                <a
-                                    href={props.url}
-                                    className="duration-0 block rounded py-2 pr-4 pl-3 text-xl text-gray-100 transition hover:scale-110 hover:bg-gray-100 hover:duration-150 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-white"
-                                    aria-current="page"
-                                >
-                                    VIEW PORTFOLIO
-                                </a>
-                                <a
-                                    href="/edit"
-                                    className="duration-0 block rounded py-2 pr-4 pl-3 text-xl text-gray-100 transition hover:scale-110 hover:bg-gray-100 hover:duration-150 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-white"
-                                    aria-current="page"
-                                >
-                                    EDIT PORTFOLIO
-                                </a>
+                                <Link href="/">
+                                    <a
+                                        className="duration-0 block rounded py-2 pr-4 pl-3 text-xl text-gray-100 transition hover:scale-125 hover:bg-gray-100 hover:duration-150 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-white"
+                                        aria-current="page"
+                                    >
+                                        Home
+                                    </a>
+                                </Link>
+                                <Link href={props.url}>
+                                    <a
+                                        className="duration-0 block rounded py-2 pr-4 pl-3 text-xl text-gray-100 transition hover:scale-110 hover:bg-gray-100 hover:duration-150 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-white"
+                                        aria-current="page"
+                                    >
+                                        VIEW PORTFOLIO
+                                    </a>
+                                </Link>
+                                <Link href="/edit">
+                                    <a
+                                        className="duration-0 block rounded py-2 pr-4 pl-3 text-xl text-gray-100 transition hover:scale-110 hover:bg-gray-100 hover:duration-150 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-white"
+                                        aria-current="page"
+                                    >
+                                        EDIT PORTFOLIO
+                                    </a>
+                                </Link>
                                 <Button
                                     variant="light"
                                     href="/api/auth/signout"
