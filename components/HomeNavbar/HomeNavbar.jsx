@@ -3,7 +3,7 @@ import { Transition } from "@headlessui/react";
 import Image from "next/image";
 import Button from "react-bootstrap/Button";
 
-const LoginNav = () => {
+const HomeNavbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div>
@@ -87,11 +87,11 @@ const LoginNav = () => {
                       Weather
                     </a> */}
                     <Button
-                      variant="dark"
-                      href="/register"
-                      className="mt-1 text-gray-100 bg-violet-500 hover:bg-white active:bg-white focus:outline-none focus:ring focus:ring-violet-300"
+                      variant="light"
+                      href="/dashboard"
+                      className="mt-1 text-gray-100 bg-gray-500 hover:bg-white active:bg-white focus:outline-none focus:ring focus:ring-cyan-300"
                     >
-                      CREATE ACCOUNT
+                      GET STARTED
                     </Button>
                   </li>
                 </ul>
@@ -164,13 +164,13 @@ const LoginNav = () => {
           {(ref) => (
             <div className="md:hidden" id="mobile-menu">
               <div ref={ref} className="space-y-1 px-2 pt-2 pb-3 sm:px-3">
-                <a
-                  href="/"
-                  className="duration-0 block rounded py-2 pr-4 pl-3 text-xl text-gray-100 transition hover:scale-125 hover:bg-gray-100 hover:duration-150 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-white"
-                  aria-current="page"
-                >
-                  Home
-                </a>
+              <a
+                      href="/"
+                      className="duration-0 block rounded py-2 pr-4 pl-3 text-xl text-gray-100 transition hover:scale-125 hover:bg-gray-100 hover:duration-150 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-white"
+                      aria-current="page"
+                    >
+                      Home
+                    </a>
 
                 {/* <a
                                         href="#"
@@ -179,34 +179,46 @@ const LoginNav = () => {
                                         About Us
                                     </a> */}
 
-                <Button
-                  variant="dark"
-                  href="/register"
-                  className="mt-1 text-gray-100 bg-violet-500 hover:bg-white active:bg-white focus:outline-none focus:ring focus:ring-violet-300"
+                    <Button
+                      variant="dark"
+                      href="/dashboard"
+                      className="mt-1 hover:scale-125 hover:bg-gray-100 hover:duration-150 dark:hover:text-white md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-white"
+                    >
+                      GET STARTED
+                    </Button>
+                {/* <a
+                  href="/Crop"
+                  className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
                 >
-                  CREATE ACCOUNT
-                </Button>
+                  Crop
+                </a>
+
+                <a
+                  href="/Fertilizer"
+                  className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
+                >
+                  Fertilizer
+                </a> */}
+                {/* <a
+                                        href="/Profit"
+                                        className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
+                                    >
+                                        Profit
+                                    </a> */}
+
+                {/* <a
+                  href="/Weather"
+                  className="duration-0 block rounded py-2 pr-4 pl-3 text-xl text-gray-100 transition hover:scale-125 hover:bg-gray-100 hover:duration-150 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-white"
+                >
+                  Weather
+                </a> */}
               </div>
             </div>
           )}
         </Transition>
       </nav>
     </div>
-
-    // <Navbar fixed="top" bg="light" expand="lg" variant="light">
-    //     <Container>
-    //         <Navbar.Brand style={{ fontWeight: "bold" }} href="/">
-    //             PORTFOLIO-PRO
-    //         </Navbar.Brand>
-    //         <Navbar.Toggle aria-controls="basic-navbar-nav" />
-    //         <Navbar.Collapse id="basic-navbar-nav">
-    //             <Nav className="me-auto"></Nav>
-    //             <Nav className="">
-    //                 <Nav.Link href="/register">CREATE ACCOUNT</Nav.Link>
-    //             </Nav>
-    //         </Navbar.Collapse>
-    //     </Container>
-    // </Navbar>
   );
 };
-export default LoginNav;
+
+export default HomeNavbar;
