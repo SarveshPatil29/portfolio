@@ -27,7 +27,7 @@ export default function Dashboard(props) {
 
     return (
         <section>
-            <DashboardNav />
+            <DashboardNav url={props.userId} />
             <h1 style={{ marginTop: 100, textAlign: "center" }}>
                 WELCOME{" "}
                 {status === "authenticated"
