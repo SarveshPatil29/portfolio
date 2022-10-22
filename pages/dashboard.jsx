@@ -44,11 +44,10 @@ export async function getServerSideProps(context) {
     const session = await getSession(context);
     let userId = null;
     let isAdmin = false;
+    const domainUrl = process.env.DOMAIN_URL;
     if (session) {
         await axios
-            .get(
-                `http://localhost:3000/api/user-email?email=${session.user.email}`
-            )
+            .get(`${domainUrl}/api/user-email?email=${session.user.email}`)
             .then((res) => {
                 userId = res.data._id;
                 if (res.data.isAdmin) {
