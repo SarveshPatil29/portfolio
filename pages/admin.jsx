@@ -9,7 +9,12 @@ import { getSession } from "next-auth/react";
 
 const admin = (props) => {
     const allUsers = props.allUsers.map((user) => (
-        <UserCard id={user._id} name={user.name} img={user.img} />
+        <UserCard
+            key={user._id}
+            id={user._id}
+            name={user.name}
+            img={user.img}
+        />
     ));
     return (
         <Layout>
@@ -19,10 +24,10 @@ const admin = (props) => {
             )}
             {!props.isAdmin && (
                 <div
-                    class="text-center mt-4 p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800"
+                    className="text-center mt-4 p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800"
                     role="alert"
                 >
-                    <span class="font-medium">
+                    <span className="font-medium">
                         YOU HAVE NOT BEEN ASSIGNED ADMIN ROLE. PLEASE CONTACT
                         THE DEVELOPER FOR MORE DETAILS
                     </span>
