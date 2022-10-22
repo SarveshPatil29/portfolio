@@ -1,37 +1,40 @@
 import React from "react";
 
 const HomeFooter = () => {
-  return (
-    <div>
-      <div className="mt-0 relative bottom-0 left-0 z-20 p-2 w-full bg-zinc-900 border-t border-gray-200 shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-zinc-700 dark:border-gray-600">
-        <span className="text-l text-white sm:text-center dark:text-white">
-          © 2022{" "}
-          <a href="#" className="hover:underline">
-            PORTFOLIO-PRO™
-          </a>
-           . All Rights Reserved.
-        </span>
+    return (
+        <div>
+            <div className="fixed mt-0 bottom-0 left-0 z-20 p-2 w-full bg-zinc-900 border-t border-gray-200 shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-zinc-700 dark:border-gray-600">
+                <span className="text-l text-white sm:text-center dark:text-white">
+                    © 2022{" "}
+                    <a href="#" className="hover:underline">
+                        PORTFOLIO-PRO™
+                    </a>
+                    . All Rights Reserved.
+                </span>
 
-        <ul className="flex flex-wrap items-center mt-3 text-sm text-gray-500 dark:text-gray-400 sm:mt-0">
-          <li>
-            <a href="#" className="text-sm mr-4 hover:underline md:mr-6">
-              About
-            </a>
-          </li>
-          <li>
-            <a href="#" className="mr-4 hover:underline md:mr-6">
-              Privacy Policy
-            </a>
-          </li>
-          <li>
-            <a href="#" className="mr-4 hover:underline md:mr-6">
-              Licensing
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  );
+                <ul className="flex flex-wrap items-center mt-3 text-sm text-gray-500 dark:text-gray-400 sm:mt-0">
+                    <li>
+                        <a
+                            href="#"
+                            className="text-sm mr-4 hover:underline md:mr-6"
+                        >
+                            About
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" className="mr-4 hover:underline md:mr-6">
+                            Privacy Policy
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" className="mr-4 hover:underline md:mr-6">
+                            Licensing
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    );
 };
 
 export default HomeFooter;

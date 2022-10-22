@@ -27,7 +27,7 @@ export default function Dashboard(props) {
 
     return (
         <section>
-            <DashboardNav url={props.userId} />
+            <DashboardNav isAdmin={props.isAdmin} url={props.userId} />
             <h1 style={{ marginTop: 100, textAlign: "center" }}>
                 WELCOME{" "}
                 {status === "authenticated"
@@ -43,6 +43,7 @@ export default function Dashboard(props) {
 export async function getServerSideProps(context) {
     const session = await getSession(context);
     let userId = null;
+    let isAdmin = false;
     if (session) {
         await axios
             .get(
@@ -50,6 +51,9 @@ export async function getServerSideProps(context) {
             )
             .then((res) => {
                 userId = res.data._id;
+                if (res.data.isAdmin) {
+                    isAdmin = res.data.isAdmin;
+                }
             })
             .catch((err) => {
                 console.log("err", err);
@@ -59,6 +63,7 @@ export async function getServerSideProps(context) {
         props: {
             session,
             userId,
+            isAdmin,
         },
     };
 }

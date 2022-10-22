@@ -5,16 +5,14 @@ import Footer from "../components/Footer/Footer";
 import HomeFooter from "../components/HomeFooter";
 import Layout from "../components/Layout";
 
-
 export default function Home() {
     return (
         <div>
             <Layout>
-            <HomeNavbar />
-            <HomeBody />
-            <HomeFooter />
+                <HomeNavbar />
+                <HomeBody />
+                <HomeFooter />
             </Layout>
-            
         </div>
     );
 }

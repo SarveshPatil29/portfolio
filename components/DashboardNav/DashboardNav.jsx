@@ -40,10 +40,22 @@ const DashboardNav = (props) => {
                                                 className="duration-0 block rounded py-2 pr-4 pl-3 text-xl text-gray-100 transition hover:scale-110 hover:bg-gray-100 hover:duration-150 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-white"
                                                 aria-current="page"
                                             >
-                                                Home
+                                                HOME
                                             </a>
                                         </Link>
                                     </li>
+                                    {props.isAdmin && (
+                                        <li>
+                                            <Link href="/admin">
+                                                <a
+                                                    className="duration-0 block rounded py-2 pr-4 pl-3 text-xl text-gray-100 transition hover:scale-110 hover:bg-gray-100 hover:duration-150 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-white"
+                                                    aria-current="page"
+                                                >
+                                                    VIEW ADMIN PANEL
+                                                </a>
+                                            </Link>
+                                        </li>
+                                    )}
                                     <li>
                                         <Link href={props.url}>
                                             <a
