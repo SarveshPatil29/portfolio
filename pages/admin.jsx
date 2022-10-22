@@ -14,6 +14,7 @@ const admin = (props) => {
             id={user._id}
             name={user.name}
             img={user.img}
+            domainUrl={props.domainUrl}
         />
     ));
     return (
@@ -40,13 +41,13 @@ const admin = (props) => {
 
 export async function getServerSideProps(context) {
     const session = await getSession(context);
+
+    const domainUrl = process.env.DOMAIN_URL;
     // let userId = null;
     let isAdmin = false;
     if (session) {
         await axios
-            .get(
-                `http://localhost:3000/api/user-email?email=${session.user.email}`
-            )
+            .get(`${domainUrl}/api/user-email?email=${session.user.email}`)
             .then((res) => {
                 // userId = res.data._id;
                 if (res.data.isAdmin) {
@@ -60,13 +61,14 @@ export async function getServerSideProps(context) {
 
     let allUsers = [];
     if (isAdmin) {
-        await axios.get("http://localhost:3000/api/allUsers").then((res) => {
+        await axios.get(`${domainUrl}/api/allUsers`).then((res) => {
             console.log(res.data);
             allUsers = res.data;
         });
     }
+
     return {
-        props: { allUsers, isAdmin }, // will be passed to the page component as props
+        props: { allUsers, isAdmin, domainUrl }, // will be passed to the page component as props
     };
 }
 

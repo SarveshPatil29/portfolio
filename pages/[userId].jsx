@@ -27,8 +27,9 @@ export default function UserName(props) {
 export async function getServerSideProps({ resolvedUrl }) {
     const id = resolvedUrl.slice(1);
     let userData = null;
+    const domainUrl = process.env.DOMAIN_URL;
     await axios
-        .get(`http://localhost:3000/api/user-profile?id=${id}`)
+        .get(`${domainUrl}/api/user-profile?id=${id}`)
         .then((res) => {
             userData = res.data;
         })

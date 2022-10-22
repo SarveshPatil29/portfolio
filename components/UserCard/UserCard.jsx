@@ -1,6 +1,7 @@
 import React from "react";
 
 const UserCard = (props) => {
+    console.log(process.env.DOMAIN_URL);
     return (
         <div key={props.key} className="mx-5 my-2">
             <div className="max-w-sm rounded overflow-hidden shadow-lg w-64 break-all">
@@ -13,8 +14,8 @@ const UserCard = (props) => {
                     <div className="font-bold text-xl mb-2">{props.name}</div>
                     <p className="text-gray-700 text-base">
                         Portfolio URL: <br />
-                        <a href={`http://localhost:3000/${props.id}`}>
-                            http://localhost:3000/{props.id}
+                        <a href={`${props.domainUrl}/${props.id}`}>
+                            {props.domainUrl}/{props.id}
                         </a>
                     </p>
                 </div>

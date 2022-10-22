@@ -16,7 +16,7 @@ export default function Edit(props) {
     let userProfile = props.userData;
     const handleClickSave = async () => {
         await axios
-            .post("http://localhost:3000/api/post-data", {
+            .post(`${props.domainUrl}/api/post-data`, {
                 userProfile: userProfile,
             })
             .then(function (response) {
@@ -26,10 +26,10 @@ export default function Edit(props) {
                 console.log(error);
             });
 
-        router.push(`http://localhost:3000/${userProfile._id.toString()}`);
+        router.push(`${domainUrl}/${userProfile._id.toString()}`);
     };
     const handleClickDiscard = () => {
-        router.push(`http://localhost:3000/${userProfile._id.toString()}`);
+        router.push(`${domainUrl}/${userProfile._id.toString()}`);
     };
     return (
         <section>
@@ -52,11 +52,10 @@ export default function Edit(props) {
 export async function getServerSideProps(context) {
     const session = await getSession(context);
     let userData = null;
+    const domainUrl = process.env.DOMAIN_URL;
     if (session) {
         await axios
-            .get(
-                `http://localhost:3000/api/user-email?email=${session.user.email}`
-            )
+            .get(`${domainUrl}/api/user-email?email=${session.user.email}`)
             .then((res) => {
                 userData = res.data;
             })
@@ -67,6 +66,7 @@ export async function getServerSideProps(context) {
     return {
         props: {
             userData,
+            domainUrl,
         },
     };
 }
