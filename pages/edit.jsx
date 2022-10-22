@@ -26,10 +26,10 @@ export default function Edit(props) {
                 console.log(error);
             });
 
-        router.push(`${domainUrl}/${userProfile._id.toString()}`);
+        router.push(`${props.domainUrl}/${userProfile._id.toString()}`);
     };
     const handleClickDiscard = () => {
-        router.push(`${domainUrl}/${userProfile._id.toString()}`);
+        router.push(`${props.domainUrl}/${userProfile._id.toString()}`);
     };
     return (
         <section>
