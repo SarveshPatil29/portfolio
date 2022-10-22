@@ -60,28 +60,29 @@ function AboutMe(props) {
         const fileInput = Array.from(form.elements).find(
             ({ name }) => name === "introImg"
         );
+        if (fileInput.files.length) {
+            const formData = new FormData();
 
-        const formData = new FormData();
-
-        for (const file of fileInput.files) {
-            formData.append("file", file);
-        }
-
-        formData.append("upload_preset", "portfolio-uploads");
-
-        const data = await fetch(
-            "https://api.cloudinary.com/v1_1/sarveshp46/image/upload",
-            {
-                method: "POST",
-                body: formData,
+            for (const file of fileInput.files) {
+                formData.append("file", file);
             }
-        ).then((r) => r.json());
 
-        let newAbout = about;
-        newAbout.introImg = data.secure_url;
-        setAbout(newAbout);
-        props.data.introImg = about.introImg;
-        forceUpdate();
+            formData.append("upload_preset", "portfolio-uploads");
+
+            const data = await fetch(
+                "https://api.cloudinary.com/v1_1/sarveshp46/image/upload",
+                {
+                    method: "POST",
+                    body: formData,
+                }
+            ).then((r) => r.json());
+
+            let newAbout = about;
+            newAbout.introImg = data.secure_url;
+            setAbout(newAbout);
+            props.data.introImg = about.introImg;
+            forceUpdate();
+        }
     };
 
     const handleSubmitAbout = async (e) => {
@@ -90,30 +91,30 @@ function AboutMe(props) {
         const fileInput = Array.from(form.elements).find(
             ({ name }) => name === "aboutMeImg"
         );
-        // console.log(fileInput);
+        if (fileInput.files.length) {
+            const formData = new FormData();
 
-        const formData = new FormData();
-
-        for (const file of fileInput.files) {
-            formData.append("file", file);
-        }
-
-        formData.append("upload_preset", "portfolio-uploads");
-
-        const data = await fetch(
-            "https://api.cloudinary.com/v1_1/sarveshp46/image/upload",
-            {
-                method: "POST",
-                body: formData,
+            for (const file of fileInput.files) {
+                formData.append("file", file);
             }
-        ).then((r) => r.json());
-        console.log(data.secure_url);
 
-        let newAbout = about;
-        newAbout.aboutMeImg = data.secure_url;
-        setAbout(newAbout);
-        props.data.aboutMeImg = about.aboutMeImg;
-        forceUpdate();
+            formData.append("upload_preset", "portfolio-uploads");
+
+            const data = await fetch(
+                "https://api.cloudinary.com/v1_1/sarveshp46/image/upload",
+                {
+                    method: "POST",
+                    body: formData,
+                }
+            ).then((r) => r.json());
+            console.log(data.secure_url);
+
+            let newAbout = about;
+            newAbout.aboutMeImg = data.secure_url;
+            setAbout(newAbout);
+            props.data.aboutMeImg = about.aboutMeImg;
+            forceUpdate();
+        }
     };
     return (
         <div>
