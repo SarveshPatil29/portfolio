@@ -34,12 +34,6 @@ const admin = (props) => {
 };
 
 export async function getServerSideProps(context) {
-    let allUsers = [];
-    await axios.get("http://localhost:3000/api/allUsers").then((res) => {
-        console.log(res.data);
-        allUsers = res.data;
-    });
-
     const session = await getSession(context);
     // let userId = null;
     let isAdmin = false;
@@ -57,6 +51,14 @@ export async function getServerSideProps(context) {
             .catch((err) => {
                 console.log("err", err);
             });
+    }
+
+    let allUsers = [];
+    if (isAdmin) {
+        await axios.get("http://localhost:3000/api/allUsers").then((res) => {
+            console.log(res.data);
+            allUsers = res.data;
+        });
     }
     return {
         props: { allUsers, isAdmin }, // will be passed to the page component as props
