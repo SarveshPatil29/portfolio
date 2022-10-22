@@ -47,7 +47,7 @@ export async function getServerSideProps(context) {
     if (session) {
         await axios
             .get(
-                `http://localhost:3000/api/user-email?email=${session.user.email}`
+                `https://portfolio-sarveshpatil29.vercel.app/api/user-email?email=${session.user.email}`
             )
             .then((res) => {
                 userId = res.data._id;
