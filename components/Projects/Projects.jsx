@@ -76,11 +76,11 @@ function Projects(props) {
     const newProject = {
         _id: "",
         title: "PORTFOLIO PRO",
-        desc: "description",
+        desc: "Portfolio Pro is a portfolio generator tool which allows you to create a portfolio customized to your likings and skill sets",
         appLink: "https://portfolio-sarveshpatil29.vercel.app/",
         github: "https://github.com/SarveshPatil29/portfolio",
         type: "Website",
-        img: "https://res.cloudinary.com/sarveshp46/image/upload/v1657120039/sample.jpg",
+        img: "https://res.cloudinary.com/sarveshp46/image/upload/v1657342342/Portfolio-update_wjuawf.jpg",
     };
 
     const handleClickAdd = () => {

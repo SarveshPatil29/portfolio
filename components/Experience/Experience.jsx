@@ -70,11 +70,11 @@ function Experience(props) {
 
     const newExp = {
         _id: "",
-        jobTitle: "WEB DEVELOPER INTERN",
+        jobTitle: "FULL STACK WEB DEVELOPER INTERN",
         company: "Google",
         timePeriod: "Dec 2021 - Jan 2023",
         location: "Mumbai",
-        desc: "description",
+        desc: "Developed backend apis for Google's Cloud Platform",
     };
 
     const handleClickAdd = () => {

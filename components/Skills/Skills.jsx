@@ -67,7 +67,7 @@ function Skills(props) {
 
     const newSkill = {
         _id: "",
-        img: "https://res.cloudinary.com/atharva7/image/upload/v1663751031/Portfolio%20website/5651980_kfkusu.jpg",
+        img: "https://res.cloudinary.com/sarveshp46/image/upload/v1657287794/react_kemmts.png",
         name: "REACT",
     };
 
