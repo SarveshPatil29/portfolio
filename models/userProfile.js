@@ -56,16 +56,16 @@ const userProfileSchema = new Schema({
             },
             appLink: {
                 type: String,
-                default: "https://portfolio-sarveshpatil46.vercel.app/",
+                default: "https://portfolio-sarveshpatil29.vercel.app/",
             },
             github: {
                 type: String,
-                default: "https://github.com/SarveshPatil46/portfolio",
+                default: "https://github.com/SarveshPatil29/portfolio",
             },
             img: {
                 type: String,
                 default:
-                    "https://res.cloudinary.com/sarveshp46/image/upload/c_scale,w_1000/v1657287953/Screenshot_2022-07-08_at_7.15.33_PM_qgrfcr.png",
+                    "https://res.cloudinary.com/sarveshp46/image/upload/v1663178483/git-workshop-readme/profile-readme_lsp5od.png",
             },
         },
     ],
@@ -109,11 +109,16 @@ const userProfileSchema = new Schema({
         {
             name: {
                 type: String,
-                default: "GITHUB",
+                default: "Github",
             },
             link: {
                 type: String,
-                default: "https://github.com/SarveshPatil46",
+                default: "https://github.com/SarveshPatil29",
+            },
+            img: {
+                type: String,
+                default:
+                    "https://res.cloudinary.com/sarveshp46/image/upload/v1666437239/portfolio-uploads/githubLogo_dveobq.png",
             },
         },
     ],

@@ -1,11 +1,11 @@
 import classes from "./Contact.module.css";
 import Link from "next/link";
 import Image from "next/image";
-import githubLogo from "../../public/images/githubLogo.png";
-import instagramLogo from "../../public/images/instagramLogo.png";
-import linkedinLogo from "../../public/images/linkedinLogo.png";
-import facebookLogo from "../../public/images/facebookLogo.png";
-import twitterLogo from "../../public/images/twitterLogo.png";
+// import githubLogo from "../../public/images/githubLogo.png";
+// import instagramLogo from "../../public/images/instagramLogo.png";
+// import linkedinLogo from "../../public/images/linkedinLogo.png";
+// import facebookLogo from "../../public/images/facebookLogo.png";
+// import twitterLogo from "../../public/images/twitterLogo.png";
 import EditBtn from "../EditBtn/EditBtn";
 import DelBtn from "../DelBtn/DelBtn";
 import AddBtn from "../AddBtn/AddBtn";
@@ -24,6 +24,17 @@ export default function Contact(props) {
     // const [showDialogAdd, setShowDialogAdd] = useState(false);
     // const handleCloseAdd = () => setShowDialogAdd(false);
     // const handleShowAdd = () => setShowDialogAdd(true);
+
+    const githubLogo =
+        "https://res.cloudinary.com/sarveshp46/image/upload/v1666437239/portfolio-uploads/githubLogo_dveobq.png";
+    const instagramLogo =
+        "https://res.cloudinary.com/sarveshp46/image/upload/v1666437240/portfolio-uploads/instagramLogo_nyweny.png";
+    const linkedinLogo =
+        "https://res.cloudinary.com/sarveshp46/image/upload/v1666437239/portfolio-uploads/linkedinLogo_atnlyt.png";
+    const facebookLogo =
+        "https://res.cloudinary.com/sarveshp46/image/upload/v1666437239/portfolio-uploads/facebookLogo_j2qanl.png";
+    const twitterLogo =
+        "https://res.cloudinary.com/sarveshp46/image/upload/v1666437240/portfolio-uploads/twitterLogo_d7kssz.png";
 
     const [showDialogEdit, setShowDialogEdit] = useState({
         showModal: false,
@@ -52,7 +63,6 @@ export default function Contact(props) {
     const changedHandles = handles;
 
     const handleChange = (e, index) => {
-        console.log(handles);
         if (e.target.id === "name") {
             changedHandles.allHandles[index].name = e.target.value;
             if (changedHandles.allHandles[index].name === "github") {
@@ -70,6 +80,7 @@ export default function Contact(props) {
             changedHandles.allHandles[index].link = e.target.value;
         }
         setHandles({ allHandles: changedHandles.allHandles });
+        props.data.handles = handles.allHandles;
     };
 
     const handleDelete = (e, index) => {
@@ -77,12 +88,13 @@ export default function Contact(props) {
             return el._id !== handles.allHandles[index]._id;
         });
         setHandles({ allHandles: afterDelete });
+        props.data.handles = handles.allHandles;
     };
 
     const newHandle = {
         _id: "",
-        img: "https://res.cloudinary.com/sarveshp46/image/upload/v1664520506/githubLogo_ebjezh.png",
-        link: "https://github.com/SarveshPatil29",
+        img: "https://res.cloudinary.com/sarveshp46/image/upload/v1666437239/portfolio-uploads/githubLogo_dveobq.png",
+        link: "https://github.com/SarveshPatil2912",
         name: "Github",
     };
 
@@ -91,7 +103,7 @@ export default function Contact(props) {
         newHandle._id = uuidv4();
         addedHandleArray.push(newHandle);
         setHandles({ allHandles: addedHandleArray });
-        console.log(handles.allHandles);
+        props.data.handles = handles.allHandles;
     };
 
     const handlesList = handles.allHandles.map((item, index) => (

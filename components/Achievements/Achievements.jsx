@@ -51,6 +51,7 @@ export default function Achievements(props) {
             changedAch.allAch[index].position = e.target.value;
         }
         setAch({ allAch: changedAch.allAch });
+        props.data.ach = ach.allAch;
     };
 
     const handleDelete = (e, index) => {
@@ -58,6 +59,7 @@ export default function Achievements(props) {
             return el._id !== ach.allAch[index]._id;
         });
         setAch({ allAch: afterDelete });
+        props.data.ach = ach.allAch;
     };
 
     const newAch = {
@@ -71,7 +73,7 @@ export default function Achievements(props) {
         newAch._id = uuidv4();
         addedAchArray.push(newAch);
         setAch({ allAch: addedAchArray });
-        console.log(ach.allAch);
+        props.data.ach = ach.allAch;
     };
 
     const achList = ach.allAch.map((item, index) => (

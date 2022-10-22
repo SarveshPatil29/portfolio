@@ -57,6 +57,7 @@ function Experience(props) {
             changedExp.allExp[index].desc = e.target.value;
         }
         setExp({ allExp: changedExp.allExp });
+        props.data.exp = exp.allExp;
     };
 
     const handleDelete = (e, index) => {
@@ -64,6 +65,7 @@ function Experience(props) {
             return el._id !== exp.allExp[index]._id;
         });
         setExp({ allExp: afterDelete });
+        props.data.exp = exp.allExp;
     };
 
     const newExp = {
@@ -80,7 +82,7 @@ function Experience(props) {
         newExp._id = uuidv4();
         addedExpArray.push(newExp);
         setExp({ allExp: addedExpArray });
-        console.log(exp.allExp);
+        props.data.exp = exp.allExp;
     };
 
     const expList = exp.allExp.map((item, index) => (

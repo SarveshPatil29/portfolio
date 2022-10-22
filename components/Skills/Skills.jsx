@@ -54,7 +54,7 @@ function Skills(props) {
             changedSkill.allSkills[index].img = e.target.value;
         }
         setSkills({ allSkills: changedSkill.allSkills });
-        console.log(skills);
+        props.data.skills = skills.allSkills;
     };
 
     const handleDelete = (e, index) => {
@@ -62,6 +62,7 @@ function Skills(props) {
             return el._id !== skills.allSkills[index]._id;
         });
         setSkills({ allSkills: afterDelete });
+        props.data.skills = skills.allSkills;
     };
 
     const newSkill = {
@@ -75,7 +76,7 @@ function Skills(props) {
         newSkill._id = uuidv4();
         addedSkillArray.push(newSkill);
         setSkills({ allSkills: addedSkillArray });
-        console.log(skills.allSkills);
+        props.data.skills = skills.allSkills;
     };
 
     const skillsList = skills.allSkills.map((item, index) => (

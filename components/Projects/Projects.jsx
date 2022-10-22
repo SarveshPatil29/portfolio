@@ -62,6 +62,7 @@ function Projects(props) {
             changedProject.allProjects[index].img = e.target.value;
         }
         setProjects({ allProjects: changedProject.allProjects });
+        props.data.projects = projects.allProjects;
     };
 
     const handleDelete = (e, index) => {
@@ -69,6 +70,7 @@ function Projects(props) {
             return el._id !== projects.allProjects[index]._id;
         });
         setProjects({ allProjects: afterDelete });
+        props.data.projects = projects.allProjects;
     };
 
     const newProject = {
@@ -86,7 +88,7 @@ function Projects(props) {
         newProject._id = uuidv4();
         addedProjectArray.push(newProject);
         setProjects({ allProjects: addedProjectArray });
-        console.log(projects.allProjects);
+        props.data.projects = projects.allProjects;
     };
 
     const projectList = projects.allProjects.map((item, index) => (

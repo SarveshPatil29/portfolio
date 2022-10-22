@@ -47,6 +47,11 @@ function AboutMe(props) {
                 [e.target.name]: e.target.value.toUpperCase(),
             };
         });
+        props.data.name = about.name;
+        props.data.intro = about.introText;
+        // props.data.introImg = about.introImg;
+        props.data.aboutMe = about.aboutMeText;
+        // props.data.aboutMeImg = about.aboutMeImg;
     };
 
     const handleSubmitIntro = async (e) => {
@@ -75,6 +80,7 @@ function AboutMe(props) {
         let newAbout = about;
         newAbout.introImg = data.secure_url;
         setAbout(newAbout);
+        props.data.introImg = about.introImg;
         forceUpdate();
     };
 
@@ -106,6 +112,7 @@ function AboutMe(props) {
         let newAbout = about;
         newAbout.aboutMeImg = data.secure_url;
         setAbout(newAbout);
+        props.data.aboutMeImg = about.aboutMeImg;
         forceUpdate();
     };
     return (

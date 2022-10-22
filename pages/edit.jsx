@@ -9,19 +9,42 @@ import Footer from "../components/Footer/Footer";
 import SaveDiscard from "../components/SaveDiscard/SaveDiscard";
 import { getSession } from "next-auth/react";
 import axios from "axios";
+import { useRouter } from "next/router";
 
 export default function Edit(props) {
+    const router = useRouter();
+    let userProfile = props.userData;
+    const handleClickSave = async () => {
+        await axios
+            .post("http://localhost:3000/api/post-data", {
+                userProfile: userProfile,
+            })
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+
+        router.push(`http://localhost:3000/${userProfile._id.toString()}`);
+    };
+    const handleClickDiscard = () => {
+        router.push(`http://localhost:3000/${userProfile._id.toString()}`);
+    };
     return (
         <section>
-            <SaveDiscard />
-            <Header data={props.userData} isEdit={true} />
-            <AboutMe data={props.userData} isEdit={true} />
-            <Skills data={props.userData} isEdit={true} />
-            <Projects data={props.userData} isEdit={true} />
-            <Experience data={props.userData} isEdit={true} />
-            <Achievements data={props.userData} isEdit={true} />
-            <Contact data={props.userData} isEdit={true} />
-            <Footer data={props.userData} isEdit={true} />
+            <SaveDiscard
+                onClickSave={handleClickSave}
+                onClickDiscard={handleClickDiscard}
+            />
+            <Header data={userProfile} isEdit={true} />
+            <AboutMe data={userProfile} isEdit={true} />
+            <Skills data={userProfile} isEdit={true} />
+            <Projects data={userProfile} isEdit={true} />
+            <Experience data={userProfile} isEdit={true} />
+            <Achievements data={userProfile} isEdit={true} />
+            <Contact data={userProfile} isEdit={true} />
+            <Footer data={userProfile} isEdit={true} />
         </section>
     );
 }
