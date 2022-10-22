@@ -6,7 +6,7 @@ const UserCard = (props) => {
         <div key={props.key} className="mx-5 my-2">
             <div className="max-w-sm rounded overflow-hidden shadow-lg w-64 break-all">
                 <img
-                    className="w-full"
+                    className="w-full h-64"
                     src={props.img}
                     alt="Sunset in the mountains"
                 />

@@ -94,7 +94,7 @@ export default function Contact(props) {
     const newHandle = {
         _id: "",
         img: "https://res.cloudinary.com/sarveshp46/image/upload/v1666437239/portfolio-uploads/githubLogo_dveobq.png",
-        link: "https://github.com/SarveshPatil2912",
+        link: "https://github.com/SarveshPatil29",
         name: "Github",
     };
 
