@@ -122,6 +122,10 @@ const userProfileSchema = new Schema({
             },
         },
     ],
+    isAdmin: {
+        type: Boolean,
+        default: false,
+    },
 });
 
 const UserProfile =
