@@ -166,7 +166,7 @@ function Skills(props) {
                 )}
             </div>
             <div className={classes.skillImg}>
-                <Image width={75} height={75} src={item.img} alt="react logo" />
+                <img width={75} height={75} src={item.img} alt="react logo" />
             </div>
             <h2>{item.name.toUpperCase()}</h2>
         </div>
