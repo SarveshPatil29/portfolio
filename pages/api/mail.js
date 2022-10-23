@@ -20,7 +20,7 @@ export default async function handler(req, res) {
     };
 
     try {
-        mail.send(data);
+        await mail.send(data);
     } catch (error) {
         console.log(error);
     }
