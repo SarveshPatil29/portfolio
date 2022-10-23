@@ -29,7 +29,7 @@ export default async function handler(req, res) {
                     "https://res.cloudinary.com/sarveshp46/image/upload/v1666500903/portfolio/user-profile_e7zgv2.jpg",
                 aboutMe: "Write something about yourself",
                 aboutMeImg:
-                    "https://res.cloudinary.com/sarveshp46/image/upload/v1666500903/portfolio/user-profile_e7zgv2.jpg",
+                    "https://res.cloudinary.com/sarveshp46/image/upload/v1666533051/portfolio/user-profile2_gbhkxk.jpg",
                 isAdmin: false,
                 skills: [
                     {

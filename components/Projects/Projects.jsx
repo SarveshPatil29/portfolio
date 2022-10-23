@@ -241,13 +241,15 @@ function Projects(props) {
                         VIEW APPLICATION
                     </Button>
                     <Link href={item.github}>
-                        <Image
-                            className={classes.githubLogo}
-                            width={40}
-                            height={40}
-                            src={githubLogo}
-                            alt="github logo"
-                        />
+                        <a target="_blank">
+                            <Image
+                                className={classes.githubLogo}
+                                width={40}
+                                height={40}
+                                src={githubLogo}
+                                alt="github logo"
+                            />
+                        </a>
                     </Link>
                 </div>
             </Card.Body>

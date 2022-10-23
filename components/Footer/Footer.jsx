@@ -54,7 +54,7 @@ export default function Footer(props) {
                         <a className={classes.homeLink}>PORTFOLIO PRO</a>
                     </Link>
                 </p>
-                <p>@2022 UDAS CREATIONS ALL RIGHTS RESERVED</p>
+                <p>@2022 PORTFOLIO-PRO</p>
                 <p>BUILT USING NEXTJS</p>
             </div>
         </section>

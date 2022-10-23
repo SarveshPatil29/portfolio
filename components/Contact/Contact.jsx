@@ -192,13 +192,15 @@ export default function Contact(props) {
             </div>
             <button className={classes.handleLogos}>
                 <Link href={item.link}>
-                    <Image
-                        width={50}
-                        height={50}
-                        className={classes.githubLogo}
-                        src={item.img}
-                        alt={item.name}
-                    />
+                    <a target="_blank">
+                        <Image
+                            width={50}
+                            height={50}
+                            className={classes.githubLogo}
+                            src={item.img}
+                            alt={item.name}
+                        />
+                    </a>
                 </Link>
             </button>
         </div>
