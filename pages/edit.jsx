@@ -10,6 +10,7 @@ import SaveDiscard from "../components/SaveDiscard/SaveDiscard";
 import { getSession } from "next-auth/react";
 import axios from "axios";
 import { useRouter } from "next/router";
+import Layout from "../components/Layout";
 
 export default function Edit(props) {
     const router = useRouter();
@@ -32,7 +33,7 @@ export default function Edit(props) {
         router.push(`${props.domainUrl}/${userProfile._id.toString()}`);
     };
     return (
-        <section>
+        <Layout title="Edit Portfolio">
             <SaveDiscard
                 onClickSave={handleClickSave}
                 onClickDiscard={handleClickDiscard}
@@ -45,7 +46,7 @@ export default function Edit(props) {
             <Achievements data={userProfile} isEdit={true} />
             <Contact data={userProfile} isEdit={true} />
             <Footer data={userProfile} isEdit={true} />
-        </section>
+        </Layout>
     );
 }
 

@@ -9,7 +9,7 @@ import Image from "next/image";
 import EditBtn from "../EditBtn/EditBtn";
 import DelBtn from "../DelBtn/DelBtn";
 import AddBtn from "../AddBtn/AddBtn";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
@@ -80,7 +80,7 @@ export default function Contact(props) {
             changedHandles.allHandles[index].link = e.target.value;
         }
         setHandles({ allHandles: changedHandles.allHandles });
-        props.data.handles = handles.allHandles;
+        // props.data.handles = handles.allHandles;
     };
 
     const handleDelete = (e, index) => {
@@ -88,7 +88,7 @@ export default function Contact(props) {
             return el._id !== handles.allHandles[index]._id;
         });
         setHandles({ allHandles: afterDelete });
-        props.data.handles = handles.allHandles;
+        // props.data.handles = handles.allHandles;
     };
 
     const newHandle = {
@@ -103,8 +103,12 @@ export default function Contact(props) {
         newHandle._id = uuidv4();
         addedHandleArray.push(newHandle);
         setHandles({ allHandles: addedHandleArray });
-        props.data.handles = handles.allHandles;
+        // props.data.handles = handles.allHandles;
     };
+
+    useEffect(() => {
+        props.data.handles = handles.allHandles;
+    }, [handles]);
 
     const handlesList = handles.allHandles.map((item, index) => (
         <div key={item._id} className={classes.logo}>
@@ -206,81 +210,27 @@ export default function Contact(props) {
         message: "",
     });
 
-    //   Form validation state
-    const [errors, setErrors] = useState({});
-
-    //   Setting button text on form submission
-    const [buttonText, setButtonText] = useState("Send");
-
-    // Setting success or failure messages states
-    const [showSuccessMessage, setShowSuccessMessage] = useState(false);
-    const [showFailureMessage, setShowFailureMessage] = useState(false);
-
-    // Validation check method
-    const handleValidation = () => {
-        let tempErrors = {};
-        let isValid = true;
-
-        if (inputs.fullname.length <= 0) {
-            tempErrors["fullname"] = true;
-            isValid = false;
-        }
-        if (inputs.email.length <= 0) {
-            tempErrors["email"] = true;
-            isValid = false;
-        }
-        if (inputs.message.length <= 0) {
-            tempErrors["message"] = true;
-            isValid = false;
-        }
-
-        setErrors({ ...tempErrors });
-        console.log("errors", errors);
-        return isValid;
-    };
-
     const handleOnChange = (e) => {
-        e.persist();
         setInputs((prev) => ({
             ...prev,
             [e.target.id]: e.target.value,
         }));
     };
 
-    //   Handling form submit
     const handleSubmit = async (e) => {
         e.preventDefault();
-
-        let isValidForm = handleValidation();
-
-        if (isValidForm) {
-            setButtonText("Sending");
-            const res = await fetch("/api/sendgrid", {
-                body: JSON.stringify({
-                    email: inputs.email,
-                    fullname: inputs.fullname,
-                    subject: `Message from ${inputs.fullname}`,
-                    message: inputs.message,
-                }),
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                method: "POST",
-            });
-
-            const { error } = await res.json();
-            if (error) {
+        console.log(inputs);
+        await axios
+            .post(`${props.domainUrl}/api/mail`, {
+                formData: inputs,
+                toEmail: props.data.email,
+            })
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
                 console.log(error);
-                setShowSuccessMessage(false);
-                setShowFailureMessage(true);
-                setButtonText("Send");
-                return;
-            }
-            setShowSuccessMessage(true);
-            setShowFailureMessage(false);
-            setButtonText("Send");
-        }
-        // console.log(fullname, email, subject, message);
+            });
     };
 
     return (
@@ -331,20 +281,10 @@ export default function Contact(props) {
                         className={classes.btn}
                         variant="dark"
                         type="submit"
-                        // disabled={status.submitting}
                     >
-                        {buttonText}
+                        SEND MESSAGE
                     </Button>
-                    {/* <button type="submit" disabled={status.submitting}>
-                        {!status.submitting
-                            ? !status.submitted
-                                ? "Submit"
-                                : "Submitted"
-                            : "Submitting..."}
-                    </button> */}
                 </div>
-                {showSuccessMessage}
-                {showFailureMessage}
             </Form>
 
             <div className={classes.logoDiv}>

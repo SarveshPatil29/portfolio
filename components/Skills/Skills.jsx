@@ -8,6 +8,7 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { v4 as uuidv4 } from "uuid";
+import { useEffect } from "react";
 
 function Skills(props) {
     const [ignored, forceUpdate] = useReducer((x) => x + 1, 0);
@@ -54,20 +55,26 @@ function Skills(props) {
             changedSkill.allSkills[index].img = e.target.value;
         }
         setSkills({ allSkills: changedSkill.allSkills });
-        props.data.skills = skills.allSkills;
+        // props.data.skills = skills.allSkills;
     };
 
     const handleDelete = (e, index) => {
+        console.log(skills.allSkills);
         const afterDelete = skills.allSkills.filter(function (el) {
             return el._id !== skills.allSkills[index]._id;
         });
         setSkills({ allSkills: afterDelete });
-        props.data.skills = skills.allSkills;
+        console.log(skills.allSkills);
+        // props.data.skills = skills.allSkills;
     };
+
+    useEffect(() => {
+        props.data.skills = skills.allSkills;
+    }, [skills]);
 
     const newSkill = {
         _id: "",
-        img: "https://res.cloudinary.com/sarveshp46/image/upload/v1657287794/react_kemmts.png",
+        img: "https://res.cloudinary.com/sarveshp46/image/upload/v1657287794/portfolio/react_kemmts.png",
         name: "REACT",
     };
 
@@ -76,7 +83,7 @@ function Skills(props) {
         newSkill._id = uuidv4();
         addedSkillArray.push(newSkill);
         setSkills({ allSkills: addedSkillArray });
-        props.data.skills = skills.allSkills;
+        // props.data.skills = skills.allSkills;
     };
 
     const skillsList = skills.allSkills.map((item, index) => (

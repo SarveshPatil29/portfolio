@@ -95,7 +95,7 @@ const HomeNavbar = () => {
                                             href="/dashboard"
                                             className="mt-1 text-gray-100 bg-gray-500 hover:bg-white active:bg-white focus:outline-none focus:ring focus:ring-cyan-300"
                                         >
-                                            GET STARTED
+                                            DASHBOARD
                                         </Button>
                                     </li>
                                 </ul>

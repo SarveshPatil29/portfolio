@@ -2,7 +2,7 @@ import classes from "./Experience.module.css";
 import EditBtn from "../EditBtn/EditBtn";
 import DelBtn from "../DelBtn/DelBtn";
 import AddBtn from "../AddBtn/AddBtn";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
@@ -57,7 +57,7 @@ function Experience(props) {
             changedExp.allExp[index].desc = e.target.value;
         }
         setExp({ allExp: changedExp.allExp });
-        props.data.exp = exp.allExp;
+        // props.data.exp = exp.allExp;
     };
 
     const handleDelete = (e, index) => {
@@ -65,7 +65,7 @@ function Experience(props) {
             return el._id !== exp.allExp[index]._id;
         });
         setExp({ allExp: afterDelete });
-        props.data.exp = exp.allExp;
+        // props.data.exp = exp.allExp;
     };
 
     const newExp = {
@@ -82,8 +82,12 @@ function Experience(props) {
         newExp._id = uuidv4();
         addedExpArray.push(newExp);
         setExp({ allExp: addedExpArray });
-        props.data.exp = exp.allExp;
+        // props.data.exp = exp.allExp;
     };
+
+    useEffect(() => {
+        props.data.exp = exp.allExp;
+    }, [exp]);
 
     const expList = exp.allExp.map((item, index) => (
         <Card key={item._id} style={{ width: "36rem" }} className={classes.exp}>

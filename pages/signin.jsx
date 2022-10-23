@@ -1,13 +1,14 @@
 import LoginBody from "../components/LoginBody/LoginBody";
 import LoginNav from "../components/LoginNav/LoginNav";
 import { getProviders, signIn } from "next-auth/react";
+import Layout from "../components/Layout";
 
 export default function LoginPage({ providers }) {
     return (
-        <div>
+        <Layout title="Sign In">
             <LoginNav />
             <LoginBody providers={providers} />
-        </div>
+        </Layout>
     );
 }
 

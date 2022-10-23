@@ -18,7 +18,7 @@ const admin = (props) => {
         />
     ));
     return (
-        <Layout>
+        <Layout title="Admin Panel">
             <HomeNavbar />
             {props.isAdmin && (
                 <div className="flex flex-wrap mb-20">{allUsers}</div>

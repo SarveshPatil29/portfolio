@@ -12,7 +12,7 @@ export default function LoginBody(props) {
         <section className={classes.content}>
             <h1 className={classes.header}>SIGN IN TO PORTFOLIO PRO</h1>
             <div className={classes.login}>
-                <div className={classes.loginForm}>
+                {/* <div className={classes.loginForm}>
                     <div className={classes.loginFormDiv}>
                         <Form>
                             <Form.Group
@@ -48,7 +48,7 @@ export default function LoginBody(props) {
                             </div>
                         </Form>
                     </div>
-                </div>
+                </div> */}
 
                 <div className={classes.loginLinks}>
                     <Button

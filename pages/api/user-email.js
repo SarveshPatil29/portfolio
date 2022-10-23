@@ -26,10 +26,10 @@ export default async function handler(req, res) {
                 email: req.query.email,
                 intro: "Your Introduction",
                 introImg:
-                    "https://res.cloudinary.com/sarveshp46/image/upload/v1666447172/portfolio/user-profile_kj3prs.png",
+                    "https://res.cloudinary.com/sarveshp46/image/upload/v1666500903/portfolio/user-profile_e7zgv2.jpg",
                 aboutMe: "Write something about yourself",
                 aboutMeImg:
-                    "https://res.cloudinary.com/sarveshp46/image/upload/v1666447172/portfolio/user-profile_kj3prs.png",
+                    "https://res.cloudinary.com/sarveshp46/image/upload/v1666500903/portfolio/user-profile_e7zgv2.jpg",
                 isAdmin: false,
                 skills: [
                     {
@@ -37,44 +37,16 @@ export default async function handler(req, res) {
                         img: "https://res.cloudinary.com/sarveshp46/image/upload/v1657287794/portfolio/react_kemmts.png",
                         _id: "6353f2d8ff0309af86079eeb",
                     },
-                    {
-                        name: "REACT",
-                        img: "https://res.cloudinary.com/sarveshp46/image/upload/v1657287794/portfolio/react_kemmts.png",
-                        _id: "6353f2d8ff0309af86079eec",
-                    },
-                    {
-                        name: "REACT",
-                        img: "https://res.cloudinary.com/sarveshp46/image/upload/v1657287794/portfolio/react_kemmts.png",
-                        _id: "6353f2d8ff0309af86079eed",
-                    },
                 ],
                 projects: [
                     {
                         title: "PORTFOLIO PRO",
                         type: "Website",
-                        desc: "Project Description",
+                        desc: "Portfolio Pro is a portfolio generator tool which allows you to create a portfolio customized to your likings and skill sets",
                         appLink: "https://portfolio-sarveshpatil29.vercel.app/",
                         github: "https://github.com/SarveshPatil29/portfolio",
                         img: "https://res.cloudinary.com/sarveshp46/image/upload/v1657342342/portfolio/Portfolio-update_wjuawf.jpg",
                         _id: "6353f2d8ff0309af86079eee",
-                    },
-                    {
-                        title: "PORTFOLIO PRO",
-                        type: "Website",
-                        desc: "Project Description",
-                        appLink: "https://portfolio-sarveshpatil29.vercel.app/",
-                        github: "https://github.com/SarveshPatil29/portfolio",
-                        img: "https://res.cloudinary.com/sarveshp46/image/upload/v1657342342/portfolio/Portfolio-update_wjuawf.jpg",
-                        _id: "6353f2d8ff0309af86079eef",
-                    },
-                    {
-                        title: "PORTFOLIO PRO",
-                        type: "Website",
-                        desc: "Project Description",
-                        appLink: "https://portfolio-sarveshpatil29.vercel.app/",
-                        github: "https://github.com/SarveshPatil29/portfolio",
-                        img: "https://res.cloudinary.com/sarveshp46/image/upload/v1657342342/portfolio/Portfolio-update_wjuawf.jpg",
-                        _id: "6353f2d8ff0309af86079ef0",
                     },
                 ],
                 exp: [
@@ -83,41 +55,15 @@ export default async function handler(req, res) {
                         company: "Google",
                         timePeriod: "Dec 2021 - Jan 2023",
                         location: "Mumbai",
-                        desc: "Job Description",
+                        desc: "Developed backend apis for Google's Cloud Platform",
                         _id: "6353f2d8ff0309af86079ef1",
-                    },
-                    {
-                        jobTitle: "WEB DEVELOPER INTERN",
-                        company: "Google",
-                        timePeriod: "Dec 2021 - Jan 2023",
-                        location: "Mumbai",
-                        desc: "Job Description",
-                        _id: "6353f2d8ff0309af86079ef2",
-                    },
-                    {
-                        jobTitle: "WEB DEVELOPER INTERN",
-                        company: "Google",
-                        timePeriod: "Dec 2021 - Jan 2023",
-                        location: "Mumbai",
-                        desc: "Job Description",
-                        _id: "6353f2d8ff0309af86079ef3",
                     },
                 ],
                 ach: [
                     {
                         name: "Competition",
-                        position: "Your Position (1st/2nd)",
+                        position: "Your Position (1st/2nd/3rd)",
                         _id: "6353f2d8ff0309af86079ef4",
-                    },
-                    {
-                        name: "Competition",
-                        position: "Your Position (1st/2nd)",
-                        _id: "6353f2d8ff0309af86079ef5",
-                    },
-                    {
-                        name: "Competition",
-                        position: "Your Position (1st/2nd)",
-                        _id: "6353f2d8ff0309af86079ef6",
                     },
                 ],
                 handles: [

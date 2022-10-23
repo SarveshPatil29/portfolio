@@ -7,20 +7,24 @@ import Achievements from "../components/Achievements/Achievements";
 import Contact from "../components/Contact/Contact";
 import Footer from "../components/Footer/Footer";
 import axios from "axios";
-import { useRouter } from "next/router";
+import Layout from "../components/Layout";
 
 export default function UserName(props) {
     return (
-        <section>
+        <Layout title="View Portfolio">
             <Header data={props.userData} isEdit={false} />
             <AboutMe data={props.userData} isEdit={false} />
             <Skills data={props.userData} isEdit={false} />
             <Projects data={props.userData} isEdit={false} />
             <Experience data={props.userData} isEdit={false} />
             <Achievements data={props.userData} isEdit={false} />
-            <Contact data={props.userData} isEdit={false} />
+            <Contact
+                data={props.userData}
+                isEdit={false}
+                domainUrl={props.domainUrl}
+            />
             <Footer data={props.userData} isEdit={false} />
-        </section>
+        </Layout>
     );
 }
 
@@ -38,6 +42,6 @@ export async function getServerSideProps({ resolvedUrl }) {
         });
 
     return {
-        props: { userData },
+        props: { userData, domainUrl },
     };
 }

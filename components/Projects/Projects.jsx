@@ -1,6 +1,6 @@
 import classes from "./Projects.module.css";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import EditBtn from "../EditBtn/EditBtn";
 import DelBtn from "../DelBtn/DelBtn";
 import AddBtn from "../AddBtn/AddBtn";
@@ -62,7 +62,7 @@ function Projects(props) {
             changedProject.allProjects[index].img = e.target.value;
         }
         setProjects({ allProjects: changedProject.allProjects });
-        props.data.projects = projects.allProjects;
+        // props.data.projects = projects.allProjects;
     };
 
     const handleDelete = (e, index) => {
@@ -70,7 +70,7 @@ function Projects(props) {
             return el._id !== projects.allProjects[index]._id;
         });
         setProjects({ allProjects: afterDelete });
-        props.data.projects = projects.allProjects;
+        // props.data.projects = projects.allProjects;
     };
 
     const newProject = {
@@ -80,7 +80,7 @@ function Projects(props) {
         appLink: "https://portfolio-sarveshpatil29.vercel.app/",
         github: "https://github.com/SarveshPatil29/portfolio",
         type: "Website",
-        img: "https://res.cloudinary.com/sarveshp46/image/upload/v1657342342/Portfolio-update_wjuawf.jpg",
+        img: "https://res.cloudinary.com/sarveshp46/image/upload/v1657342342/portfolio/Portfolio-update_wjuawf.jpg",
     };
 
     const handleClickAdd = () => {
@@ -88,8 +88,12 @@ function Projects(props) {
         newProject._id = uuidv4();
         addedProjectArray.push(newProject);
         setProjects({ allProjects: addedProjectArray });
-        props.data.projects = projects.allProjects;
+        // props.data.projects = projects.allProjects;
     };
+
+    useEffect(() => {
+        props.data.projects = projects.allProjects;
+    }, [projects]);
 
     const projectList = projects.allProjects.map((item, index) => (
         <Card
