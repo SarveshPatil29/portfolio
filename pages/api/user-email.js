@@ -43,7 +43,7 @@ export default async function handler(req, res) {
                         title: "PORTFOLIO PRO",
                         type: "Website",
                         desc: "Portfolio Pro is a portfolio generator tool which allows you to create a portfolio customized to your likings and skill sets",
-                        appLink: "https://portfolio-sarveshpatil29.vercel.app/",
+                        appLink: "https://portfolio-pro.one/",
                         github: "https://github.com/SarveshPatil29/portfolio",
                         img: "https://res.cloudinary.com/sarveshp46/image/upload/v1657342342/portfolio/Portfolio-update_wjuawf.jpg",
                         _id: "6353f2d8ff0309af86079eee",

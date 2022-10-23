@@ -56,7 +56,7 @@ const userProfileSchema = new Schema({
             },
             appLink: {
                 type: String,
-                default: "https://portfolio-sarveshpatil29.vercel.app/",
+                default: "https://portfolio-pro.one/",
             },
             github: {
                 type: String,

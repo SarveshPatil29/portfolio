@@ -184,7 +184,7 @@ function AboutMe(props) {
                                                 variant="secondary"
                                                 onClick={handleCloseIntro}
                                             >
-                                                Close
+                                                Save
                                             </Button>
                                             {/* <Button
                                         type="submit"
@@ -254,7 +254,7 @@ function AboutMe(props) {
                                                 variant="secondary"
                                                 onClick={handleCloseAbout}
                                             >
-                                                Close
+                                                Save
                                             </Button>
                                             {/* <Button
                                         type="submit"

@@ -77,7 +77,7 @@ function Projects(props) {
         _id: "",
         title: "PORTFOLIO PRO",
         desc: "Portfolio Pro is a portfolio generator tool which allows you to create a portfolio customized to your likings and skill sets",
-        appLink: "https://portfolio-sarveshpatil29.vercel.app/",
+        appLink: "https://portfolio-pro.one/",
         github: "https://github.com/SarveshPatil29/portfolio",
         type: "Website",
         img: "https://res.cloudinary.com/sarveshp46/image/upload/v1657342342/portfolio/Portfolio-update_wjuawf.jpg",
@@ -237,11 +237,15 @@ function Projects(props) {
                 </div>
                 <Card.Text>{item.desc.toUpperCase()}</Card.Text>
                 <div className={classes.links}>
-                    <Button href={item.appLink} variant="dark">
+                    <Button
+                        className={classes.appBtn}
+                        href={item.appLink}
+                        variant="dark"
+                    >
                         VIEW APPLICATION
                     </Button>
                     <Link href={item.github}>
-                        <a target="_blank">
+                        <a className={classes.aTest} target="_blank">
                             <Image
                                 className={classes.githubLogo}
                                 width={40}
