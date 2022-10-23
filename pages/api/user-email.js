@@ -109,10 +109,4 @@ export default async function handler(req, res) {
         console.log(userProfile);
         res.status(200).json(userProfile);
     }
-    // else if (req.method === "POST") {
-    //     const formData = req.body.formData;
-    //     const user = new UserProfile(formData);
-    //     await user.save();
-    //     res.send(user);
-    // }
 }
