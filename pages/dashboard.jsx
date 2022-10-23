@@ -1,7 +1,9 @@
 import DashboardBody from "../components/DashboardBody/DashboardBody";
+import DashboardNav from "../components/DashboardNav/DashboardNav";
 import { signIn, useSession, getSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Layout from "../components/Layout";
 
 export default function Dashboard(props) {
     const { data: session, status } = useSession();
@@ -25,7 +27,8 @@ export default function Dashboard(props) {
     }
 
     return (
-        <section>
+        <Layout title="Dashboard">
+            <DashboardNav isAdmin={props.isAdmin} url={props.userId} />
             <h1 style={{ marginTop: 100, textAlign: "center" }}>
                 WELCOME{" "}
                 {status === "authenticated"
@@ -34,29 +37,34 @@ export default function Dashboard(props) {
                 !
             </h1>
             <DashboardBody url={props.userId} />
-        </section>
+        </Layout>
     );
 }
 
 export async function getServerSideProps(context) {
     const session = await getSession(context);
     let userId = null;
+    let isAdmin = false;
+    const domainUrl = process.env.DOMAIN_URL;
     if (session) {
         await axios
-            .get(
-                `http://localhost:3000/api/user-email?email=${session.user.email}`
-            )
+            .get(`${domainUrl}/api/user-email?email=${session.user.email}`)
             .then((res) => {
                 userId = res.data._id;
+                if (res.data.isAdmin) {
+                    isAdmin = res.data.isAdmin;
+                }
             })
             .catch((err) => {
                 console.log("err", err);
             });
     }
+
     return {
         props: {
             session,
             userId,
+            isAdmin,
         },
     };
 }

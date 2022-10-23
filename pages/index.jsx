@@ -1,12 +1,18 @@
 import { getSession } from "next-auth/react";
 import HomeBody from "../components/HomeBody/HomeBody";
-import HomeNav from "../components/HomeNav/HomeNav";
+import HomeNavbar from "../components/HomeNavbar/HomeNavbar";
+import Footer from "../components/Footer/Footer";
+import HomeFooter from "../components/HomeFooter";
+import Layout from "../components/Layout";
 
 export default function Home() {
     return (
         <div>
-            <HomeNav />
-            <HomeBody />
+            <Layout title="Portfolio Pro">
+                <HomeNavbar />
+                <HomeBody />
+                <HomeFooter />
+            </Layout>
         </div>
     );
 }
