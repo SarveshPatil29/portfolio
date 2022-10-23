@@ -1,11 +1,6 @@
 import classes from "./Contact.module.css";
 import Link from "next/link";
 import Image from "next/image";
-// import githubLogo from "../../public/images/githubLogo.png";
-// import instagramLogo from "../../public/images/instagramLogo.png";
-// import linkedinLogo from "../../public/images/linkedinLogo.png";
-// import facebookLogo from "../../public/images/facebookLogo.png";
-// import twitterLogo from "../../public/images/twitterLogo.png";
 import EditBtn from "../EditBtn/EditBtn";
 import DelBtn from "../DelBtn/DelBtn";
 import AddBtn from "../AddBtn/AddBtn";
