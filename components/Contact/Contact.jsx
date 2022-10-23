@@ -227,10 +227,17 @@ export default function Contact(props) {
             })
             .then(function (response) {
                 console.log(response);
+                alert("Successfully sent the message");
             })
             .catch(function (error) {
                 console.log(error);
             });
+
+        setInputs({
+            fullname: "",
+            email: "",
+            message: "",
+        });
     };
 
     return (
