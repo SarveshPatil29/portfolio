@@ -113,11 +113,11 @@ export default function LoginBody(props) {
                     </Button>
                 </div>
             </div>
-            <div className={classes.cantLogin}>
+            {/* <div className={classes.cantLogin}>
                 <Button href="/forgotpassword" variant="dark">
                     CANT SIGN IN?
                 </Button>
-            </div>
+            </div> */}
         </section>
     );
 }

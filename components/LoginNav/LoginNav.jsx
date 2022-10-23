@@ -90,13 +90,13 @@ const LoginNav = () => {
                     >
                       Weather
                     </a> */}
-                                        <Button
+                                        {/* <Button
                                             variant="dark"
                                             href="/register"
                                             className="mt-1 text-gray-100 bg-violet-500 hover:bg-white active:bg-white focus:outline-none focus:ring focus:ring-violet-300"
                                         >
                                             CREATE ACCOUNT
-                                        </Button>
+                                        </Button> */}
                                     </li>
                                 </ul>
                             </div>
@@ -187,13 +187,13 @@ const LoginNav = () => {
                                         About Us
                                     </a> */}
 
-                                <Button
+                                {/* <Button
                                     variant="dark"
                                     href="/register"
                                     className="mt-1 text-gray-100 bg-violet-500 hover:bg-white active:bg-white focus:outline-none focus:ring focus:ring-violet-300"
                                 >
                                     CREATE ACCOUNT
-                                </Button>
+                                </Button> */}
                             </div>
                         </div>
                     )}

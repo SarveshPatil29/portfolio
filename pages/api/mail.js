@@ -13,13 +13,17 @@ export default async function handler(req, res) {
 
     const data = {
         to: req.body.toEmail,
-        from: req.body.formData.email,
+        from: "2020.sarvesh.patil@ves.ac.in",
         subject: `New Message from ${req.body.formData.fullname} via your portfolio`,
         text: message,
         html: message.replace(/\r\n/g, "<br>"),
     };
 
-    mail.send(data);
+    try {
+        mail.send(data);
+    } catch (error) {
+        console.log(error);
+    }
 
     res.status(200).json({ status: "ok" });
 }
