@@ -39,19 +39,19 @@ export default function FooterMain(props) {
     };
     return (
         <section className={classes.footer}>
-            <section class="bg-black dark:bg-black w-full">
-                <div class="pt-3 px-4 mx-auto max-w-screen-md">
-                    <h2 class="mb-2 text-2xl tracking-tight font-bold text-center text-gray-900 dark:text-white">
+            <section className="bg-black dark:bg-black w-full">
+                <div className="pt-3 px-4 mx-auto max-w-screen-md">
+                    <h2 className="mb-2 text-2xl tracking-tight font-bold text-center text-gray-900 dark:text-white">
                         CONTACT US
                     </h2>
-                    <form onSubmit={handleSubmit} class="space-y-8">
+                    <form onSubmit={handleSubmit} className="space-y-8">
                         <div className="flex flex-col">
                             <div className="">
                                 <input
                                     type="email"
                                     id="email"
                                     name="email"
-                                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light"
+                                    className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light"
                                     placeholder="Your Email"
                                     required
                                     value={formData.email}
@@ -64,7 +64,7 @@ export default function FooterMain(props) {
                                 <textarea
                                     id="message"
                                     rows="3"
-                                    class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                    className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                     placeholder="Your Message"
                                     value={formData.message}
                                     onChange={handleChange}
@@ -76,7 +76,7 @@ export default function FooterMain(props) {
 
                         <button
                             type="submit"
-                            class="no-underline bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 my-4 px-4 rounded text-sm"
+                            className="no-underline bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 my-4 px-4 rounded text-sm"
                         >
                             Send message
                         </button>

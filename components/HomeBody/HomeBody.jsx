@@ -1,11 +1,4 @@
-import homeimg from "../../public/images/homeimg.jpg";
-import Image from "next/image";
-import classes from "./HomeBody.module.css";
-import Button from "react-bootstrap/Button";
-import Carousel from "react-bootstrap/Carousel";
-import Card from "react-bootstrap/Card";
 import React from "react";
-import Link from "next/link";
 
 export default function HomeBody() {
     return (
