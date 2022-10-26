@@ -118,7 +118,7 @@ const userProfileSchema = new Schema({
             img: {
                 type: String,
                 default:
-                    "https://res.cloudinary.com/sarveshp46/image/upload/v1666437239/portfolio-uploads/githubLogo_dveobq.png",
+                    "https://res.cloudinary.com/sarveshp46/image/upload/v1666794148/portfolio/githubLogo_gtmev3.png",
             },
         },
     ],

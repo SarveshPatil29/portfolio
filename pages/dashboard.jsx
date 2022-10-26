@@ -4,6 +4,7 @@ import { signIn, useSession, getSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Layout from "../components/Layout";
+import FooterMain from "../components/FooterMain/FooterMain";
 
 export default function Dashboard(props) {
     const { data: session, status } = useSession();
@@ -29,14 +30,19 @@ export default function Dashboard(props) {
     return (
         <Layout title="Dashboard">
             <DashboardNav isAdmin={props.isAdmin} url={props.userId} />
-            <h1 style={{ marginTop: 100, textAlign: "center" }}>
+            <h1 style={{ marginTop: 60, textAlign: "center" }}>
                 WELCOME{" "}
                 {status === "authenticated"
                     ? `${session.user.name.toUpperCase()}`
                     : ""}
                 !
             </h1>
-            <DashboardBody url={props.userId} />
+            <DashboardBody />
+            <FooterMain
+                domainUrl={props.domainUrl}
+                url={props.userId}
+                isAdmin={props.isAdmin}
+            />
         </Layout>
     );
 }
@@ -65,6 +71,7 @@ export async function getServerSideProps(context) {
             session,
             userId,
             isAdmin,
+            domainUrl,
         },
     };
 }

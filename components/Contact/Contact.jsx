@@ -21,15 +21,15 @@ export default function Contact(props) {
     // const handleShowAdd = () => setShowDialogAdd(true);
 
     const githubLogo =
-        "https://res.cloudinary.com/sarveshp46/image/upload/v1666437239/portfolio-uploads/githubLogo_dveobq.png";
+        "https://res.cloudinary.com/sarveshp46/image/upload/v1666794148/portfolio/githubLogo_gtmev3.png";
     const instagramLogo =
-        "https://res.cloudinary.com/sarveshp46/image/upload/v1666437240/portfolio-uploads/instagramLogo_nyweny.png";
+        "https://res.cloudinary.com/sarveshp46/image/upload/v1666794148/portfolio/instagramLogo_fyozok.png";
     const linkedinLogo =
-        "https://res.cloudinary.com/sarveshp46/image/upload/v1666437239/portfolio-uploads/linkedinLogo_atnlyt.png";
+        "https://res.cloudinary.com/sarveshp46/image/upload/v1666794148/portfolio/linkedinLogo_aewtwd.png";
     const facebookLogo =
-        "https://res.cloudinary.com/sarveshp46/image/upload/v1666437239/portfolio-uploads/facebookLogo_j2qanl.png";
+        "https://res.cloudinary.com/sarveshp46/image/upload/v1666794148/portfolio/facebookLogo_njnxd6.png";
     const twitterLogo =
-        "https://res.cloudinary.com/sarveshp46/image/upload/v1666437240/portfolio-uploads/twitterLogo_d7kssz.png";
+        "https://res.cloudinary.com/sarveshp46/image/upload/v1666794177/portfolio/twitterLogo_zdffgg.png";
 
     const [showDialogEdit, setShowDialogEdit] = useState({
         showModal: false,
@@ -88,7 +88,7 @@ export default function Contact(props) {
 
     const newHandle = {
         _id: "",
-        img: "https://res.cloudinary.com/sarveshp46/image/upload/v1666437239/portfolio-uploads/githubLogo_dveobq.png",
+        img: "https://res.cloudinary.com/sarveshp46/image/upload/v1666794148/portfolio/githubLogo_gtmev3.png",
         link: "https://github.com/SarveshPatil29",
         name: "Github",
     };
