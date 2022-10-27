@@ -1,6 +1,6 @@
 import classes from "./Projects.module.css";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import EditBtn from "../EditBtn/EditBtn";
 import DelBtn from "../DelBtn/DelBtn";
 import AddBtn from "../AddBtn/AddBtn";
@@ -48,7 +48,6 @@ function Projects(props) {
     const changedProject = projects;
 
     const handleChange = (e, index) => {
-        console.log(projects);
         if (e.target.id === "title") {
             changedProject.allProjects[index].title = e.target.value;
         } else if (e.target.id === "desc") {
@@ -59,8 +58,11 @@ function Projects(props) {
             changedProject.allProjects[index].github = e.target.value;
         } else if (e.target.id === "type") {
             changedProject.allProjects[index].type = e.target.value;
+        } else if (e.target.id === "img") {
+            changedProject.allProjects[index].img = e.target.value;
         }
         setProjects({ allProjects: changedProject.allProjects });
+        // props.data.projects = projects.allProjects;
     };
 
     const handleDelete = (e, index) => {
@@ -68,16 +70,17 @@ function Projects(props) {
             return el._id !== projects.allProjects[index]._id;
         });
         setProjects({ allProjects: afterDelete });
+        // props.data.projects = projects.allProjects;
     };
 
     const newProject = {
         _id: "",
         title: "PORTFOLIO PRO",
-        desc: "description",
-        appLink: "https://portfolio-sarveshpatil29.vercel.app/",
+        desc: "Portfolio Pro is a portfolio generator tool which allows you to create a portfolio customized to your likings and skill sets",
+        appLink: "https://portfolio-pro.one/",
         github: "https://github.com/SarveshPatil29/portfolio",
         type: "Website",
-        img: "https://res.cloudinary.com/sarveshp46/image/upload/v1657120039/sample.jpg",
+        img: "https://res.cloudinary.com/sarveshp46/image/upload/v1657342342/portfolio/Portfolio-update_wjuawf.jpg",
     };
 
     const handleClickAdd = () => {
@@ -85,8 +88,12 @@ function Projects(props) {
         newProject._id = uuidv4();
         addedProjectArray.push(newProject);
         setProjects({ allProjects: addedProjectArray });
-        console.log(projects.allProjects);
+        // props.data.projects = projects.allProjects;
     };
+
+    useEffect(() => {
+        props.data.projects = projects.allProjects;
+    }, [projects]);
 
     const projectList = projects.allProjects.map((item, index) => (
         <Card
@@ -174,9 +181,21 @@ function Projects(props) {
                                             }}
                                         />
                                     </Form.Group>
-                                    <Form.Group className="mb-3">
+                                    {/* <Form.Group className="mb-3">
                                         <Form.Label>PROJECT IMAGE</Form.Label>
                                         <Form.Control type="file" />
+                                    </Form.Group> */}
+                                    <Form.Group className="mb-3">
+                                        <Form.Label>PROJECT IMAGE</Form.Label>
+                                        <Form.Control
+                                            id="img"
+                                            type="text"
+                                            placeholder="PROJECT IMAGE URL"
+                                            value={item.img}
+                                            onChange={(e) => {
+                                                handleChange(e, index);
+                                            }}
+                                        />
                                     </Form.Group>
                                 </Form>
                             </Modal.Body>
@@ -218,17 +237,23 @@ function Projects(props) {
                 </div>
                 <Card.Text>{item.desc.toUpperCase()}</Card.Text>
                 <div className={classes.links}>
-                    <Button href={item.appLink} variant="dark">
+                    <Button
+                        className={classes.appBtn}
+                        href={item.appLink}
+                        variant="dark"
+                    >
                         VIEW APPLICATION
                     </Button>
                     <Link href={item.github}>
-                        <Image
-                            className={classes.githubLogo}
-                            width={40}
-                            height={40}
-                            src={githubLogo}
-                            alt="github logo"
-                        />
+                        <a className={classes.aTest} target="_blank">
+                            <Image
+                                className={classes.githubLogo}
+                                width={40}
+                                height={40}
+                                src={githubLogo}
+                                alt="github logo"
+                            />
+                        </a>
                     </Link>
                 </div>
             </Card.Body>

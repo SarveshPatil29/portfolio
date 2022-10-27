@@ -2,14 +2,16 @@ import classes from "./Skills.module.css";
 import EditBtn from "../EditBtn/EditBtn";
 import DelBtn from "../DelBtn/DelBtn";
 import AddBtn from "../AddBtn/AddBtn";
-import { useState } from "react";
+import { useState, useReducer } from "react";
 import Image from "next/image";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { v4 as uuidv4 } from "uuid";
+import { useEffect } from "react";
 
 function Skills(props) {
+    const [ignored, forceUpdate] = useReducer((x) => x + 1, 0);
     const [showDialogEdit, setShowDialogEdit] = useState({
         showModal: false,
         activeModal: null,
@@ -47,20 +49,32 @@ function Skills(props) {
     const changedSkill = skills;
 
     const handleChange = (e, index) => {
-        changedSkill.allSkills[index].name = e.target.value;
+        if (e.target.id === "name") {
+            changedSkill.allSkills[index].name = e.target.value;
+        } else if (e.target.id === "img") {
+            changedSkill.allSkills[index].img = e.target.value;
+        }
         setSkills({ allSkills: changedSkill.allSkills });
+        // props.data.skills = skills.allSkills;
     };
 
     const handleDelete = (e, index) => {
+        console.log(skills.allSkills);
         const afterDelete = skills.allSkills.filter(function (el) {
             return el._id !== skills.allSkills[index]._id;
         });
         setSkills({ allSkills: afterDelete });
+        console.log(skills.allSkills);
+        // props.data.skills = skills.allSkills;
     };
+
+    useEffect(() => {
+        props.data.skills = skills.allSkills;
+    }, [skills]);
 
     const newSkill = {
         _id: "",
-        img: "https://res.cloudinary.com/atharva7/image/upload/v1663751031/Portfolio%20website/5651980_kfkusu.jpg",
+        img: "https://res.cloudinary.com/sarveshp46/image/upload/v1657287794/portfolio/react_kemmts.png",
         name: "REACT",
     };
 
@@ -69,7 +83,7 @@ function Skills(props) {
         newSkill._id = uuidv4();
         addedSkillArray.push(newSkill);
         setSkills({ allSkills: addedSkillArray });
-        console.log(skills.allSkills);
+        // props.data.skills = skills.allSkills;
     };
 
     const skillsList = skills.allSkills.map((item, index) => (
@@ -94,6 +108,7 @@ function Skills(props) {
                                 <Form>
                                     <Form.Group className="mb-3">
                                         <Form.Control
+                                            id="name"
                                             type="text"
                                             placeholder="SKILL NAME"
                                             value={item.name.toUpperCase()}
@@ -102,27 +117,39 @@ function Skills(props) {
                                             }}
                                         />
                                     </Form.Group>
-                                    <Form.Group className="mb-3">
+                                    {/* <Form.Group className="mb-3">
                                         <Form.Label>SKILL LOGO</Form.Label>
                                         <Form.Control type="file" />
+                                    </Form.Group> */}
+                                    <Form.Group className="mb-3">
+                                        <Form.Label>SKILL LOGO</Form.Label>
+                                        <Form.Control
+                                            id="img"
+                                            type="text"
+                                            placeholder="SKILL LOGO URL"
+                                            value={item.img}
+                                            onChange={(e) => {
+                                                handleChange(e, index);
+                                            }}
+                                        />
                                     </Form.Group>
-                                </Form>
-                            </Modal.Body>
-                            <Modal.Footer>
-                                <Button
-                                    variant="secondary"
-                                    onClick={handleCloseEdit}
-                                >
-                                    Close
-                                </Button>
-                                {/* <Button
+                                    <Modal.Footer>
+                                        <Button
+                                            variant="secondary"
+                                            onClick={handleCloseEdit}
+                                        >
+                                            Close
+                                        </Button>
+                                        {/* <Button
                                     type="submit"
                                     variant="primary"
                                     onClick={handleSaveEdit}
                                 >
                                     Save Changes
                                 </Button> */}
-                            </Modal.Footer>
+                                    </Modal.Footer>
+                                </Form>
+                            </Modal.Body>
                         </Modal>
                     </div>
                 )}
@@ -139,7 +166,7 @@ function Skills(props) {
                 )}
             </div>
             <div className={classes.skillImg}>
-                <Image width={75} height={75} src={item.img} alt="react logo" />
+                <img width={75} height={75} src={item.img} alt="react logo" />
             </div>
             <h2>{item.name.toUpperCase()}</h2>
         </div>

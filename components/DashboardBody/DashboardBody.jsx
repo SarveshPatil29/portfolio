@@ -1,46 +1,13 @@
 import classes from "./DashboardBody.module.css";
-import Button from "react-bootstrap/Button";
-import Navbar from "react-bootstrap/Navbar";
-import Nav from "react-bootstrap/Nav";
-import Container from "react-bootstrap/Container";
-import homeimg from "../../public/images/homeimg.jpg";
-import Image from "next/image";
-import { signOut, useSession } from "next-auth/react";
 
-export default function DashboardBody(props) {
-    const { data: session, status } = useSession();
+export default function DashboardBody() {
     return (
         <section>
-            <Navbar fixed="top" bg="light" expand="lg" variant="light">
-                <Container>
-                    <Navbar.Brand style={{ fontWeight: "bold" }} href="/">
-                        PORTFOLIO PRO
-                    </Navbar.Brand>
-                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                    <Navbar.Collapse id="basic-navbar-nav">
-                        <Nav className="me-auto"></Nav>
-                        <Nav className="">
-                            {status === "authenticated" && (
-                                <Nav.Link
-                                    onClick={(e) => {
-                                        e.preventDefault();
-                                        signOut();
-                                    }}
-                                    href="/api/auth/signout"
-                                >
-                                    LOG OUT
-                                </Nav.Link>
-                            )}
-                            <Nav.Link href={props.url}>VIEW DEMO SITE</Nav.Link>
-                            <Button variant="dark" href="/edit">
-                                START WITH THIS DESIGN
-                            </Button>
-                        </Nav>
-                    </Navbar.Collapse>
-                </Container>
-            </Navbar>
             <div className={classes.body}>
-                <Image src={homeimg} alt="home-image" />
+                <img
+                    src="https://res.cloudinary.com/sarveshp46/image/upload/v1666795440/portfolio/homeimg_hri2ki.jpg"
+                    alt="home-image"
+                />
             </div>
         </section>
     );

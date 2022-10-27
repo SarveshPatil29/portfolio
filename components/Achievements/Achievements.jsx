@@ -1,5 +1,5 @@
 import classes from "./Achievements.module.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import EditBtn from "../EditBtn/EditBtn";
 import DelBtn from "../DelBtn/DelBtn";
 import AddBtn from "../AddBtn/AddBtn";
@@ -51,6 +51,7 @@ export default function Achievements(props) {
             changedAch.allAch[index].position = e.target.value;
         }
         setAch({ allAch: changedAch.allAch });
+        // props.data.ach = ach.allAch;
     };
 
     const handleDelete = (e, index) => {
@@ -58,12 +59,13 @@ export default function Achievements(props) {
             return el._id !== ach.allAch[index]._id;
         });
         setAch({ allAch: afterDelete });
+        // props.data.ach = ach.allAch;
     };
 
     const newAch = {
         _id: "",
-        name: "CODE-O-FIESTA",
-        position: "2nd",
+        name: "Competition",
+        position: "Your Position (1st/2nd/3rd)",
     };
 
     const handleClickAdd = () => {
@@ -71,8 +73,12 @@ export default function Achievements(props) {
         newAch._id = uuidv4();
         addedAchArray.push(newAch);
         setAch({ allAch: addedAchArray });
-        console.log(ach.allAch);
+        // props.data.ach = ach.allAch;
     };
+
+    useEffect(() => {
+        props.data.ach = ach.allAch;
+    }, [ach]);
 
     const achList = ach.allAch.map((item, index) => (
         <Card key={item._id} style={{ width: "36rem" }} className={classes.ach}>
@@ -155,6 +161,7 @@ export default function Achievements(props) {
         <section>
             <br id="achievements" />
             <h1 className={classes.header}>ACHIEVEMENTS</h1>
+            <div className={classes.allAch}>{achList}</div>
             {props.isEdit && (
                 <div className={classes.addBtn}>
                     <AddBtn

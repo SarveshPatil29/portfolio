@@ -4,17 +4,18 @@ import Image from "next/image";
 import Button from "react-bootstrap/Button";
 import Link from "next/link";
 
-const LoginNav = () => {
+const DashboardNav = (props) => {
+    console.log(props.url);
     const [isOpen, setIsOpen] = useState(false);
     return (
         <div>
-            <nav className="bg-zinc-900">
+            <nav className="bg-black">
                 <div className="max-w-9xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className=" h-25 flex items-center justify-between">
                         <div className="flex items-center">
                             <div className="flex-shrink-0 ">
                                 <Link href="/">
-                                    <a className="flex items-center">
+                                    <a className="flex items-center no-underline">
                                         <Image
                                             src="https://res.cloudinary.com/drr7rbizq/image/upload/v1664977190/logo-removebg-preview_1_jhx4kw.png"
                                             className="mr-3 h-12 animate-pulse sm:h-24"
@@ -22,7 +23,7 @@ const LoginNav = () => {
                                             width={95}
                                             alt="Portfolio Logo"
                                         />
-                                        <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">
+                                        <span className="hover:text-gray-400 transition-colors self-center text-xl font-semibold whitespace-nowrap dark:text-white">
                                             PORTFOLIO-PRO
                                         </span>
                                     </a>
@@ -32,71 +33,60 @@ const LoginNav = () => {
                                 className="hidden w-full md:block md:w-auto"
                                 id="mobile-menu"
                             >
-                                <ul className="absolute right-0 top-7 flex flex-col rounded-lg bg-gray-50 mr-7 mb-3 dark:border-gray-700 dark:bg-gray-800 md:mt-0 md:flex-row md:space-x-8 md:border-0 md:bg-white md:text-sm md:font-medium md:dark:bg-zinc-900">
+                                <ul className="absolute right-0 top-7 flex flex-col rounded-lg bg-gray-50 mr-7 mb-3 dark:border-gray-700 dark:bg-gray-800 md:mt-0 md:flex-row md:space-x-8 md:border-0 md:bg-white md:text-sm md:font-medium md:dark:bg-black">
                                     <li>
                                         <Link href="/">
                                             <a
-                                                className="duration-0 block rounded py-2 pr-4 pl-3 text-xl text-gray-100 transition hover:scale-125 hover:bg-gray-100 hover:duration-150 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-white"
+                                                className="no-underline duration-0 block rounded py-2 pr-4 pl-3 text-xl text-gray-100 transition hover:text-white hover:bg-gray-100 hover:duration-150 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-white"
                                                 aria-current="page"
                                             >
-                                                Home
+                                                HOME
                                             </a>
                                         </Link>
                                     </li>
-                                    {/* <li>
-                                            <a
-                                                href="#"
-                                                className="block rounded py-2 pr-4 pl-3 text-2xl text-gray-700 hover:scale-125 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-white"
-                                            >
-                                                About Us
-                                            </a>
-                                        </li> */}
-                                    {/* <li>
-                    <a
-                      href="/signin"
-                      className="duration-0 block rounded py-2 pr-4 pl-3 text-xl text-gray-100 transition hover:scale-125 hover:bg-gray-100 hover:duration-150 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-white"
-                    >
-                      SIGN IN
-                    </a>
-                  </li> */}
-                                    {/* <li>
-                                            <a
-                                                href="/Crop"
-                                                className="duration-0 block rounded py-2 pr-4 pl-3 text-xl text-gray-100 transition hover:scale-125 hover:bg-gray-100 hover:duration-150 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-white"
-                                            >
-                                                Crop
-                                            </a>
-                                        </li>
+                                    {props.isAdmin && (
                                         <li>
-                                            <a
-                                                href="/Fertilizer"
-                                                className="duration-0 block rounded py-2 pr-4 pl-3 text-xl text-gray-100 transition hover:scale-125 hover:bg-gray-100 hover:duration-150 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-white"
-                                            >
-                                                Fertilizer
-                                            </a>
-                                        </li> */}
-                                    {/* <li>
-                                            <a
-                                                href="/Profit"
-                                                className="duration-0 block rounded py-2 pr-4 pl-3 text-xl text-gray-100 transition hover:scale-125 hover:bg-gray-100 hover:duration-150 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-white"
-                                            >
-                                                Profit
-                                            </a>
-                                        </li> */}
+                                            <Link href="/admin">
+                                                <a
+                                                    className="no-underline duration-0 block rounded py-2 pr-4 pl-3 text-xl text-gray-100 transition hover:text-white hover:bg-gray-100 hover:duration-150 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-white"
+                                                    aria-current="page"
+                                                >
+                                                    VIEW ADMIN PANEL
+                                                </a>
+                                            </Link>
+                                        </li>
+                                    )}
                                     <li>
-                                        {/* <a
-                      href="/dashboard"
-                      className="duration-0 block rounded py-2 pr-4 pl-3 text-xl text-gray-100 transition hover:scale-125 hover:bg-gray-100 hover:duration-150 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-white"
-                    >
-                      Weather
-                    </a> */}
-                                        {/* <Button
-                                            variant="dark"
-                                            href="/register"
-                                            className="mt-1 text-gray-100 bg-violet-500 hover:bg-white active:bg-white focus:outline-none focus:ring focus:ring-violet-300"
-                                        >
-                                            CREATE ACCOUNT
-                                        </Button> */}
+                                        <Link href={props.url}>
+                                            <a
+                                                className="no-underline duration-0 block rounded py-2 pr-4 pl-3 text-xl text-gray-100 transition hover:text-white hover:bg-gray-100 hover:duration-150 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-white"
+                                                aria-current="page"
+                                                target="_blank"
+                                            >
+                                                VIEW PORTFOLIO
+                                            </a>
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link href="/edit">
+                                            <a
+                                                className="no-underline duration-0 block rounded py-2 pr-4 pl-3 text-xl text-gray-100 transition hover:text-white hover:bg-gray-100 hover:duration-150 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-white"
+                                                aria-current="page"
+                                                target="_blank"
+                                            >
+                                                EDIT PORTFOLIO
+                                            </a>
+                                        </Link>
+                                    </li>
+                                    <li className="mt-2">
+                                        <Link href="/api/auth/signout">
+                                            <a
+                                                className="no-underline bg-blue-500 hover:bg-blue-700 text-white font-bold py-2.5 px-4 rounded text-lg"
+                                                aria-current="page"
+                                            >
+                                                LOG OUT
+                                            </a>
+                                        </Link>
                                     </li>
                                 </ul>
                             </div>
@@ -179,42 +169,36 @@ const LoginNav = () => {
                                         Home
                                     </a>
                                 </Link>
-
-                                {/* <a
-                                        href="#"
-                                        className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
+                                <Link href={props.url}>
+                                    <a
+                                        className="duration-0 block rounded py-2 pr-4 pl-3 text-xl text-gray-100 transition hover:scale-110 hover:bg-gray-100 hover:duration-150 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-white"
+                                        aria-current="page"
                                     >
-                                        About Us
-                                    </a> */}
-
-                                {/* <Button
-                                    variant="dark"
-                                    href="/register"
-                                    className="mt-1 text-gray-100 bg-violet-500 hover:bg-white active:bg-white focus:outline-none focus:ring focus:ring-violet-300"
+                                        VIEW PORTFOLIO
+                                    </a>
+                                </Link>
+                                <Link href="/edit">
+                                    <a
+                                        className="duration-0 block rounded py-2 pr-4 pl-3 text-xl text-gray-100 transition hover:scale-110 hover:bg-gray-100 hover:duration-150 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-white"
+                                        aria-current="page"
+                                    >
+                                        EDIT PORTFOLIO
+                                    </a>
+                                </Link>
+                                <Button
+                                    variant="light"
+                                    href="/api/auth/signout"
+                                    className="mt-1 text-gray-100 bg-gray-500 hover:bg-white active:bg-white focus:outline-none focus:ring focus:ring-cyan-300"
                                 >
-                                    CREATE ACCOUNT
-                                </Button> */}
+                                    LOG OUT
+                                </Button>
                             </div>
                         </div>
                     )}
                 </Transition>
             </nav>
         </div>
-
-        // <Navbar fixed="top" bg="light" expand="lg" variant="light">
-        //     <Container>
-        //         <Navbar.Brand style={{ fontWeight: "bold" }} href="/">
-        //             PORTFOLIO-PRO
-        //         </Navbar.Brand>
-        //         <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        //         <Navbar.Collapse id="basic-navbar-nav">
-        //             <Nav className="me-auto"></Nav>
-        //             <Nav className="">
-        //                 <Nav.Link href="/register">CREATE ACCOUNT</Nav.Link>
-        //             </Nav>
-        //         </Navbar.Collapse>
-        //     </Container>
-        // </Navbar>
     );
 };
-export default LoginNav;
+
+export default DashboardNav;

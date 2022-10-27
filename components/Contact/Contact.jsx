@@ -1,15 +1,10 @@
 import classes from "./Contact.module.css";
 import Link from "next/link";
 import Image from "next/image";
-import githubLogo from "../../public/images/githubLogo.png";
-import instagramLogo from "../../public/images/instagramLogo.png";
-import linkedinLogo from "../../public/images/linkedinLogo.png";
-import facebookLogo from "../../public/images/facebookLogo.png";
-import twitterLogo from "../../public/images/twitterLogo.png";
 import EditBtn from "../EditBtn/EditBtn";
 import DelBtn from "../DelBtn/DelBtn";
 import AddBtn from "../AddBtn/AddBtn";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
@@ -24,6 +19,17 @@ export default function Contact(props) {
     // const [showDialogAdd, setShowDialogAdd] = useState(false);
     // const handleCloseAdd = () => setShowDialogAdd(false);
     // const handleShowAdd = () => setShowDialogAdd(true);
+
+    const githubLogo =
+        "https://res.cloudinary.com/sarveshp46/image/upload/v1666794148/portfolio/githubLogo_gtmev3.png";
+    const instagramLogo =
+        "https://res.cloudinary.com/sarveshp46/image/upload/v1666794148/portfolio/instagramLogo_fyozok.png";
+    const linkedinLogo =
+        "https://res.cloudinary.com/sarveshp46/image/upload/v1666794148/portfolio/linkedinLogo_aewtwd.png";
+    const facebookLogo =
+        "https://res.cloudinary.com/sarveshp46/image/upload/v1666794148/portfolio/facebookLogo_njnxd6.png";
+    const twitterLogo =
+        "https://res.cloudinary.com/sarveshp46/image/upload/v1666794177/portfolio/twitterLogo_zdffgg.png";
 
     const [showDialogEdit, setShowDialogEdit] = useState({
         showModal: false,
@@ -52,7 +58,6 @@ export default function Contact(props) {
     const changedHandles = handles;
 
     const handleChange = (e, index) => {
-        console.log(handles);
         if (e.target.id === "name") {
             changedHandles.allHandles[index].name = e.target.value;
             if (changedHandles.allHandles[index].name === "github") {
@@ -70,6 +75,7 @@ export default function Contact(props) {
             changedHandles.allHandles[index].link = e.target.value;
         }
         setHandles({ allHandles: changedHandles.allHandles });
+        // props.data.handles = handles.allHandles;
     };
 
     const handleDelete = (e, index) => {
@@ -77,11 +83,12 @@ export default function Contact(props) {
             return el._id !== handles.allHandles[index]._id;
         });
         setHandles({ allHandles: afterDelete });
+        // props.data.handles = handles.allHandles;
     };
 
     const newHandle = {
         _id: "",
-        img: "https://res.cloudinary.com/sarveshp46/image/upload/v1664520506/githubLogo_ebjezh.png",
+        img: "https://res.cloudinary.com/sarveshp46/image/upload/v1666794148/portfolio/githubLogo_gtmev3.png",
         link: "https://github.com/SarveshPatil29",
         name: "Github",
     };
@@ -91,8 +98,12 @@ export default function Contact(props) {
         newHandle._id = uuidv4();
         addedHandleArray.push(newHandle);
         setHandles({ allHandles: addedHandleArray });
-        console.log(handles.allHandles);
+        // props.data.handles = handles.allHandles;
     };
+
+    useEffect(() => {
+        props.data.handles = handles.allHandles;
+    }, [handles]);
 
     const handlesList = handles.allHandles.map((item, index) => (
         <div key={item._id} className={classes.logo}>
@@ -176,13 +187,15 @@ export default function Contact(props) {
             </div>
             <button className={classes.handleLogos}>
                 <Link href={item.link}>
-                    <Image
-                        width={50}
-                        height={50}
-                        className={classes.githubLogo}
-                        src={item.img}
-                        alt={item.name}
-                    />
+                    <a target="_blank">
+                        <Image
+                            width={50}
+                            height={50}
+                            className={classes.githubLogo}
+                            src={item.img}
+                            alt={item.name}
+                        />
+                    </a>
                 </Link>
             </button>
         </div>
@@ -194,81 +207,34 @@ export default function Contact(props) {
         message: "",
     });
 
-    //   Form validation state
-    const [errors, setErrors] = useState({});
-
-    //   Setting button text on form submission
-    const [buttonText, setButtonText] = useState("Send");
-
-    // Setting success or failure messages states
-    const [showSuccessMessage, setShowSuccessMessage] = useState(false);
-    const [showFailureMessage, setShowFailureMessage] = useState(false);
-
-    // Validation check method
-    const handleValidation = () => {
-        let tempErrors = {};
-        let isValid = true;
-
-        if (inputs.fullname.length <= 0) {
-            tempErrors["fullname"] = true;
-            isValid = false;
-        }
-        if (inputs.email.length <= 0) {
-            tempErrors["email"] = true;
-            isValid = false;
-        }
-        if (inputs.message.length <= 0) {
-            tempErrors["message"] = true;
-            isValid = false;
-        }
-
-        setErrors({ ...tempErrors });
-        console.log("errors", errors);
-        return isValid;
-    };
-
     const handleOnChange = (e) => {
-        e.persist();
         setInputs((prev) => ({
             ...prev,
             [e.target.id]: e.target.value,
         }));
     };
 
-    //   Handling form submit
     const handleSubmit = async (e) => {
         e.preventDefault();
-
-        let isValidForm = handleValidation();
-
-        if (isValidForm) {
-            setButtonText("Sending");
-            const res = await fetch("/api/sendgrid", {
-                body: JSON.stringify({
-                    email: inputs.email,
-                    fullname: inputs.fullname,
-                    subject: `Message from ${inputs.fullname}`,
-                    message: inputs.message,
-                }),
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                method: "POST",
+        console.log(inputs);
+        await axios
+            .post(`${props.domainUrl}/api/mail`, {
+                formData: inputs,
+                toEmail: props.data.email,
+            })
+            .then(function (response) {
+                console.log(response);
+                alert("Successfully sent the message");
+            })
+            .catch(function (error) {
+                console.log(error);
             });
 
-            const { error } = await res.json();
-            if (error) {
-                console.log(error);
-                setShowSuccessMessage(false);
-                setShowFailureMessage(true);
-                setButtonText("Send");
-                return;
-            }
-            setShowSuccessMessage(true);
-            setShowFailureMessage(false);
-            setButtonText("Send");
-        }
-        // console.log(fullname, email, subject, message);
+        setInputs({
+            fullname: "",
+            email: "",
+            message: "",
+        });
     };
 
     return (
@@ -319,20 +285,10 @@ export default function Contact(props) {
                         className={classes.btn}
                         variant="dark"
                         type="submit"
-                        // disabled={status.submitting}
                     >
-                        {buttonText}
+                        SEND MESSAGE
                     </Button>
-                    {/* <button type="submit" disabled={status.submitting}>
-                        {!status.submitting
-                            ? !status.submitted
-                                ? "Submit"
-                                : "Submitted"
-                            : "Submitting..."}
-                    </button> */}
                 </div>
-                {showSuccessMessage}
-                {showFailureMessage}
             </Form>
 
             <div className={classes.logoDiv}>
