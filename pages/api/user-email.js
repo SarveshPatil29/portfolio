@@ -24,11 +24,11 @@ export default async function handler(req, res) {
             const newUser = {
                 name: "Your Name",
                 email: req.query.email,
-                intro: "AN ASPIRING ENGINEER EXPLORING THE ALL-CONSUMING WORLD OF THE INTERNET AND SYSTEMS USED BEHIND THE CURTAINS. FAMILIAR WITH JAVA, PYTHON, JAVASCRIPT, AND TYPESCRIPT. CONTRIBUTING TO VARIOUS PROJECTS IN THE FIELDS OF ANDROID DEVELOPMENT AND WEB DEVELOPMENT.",
+                intro: "I'm a second year student at NMIMS. I'm currently pursuing degree in Electronics and Telecommunication. I am a skilled programmer, being proficient in web development and data science. I'm a part of a non profit organization national organization (ISTE- NMIMS Student Chapter) and harbor multiple skills, academic, as well as non academic.",
                 introImg:
                     "https://res.cloudinary.com/sarveshp46/image/upload/v1666500903/portfolio/user-profile_e7zgv2.jpg",
                 aboutMe:
-                    "YOU'LL PROBABLY FIND ME TYPING ARTICLES, AND POEMS, OR SIPPING ICED COFFEE AND ENJOYING GOOD FICTION IN THE EVENINGS. A THIRD-YEAR STUDENT IN THE INFORMATION TECHNOLOGY BRANCH IS STUDYING AT VIVEKANAND EDUCATION SOCIETY'S INSTITUTE OF TECHNOLOGY, MUMBAI.",
+                    "I'm an artist, having worked in the designing industry for 4 years. My experience in graphic and logo designing has helped me develop a keen eye for detail and helped me understand the internal mechanics of producing results within deadlines. I've resorted to agile methods to get inspiring results within small but efficient time spaces.",
                 aboutMeImg:
                     "https://res.cloudinary.com/sarveshp46/image/upload/v1666533051/portfolio/user-profile2_gbhkxk.jpg",
                 isAdmin: false,
