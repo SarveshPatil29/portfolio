@@ -9,13 +9,13 @@ const DashboardNav = (props) => {
     const [isOpen, setIsOpen] = useState(false);
     return (
         <div>
-            <nav className="bg-zinc-900">
+            <nav className="bg-black">
                 <div className="max-w-9xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className=" h-25 flex items-center justify-between">
                         <div className="flex items-center">
                             <div className="flex-shrink-0 ">
                                 <Link href="/">
-                                    <a className="flex items-center">
+                                    <a className="flex items-center no-underline">
                                         <Image
                                             src="https://res.cloudinary.com/drr7rbizq/image/upload/v1664977190/logo-removebg-preview_1_jhx4kw.png"
                                             className="mr-3 h-12 animate-pulse sm:h-24"
@@ -23,7 +23,7 @@ const DashboardNav = (props) => {
                                             width={95}
                                             alt="Portfolio Logo"
                                         />
-                                        <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">
+                                        <span className="hover:text-gray-400 transition-colors self-center text-xl font-semibold whitespace-nowrap dark:text-white">
                                             PORTFOLIO-PRO
                                         </span>
                                     </a>
@@ -33,11 +33,11 @@ const DashboardNav = (props) => {
                                 className="hidden w-full md:block md:w-auto"
                                 id="mobile-menu"
                             >
-                                <ul className="absolute right-0 top-7 flex flex-col rounded-lg bg-gray-50 mr-7 mb-3 dark:border-gray-700 dark:bg-gray-800 md:mt-0 md:flex-row md:space-x-8 md:border-0 md:bg-white md:text-sm md:font-medium md:dark:bg-zinc-900">
+                                <ul className="absolute right-0 top-7 flex flex-col rounded-lg bg-gray-50 mr-7 mb-3 dark:border-gray-700 dark:bg-gray-800 md:mt-0 md:flex-row md:space-x-8 md:border-0 md:bg-white md:text-sm md:font-medium md:dark:bg-black">
                                     <li>
                                         <Link href="/">
                                             <a
-                                                className="duration-0 block rounded py-2 pr-4 pl-3 text-xl text-gray-100 transition hover:scale-110 hover:bg-gray-100 hover:duration-150 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-white"
+                                                className="no-underline duration-0 block rounded py-2 pr-4 pl-3 text-xl text-gray-100 transition hover:text-white hover:bg-gray-100 hover:duration-150 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-white"
                                                 aria-current="page"
                                             >
                                                 HOME
@@ -48,7 +48,7 @@ const DashboardNav = (props) => {
                                         <li>
                                             <Link href="/admin">
                                                 <a
-                                                    className="duration-0 block rounded py-2 pr-4 pl-3 text-xl text-gray-100 transition hover:scale-110 hover:bg-gray-100 hover:duration-150 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-white"
+                                                    className="no-underline duration-0 block rounded py-2 pr-4 pl-3 text-xl text-gray-100 transition hover:text-white hover:bg-gray-100 hover:duration-150 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-white"
                                                     aria-current="page"
                                                 >
                                                     VIEW ADMIN PANEL
@@ -59,8 +59,9 @@ const DashboardNav = (props) => {
                                     <li>
                                         <Link href={props.url}>
                                             <a
-                                                className="duration-0 block rounded py-2 pr-4 pl-3 text-xl text-gray-100 transition hover:scale-110 hover:bg-gray-100 hover:duration-150 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-white"
+                                                className="no-underline duration-0 block rounded py-2 pr-4 pl-3 text-xl text-gray-100 transition hover:text-white hover:bg-gray-100 hover:duration-150 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-white"
                                                 aria-current="page"
+                                                target="_blank"
                                             >
                                                 VIEW PORTFOLIO
                                             </a>
@@ -69,34 +70,23 @@ const DashboardNav = (props) => {
                                     <li>
                                         <Link href="/edit">
                                             <a
-                                                className="duration-0 block rounded py-2 pr-4 pl-3 text-xl text-gray-100 transition hover:scale-110 hover:bg-gray-100 hover:duration-150 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-white"
+                                                className="no-underline duration-0 block rounded py-2 pr-4 pl-3 text-xl text-gray-100 transition hover:text-white hover:bg-gray-100 hover:duration-150 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-white"
                                                 aria-current="page"
+                                                target="_blank"
                                             >
                                                 EDIT PORTFOLIO
                                             </a>
                                         </Link>
                                     </li>
-                                    <li>
-                                        {/* <a
-                      href="/dashboard"
-                      className="duration-0 block rounded py-2 pr-4 pl-3 text-xl text-gray-100 transition hover:scale-125 hover:bg-gray-100 hover:duration-150 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-white"
-                    >
-                      Weather
-                    </a> */}
-                                        {/* <Button
-                      variant="dark"
-                      href="/edit"
-                      className="mt-1 text-gray-100 bg-gray-500 hover:bg-white active:bg-white focus:outline-none focus:ring focus:ring-cyan-300"
-                    >
-                      START WITH THIS DESIGN
-                    </Button> */}
-                                        <Button
-                                            variant="light"
-                                            href="/api/auth/signout"
-                                            className="mt-1 text-gray-100 bg-gray-500 hover:bg-white active:bg-white focus:outline-none focus:ring focus:ring-cyan-300"
-                                        >
-                                            LOG OUT
-                                        </Button>
+                                    <li className="mt-2">
+                                        <Link href="/api/auth/signout">
+                                            <a
+                                                className="no-underline bg-blue-500 hover:bg-blue-700 text-white font-bold py-2.5 px-4 rounded text-lg"
+                                                aria-current="page"
+                                            >
+                                                LOG OUT
+                                            </a>
+                                        </Link>
                                     </li>
                                 </ul>
                             </div>
@@ -202,14 +192,6 @@ const DashboardNav = (props) => {
                                 >
                                     LOG OUT
                                 </Button>
-                                {/* 
-                    <Button
-                      variant="dark"
-                      href="/edit"
-                      className="mt-1 text-gray-100 bg-gray-500 hover:bg-white active:bg-white focus:outline-none focus:ring focus:ring-cyan-300"
-                    >
-                      START WITH THIS DESIGN
-                    </Button> */}
                             </div>
                         </div>
                     )}

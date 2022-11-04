@@ -14,7 +14,7 @@ const LoginNav = () => {
                         <div className="flex items-center">
                             <div className="flex-shrink-0 ">
                                 <Link href="/">
-                                    <a className="flex items-center">
+                                    <a className="flex items-center no-underline">
                                         <Image
                                             src="https://res.cloudinary.com/drr7rbizq/image/upload/v1664977190/logo-removebg-preview_1_jhx4kw.png"
                                             className="mr-3 h-12 animate-pulse sm:h-24"
@@ -22,7 +22,7 @@ const LoginNav = () => {
                                             width={95}
                                             alt="Portfolio Logo"
                                         />
-                                        <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">
+                                        <span className="hover:text-gray-400 transition-colors self-center text-xl font-semibold whitespace-nowrap dark:text-white">
                                             PORTFOLIO-PRO
                                         </span>
                                     </a>
@@ -36,10 +36,10 @@ const LoginNav = () => {
                                     <li>
                                         <Link href="/">
                                             <a
-                                                className="duration-0 block rounded py-2 pr-4 pl-3 text-xl text-gray-100 transition hover:scale-125 hover:bg-gray-100 hover:duration-150 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-white"
+                                                className="no-underline duration-0 block rounded py-2 pr-4 pl-3 text-xl text-gray-100 transition hover:text-white hover:bg-gray-100 hover:duration-150 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-white"
                                                 aria-current="page"
                                             >
-                                                Home
+                                                HOME
                                             </a>
                                         </Link>
                                     </li>

@@ -3,9 +3,9 @@ import axios from "axios";
 import UserCard from "../components/UserCard/UserCard";
 import Layout from "../components/Layout";
 import HomeNavbar from "../components/HomeNavbar/HomeNavbar";
-import HomeFooter from "../components/HomeFooter";
 
 import { getSession } from "next-auth/react";
+import FooterMain from "../components/FooterMain/FooterMain";
 
 const admin = (props) => {
     const allUsers = props.allUsers.map((user) => (
@@ -34,7 +34,7 @@ const admin = (props) => {
                     </span>
                 </div>
             )}
-            <HomeFooter />
+            <FooterMain domainUrl={props.domainUrl} />
         </Layout>
     );
 };
