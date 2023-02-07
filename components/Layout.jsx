@@ -12,7 +12,6 @@ const Layout = ({ title, content, children }) => {
                     rel="icon"
                     href="https://res.cloudinary.com/drr7rbizq/image/upload/v1664977190/logo-removebg-preview_1_jhx4kw.png"
                 />
-            </Head>
             <!-- Google tag (gtag.js) -->
             <script async src="https://www.googletagmanager.com/gtag/js?id=G-16ZG18G1H8"></script>
             <script>
@@ -22,6 +21,8 @@ const Layout = ({ title, content, children }) => {
 
               gtag('config', 'G-16ZG18G1H8');
             </script>
+            </Head>
+
             <div className="">{children}</div>
             
         
