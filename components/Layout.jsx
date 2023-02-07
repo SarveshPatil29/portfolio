@@ -12,19 +12,8 @@ const Layout = ({ title, content, children }) => {
                     rel="icon"
                     href="https://res.cloudinary.com/drr7rbizq/image/upload/v1664977190/logo-removebg-preview_1_jhx4kw.png"
                 />
-                <script async src="https://www.googletagmanager.com/gtag/js?id=G-16ZG18G1H8"></script>
-                <script>
-                  window.dataLayer = window.dataLayer || [];
-                  function gtag(){dataLayer.push(arguments)}
-                  gtag('js', new Date());
-
-                  gtag('config', 'G-16ZG18G1H8');
-                </script>
             </Head>
-
             <div className="">{children}</div>
-            
-        
         </>
     );
 };
