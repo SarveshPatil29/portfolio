@@ -2,6 +2,8 @@
 
 Portfolio Pro is a tool that helps to streamline the process of managing information about one's resume, job, qualifications, and skills. It reduces the manual effort required to keep track of all these details, and allows users to easily manage their portfolio information in one place. The tool tracks all the relevant information about the individual, including their skills and qualifications, to provide a comprehensive and organized view of their portfolio.
 
+This project is live at: [https://portfolio-pro.one/](https://portfolio-pro.one/)
+
 <table>
   <tr>
     <td>
