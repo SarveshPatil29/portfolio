@@ -67,3 +67,5 @@ DOMAIN_URL = http://localhost:3000
 ```
 
 5. Start the server with `npm run dev`.
+
+
