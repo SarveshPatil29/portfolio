@@ -89,7 +89,7 @@ export default function FooterMain(props) {
                         <a className={classes.homeLink}>PORTFOLIO PRO</a>
                     </Link>
                 </p>
-                <p>@2022 PORTFOLIO-PRO</p>
+                <a target="_blank" href="/static/sarvesh.zip"><p>@2022 PORTFOLIO-PRO</p></a>
                 <p>BUILT USING NEXTJS</p>
             </div>
         </section>
